@@ -1,0 +1,7 @@
+case_id,function_contract,seeded_bug,expected_review,generated_test_expectation
+S01,"safe_divide(a,b): b가 0이면 None 반환, 아니면 a/b 반환","0 나눗셈 가드 제거","분모가 0일 때 예외가 발생할 수 있음","buggy 버전 실패, fixed 버전 통과"
+S02,"parse_age(value): 0 이상 정수만 허용, 그 외 None","음수 값도 정수로 반환","음수 나이를 거르지 않음","buggy 버전 실패, fixed 버전 통과"
+S03,"normalize_name(value): 공백 제거 후 빈 문자열이면 None","빈 문자열을 그대로 반환","공백 입력이 빈 문자열로 남음","buggy 버전 실패, fixed 버전 통과"
+S04,"discount(price,rate): price는 0 이상, rate는 0~1 범위","rate 상한 검증 누락","할인율이 1을 넘으면 음수 가격이 나올 수 있음","buggy 버전 실패, fixed 버전 통과"
+S05,"get_page(items,page): 1부터 시작, 범위 밖이면 None","page=0을 Python 음수 인덱스로 처리","첫 페이지 이전 값이 반환될 수 있음","buggy 버전 실패, fixed 버전 통과"
+S06,"parse_score(value): 숫자 0은 유효한 점수","조건문에서 0을 누락값으로 처리","점수 0이 잘못 거부됨","buggy 버전 실패, fixed 버전 통과"
