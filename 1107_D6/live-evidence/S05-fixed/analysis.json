@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "review": {
+    "summary": "제공된 코드에서 함수 get_page는 주어진 리스트와 인덱스를 기반으로 특정 페이지를 가져오는 역할을 하고 있습니다. 테스트 코드가 잘 작성되어 있지만, 임포트 부분에서 오류가 발생했습니다. 이로 인해 테스트 소비가 완벽하게 이행되지는 않았습니다.",
+    "findings": [
+      {
+        "file": "test_seed_case.py",
+        "line": 1,
+        "evidence": "from seed_case import get_page",
+        "suggestion": "임포트 구문을 정렬하고 형식을 맞추십시오."
+      }
+    ],
+    "tests": [
+      {
+        "target": "get_page",
+        "code": "from seed_case import get_page\n\ndef test_get_page_valid_index():\n    assert get_page([1, 2, 3], 2) == 2\n",
+        "purpose": "유효한 인덱스에 대해 올바른 페이지를 반환하는지 확인하기 위함이다."
+      },
+      {
+        "target": "get_page",
+        "code": "from seed_case import get_page\n\ndef test_get_page_index_out_of_bounds():\n    assert get_page([1, 2, 3], 5) is None\n",
+        "purpose": "인덱스가 범위를 초과할 때 None을 반환하는지 테스트하기 위함이다."
+      },
+      {
+        "target": "get_page",
+        "code": "from seed_case import get_page\n\ndef test_get_page_negative_index():\n    assert get_page([1, 2, 3], -1) is None\n",
+        "purpose": "음수 인덱스에 대해 None을 반환하는지 테스트하기 위함이다."
+      },
+      {
+        "target": "get_page",
+        "code": "from seed_case import get_page\n\ndef test_get_page_empty_list():\n    assert get_page([], 1) is None\n",
+        "purpose": "빈 리스트에 대해 None을 반환하는지 테스트하기 위함이다."
+      },
+      {
+        "target": "get_page",
+        "code": "from seed_case import get_page\n\ndef test_get_page_first_element():\n    assert get_page([5, 10, 15], 1) == 5\n",
+        "purpose": "첫 번째 요소에 대해 적절한 페이지를 반환하는지 확인하기 위함이다."
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "status": "passed",
+  "review": {
+    "summary": "제공된 코드는 입력값이 -1인 경우 parse_age 함수가 None을 반환해야 한다는 계약을 테스트하고 있습니다. ruff 검사에서 import문 정렬 문제가 발견되었습니다.",
+    "findings": [
+      {
+        "file": "seed_case.py",
+        "line": 3,
+        "evidence": "def parse_age(v): return int(v) if str(v).isdigit() else None",
+        "suggestion": "주석에서 -1 입력이 None으로 예상되는 계약을 구현해야 합니다."
+      },
+      {
+        "file": "test_seed_case.py",
+        "line": 1,
+        "evidence": "from seed_case import parse_age",
+        "suggestion": "import 문이 정렬되지 않았습니다."
+      }
+    ],
+    "tests": [
+      {
+        "target": "parse_age",
+        "code": "from seed_case import parse_age\ndef test_parse_age_negative():\n    assert parse_age(-1) is None",
+        "purpose": "-1 입력이 None으로 올바르게 반환되는지 확인하기 위한 테스트."
+      },
+      {
+        "target": "parse_age",
+        "code": "from seed_case import parse_age\ndef test_parse_age_string_number():\n    assert parse_age('5') == 5",
+        "purpose": "문자열 '5'를 올바르게 정수 5로 변환하는지 확인하기 위한 테스트."
+      },
+      {
+        "target": "parse_age",
+        "code": "from seed_case import parse_age\ndef test_parse_age_non_digit():\n    assert parse_age('abc') is None",
+        "purpose": "문자열 'abc'가 None으로 반환되는지 확인하기 위한 테스트."
+      },
+      {
+        "target": "parse_age",
+        "code": "from seed_case import parse_age\ndef test_parse_age_zero():\n    assert parse_age(0) == 0",
+        "purpose": "입력값 0이 올바르게 반환되는지 확인하기 위한 테스트."
+      },
+      {
+        "target": "parse_age",
+        "code": "from seed_case import parse_age\ndef test_parse_age_positive():\n    assert parse_age(10) == 10",
+        "purpose": "양의 정수 10이 올바르게 반환되는지 확인하기 위한 테스트."
+      }
+    ]
+  }
+}

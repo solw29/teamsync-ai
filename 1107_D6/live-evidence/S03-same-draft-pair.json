@@ -1,0 +1,44 @@
+{
+  "case_id": "S03",
+  "analysis_sha256": "a343e2a806b47e8a1af322a48dc54950335e86fa818cd15bb97e23a2db09670b",
+  "buggy_sha": "b060ef9b94a22e81d591522f931ef67204e04a1d",
+  "fixed_sha": "65695f5a36a1d77e77bcb837fe56f2d647aab027",
+  "source": "same_llm_drafts_disposable_ci",
+  "tests": [
+    {
+      "index": 0,
+      "target": "normalize_name",
+      "buggy": "passed",
+      "fixed": "failed",
+      "classification": "unstable_or_environment"
+    },
+    {
+      "index": 1,
+      "target": "normalize_name",
+      "buggy": "failed",
+      "fixed": "failed",
+      "classification": "manual_review"
+    },
+    {
+      "index": 2,
+      "target": "normalize_name",
+      "buggy": "passed",
+      "fixed": "passed",
+      "classification": "missed"
+    },
+    {
+      "index": 3,
+      "target": "normalize_name",
+      "buggy": "passed",
+      "fixed": "passed",
+      "classification": "missed"
+    },
+    {
+      "index": 4,
+      "target": "normalize_name",
+      "buggy": "passed",
+      "fixed": "failed",
+      "classification": "unstable_or_environment"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 10,
+  "run_id": 43148874052,
+  "run_url": "https://github.com/solw29/teamsync-ai/actions/runs/43148874052",
+  "head_sha": "8a32007c46f4cc2b5caa99394310d2970f1d5507",
+  "run_created_at": "2026-11-12T03:32:20Z",
+  "conclusion": "success",
+  "comment_id": 6813591351,
+  "comment_url": "https://github.com/solw29/teamsync-ai/pull/10#issuecomment-6813591351",
+  "comment_updated_at": "2026-11-12T03:34:37Z",
+  "comment_count": 1,
+  "body": "<!-- teamsync-ai -->\n## TeamSync AI\n### 검사 결과\n- ruff: failed\n- pytest: passed\n\nAI 분석: passed\n제공된 코드에서 함수 get_page는 주어진 리스트와 인덱스를 기반으로 특정 페이지를 가져오는 역할을 하고 있습니다. 테스트 코드가 잘 작성되어 있지만, 임포트 부분에서 오류가 발생했습니다. 이로 인해 테스트 소비가 완벽하게 이행되지는 않았습니다.\n근거 확인 실패로 0건 제외\n- test_seed_case.py:1 — from seed_case import get_page / 임포트 구문을 정렬하고 형식을 맞추십시오.\n\n테스트 초안: get_page — 유효한 인덱스에 대해 올바른 페이지를 반환하는지 확인하기 위함이다.\n<pre>from seed_case import get_page\n\ndef test_get_page_valid_index():\n    assert get_page([1, 2, 3], 2) == 2\n</pre>\n\n테스트 초안: get_page — 인덱스가 범위를 초과할 때 None을 반환하는지 테스트하기 위함이다.\n<pre>from seed_case import get_page\n\ndef test_get_page_index_out_of_bounds():\n    assert get_page([1, 2, 3], 5) is None\n</pre>\n\n테스트 초안: get_page — 음수 인덱스에 대해 None을 반환하는지 테스트하기 위함이다.\n<pre>from seed_case import get_page\n\ndef test_get_page_negative_index():\n    assert get_page([1, 2, 3], -1) is None\n</pre>\n\n테스트 초안: get_page — 빈 리스트에 대해 None을 반환하는지 테스트하기 위함이다.\n<pre>from seed_case import get_page\n\ndef test_get_page_empty_list():\n    assert get_page([], 1) is None\n</pre>\n\n테스트 초안: get_page — 첫 번째 요소에 대해 적절한 페이지를 반환하는지 확인하기 위함이다.\n<pre>from seed_case import get_page\n\ndef test_get_page_first_element():\n    assert get_page([5, 10, 15], 1) == 5\n</pre>\n\n### 생성 테스트 실행 상태\n[{&#x27;target&#x27;: &#x27;get_page&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;get_page&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;get_page&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;get_page&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;get_page&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}]\n통과는 실행 가능 여부만 의미하며 품질·버그 검출을 보증하지 않습니다.\ndiff 일부 생략: False; 제외 파일: 0\nDiscord: passed",
+  "run_to_comment_seconds": 137.0
+}

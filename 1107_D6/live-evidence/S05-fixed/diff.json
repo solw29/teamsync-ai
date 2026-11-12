@@ -1,0 +1,54 @@
+{
+  "lines": [
+    {
+      "file": "seed_case.py",
+      "line": 1,
+      "code": "\"\"\"S05 contract: assert get_page([1],0) is None.\"\"\""
+    },
+    {
+      "file": "seed_case.py",
+      "line": 2,
+      "code": ""
+    },
+    {
+      "file": "seed_case.py",
+      "line": 3,
+      "code": "def get_page(items,p): return items[p-1] if 1 <= p <= len(items) else None"
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 1,
+      "code": "from seed_case import get_page"
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 2,
+      "code": ""
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 3,
+      "code": "def test_contract():"
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 4,
+      "code": "    assert get_page([1],0) is None"
+    }
+  ],
+  "positions": {
+    "seed_case.py": [
+      1,
+      2,
+      3
+    ],
+    "test_seed_case.py": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "excluded": [],
+  "truncated": false
+}

@@ -1,0 +1,54 @@
+{
+  "lines": [
+    {
+      "file": "seed_case.py",
+      "line": 1,
+      "code": "\"\"\"S04 contract: assert discount(10,2) is None.\"\"\""
+    },
+    {
+      "file": "seed_case.py",
+      "line": 2,
+      "code": ""
+    },
+    {
+      "file": "seed_case.py",
+      "line": 3,
+      "code": "def discount(p,r): return p*(1-r) if p >= 0 and 0 <= r <= 1 else None"
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 1,
+      "code": "from seed_case import discount"
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 2,
+      "code": ""
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 3,
+      "code": "def test_contract():"
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 4,
+      "code": "    assert discount(10,2) is None"
+    }
+  ],
+  "positions": {
+    "seed_case.py": [
+      1,
+      2,
+      3
+    ],
+    "test_seed_case.py": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "excluded": [],
+  "truncated": false
+}

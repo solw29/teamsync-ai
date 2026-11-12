@@ -1,0 +1,54 @@
+{
+  "lines": [
+    {
+      "file": "seed_case.py",
+      "line": 1,
+      "code": "\"\"\"S03 contract: assert normalize_name(' ') is None.\"\"\""
+    },
+    {
+      "file": "seed_case.py",
+      "line": 2,
+      "code": ""
+    },
+    {
+      "file": "seed_case.py",
+      "line": 3,
+      "code": "def normalize_name(v): return v.strip()"
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 1,
+      "code": "from seed_case import normalize_name"
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 2,
+      "code": ""
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 3,
+      "code": "def test_contract():"
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 4,
+      "code": "    assert normalize_name(' ') is None"
+    }
+  ],
+  "positions": {
+    "seed_case.py": [
+      1,
+      2,
+      3
+    ],
+    "test_seed_case.py": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "excluded": [],
+  "truncated": false
+}

@@ -1,0 +1,44 @@
+{
+  "case_id": "S05",
+  "analysis_sha256": "ef325b2f9a9ede83c1399f1d22e4e6570d0dacfa6c5fe87f1ab433ca5bcd5ab3",
+  "buggy_sha": "52d890b4818b028cec2f50f9aace4044a35f3b03",
+  "fixed_sha": "8a32007c46f4cc2b5caa99394310d2970f1d5507",
+  "source": "same_llm_drafts_disposable_ci",
+  "tests": [
+    {
+      "index": 0,
+      "target": "get_page",
+      "buggy": "failed",
+      "fixed": "passed",
+      "classification": "detected"
+    },
+    {
+      "index": 1,
+      "target": "get_page",
+      "buggy": "passed",
+      "fixed": "passed",
+      "classification": "missed"
+    },
+    {
+      "index": 2,
+      "target": "get_page",
+      "buggy": "failed",
+      "fixed": "passed",
+      "classification": "detected"
+    },
+    {
+      "index": 3,
+      "target": "get_page",
+      "buggy": "failed",
+      "fixed": "passed",
+      "classification": "detected"
+    },
+    {
+      "index": 4,
+      "target": "get_page",
+      "buggy": "failed",
+      "fixed": "passed",
+      "classification": "detected"
+    }
+  ]
+}

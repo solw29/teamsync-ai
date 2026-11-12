@@ -1,0 +1,14 @@
+{
+  "pr": 1,
+  "run_id": 43148811960,
+  "run_url": "https://github.com/solw29/teamsync-ai/actions/runs/43148811960",
+  "head_sha": "ddbc56416803ee5d9bf820eee7ff24f0854b97aa",
+  "run_created_at": "2026-11-12T03:31:46Z",
+  "conclusion": "success",
+  "comment_id": 6813536921,
+  "comment_url": "https://github.com/solw29/teamsync-ai/pull/1#issuecomment-6813536921",
+  "comment_updated_at": "2026-11-12T03:33:57Z",
+  "comment_count": 1,
+  "body": "<!-- teamsync-ai -->\n## TeamSync AI\n### 검사 결과\n- ruff: passed\n- pytest: failed\n\nAI 분석: passed\n제공된 코드에서 분모가 0일 경우 None을 반환해야 하는 ˋsafe_divideˋ 함수가 ZeroDivisionError를 발생시키는 문제가 있습니다. 이로 인해 테스트가 실패합니다. 올바른 구현이 필요합니다.\n근거 확인 실패로 0건 제외\n- demo_s01.py:6 — return a / b / 분모가 0인 경우 None을 반환하도록 구현을 수정해야 합니다.\n\n테스트 초안: safe_divide — 2로 나눌 때의 결과 확인.\n<pre>from demo_s01 import safe_divide\n\ndef test_safe_divide_non_zero_divisor():\n    assert safe_divide(6, 2) == 3\n</pre>\n\n테스트 초안: safe_divide — 0으로 나눌 때 None을 반환해야 하는지 확인.\n<pre>from demo_s01 import safe_divide\n\ndef test_safe_divide_zero_divisor():\n    assert safe_divide(1, 0) is None\n</pre>\n\n테스트 초안: safe_divide — 음수로 나눌 때의 결과 확인.\n<pre>from demo_s01 import safe_divide\n\ndef test_safe_divide_negative_divisor():\n    assert safe_divide(6, -3) == -2\n</pre>\n\n테스트 초안: safe_divide — 소수점 숫자로 나눌 때의 결과 확인.\n<pre>from demo_s01 import safe_divide\n\ndef test_safe_divide_floating_point():\n    assert safe_divide(5.0, 2.0) == 2.5\n</pre>\n\n테스트 초안: safe_divide — 양수와 음수를 나눌 때의 결과 확인.\n<pre>from demo_s01 import safe_divide\n\ndef test_safe_divide_positive_and_negative():\n    assert safe_divide(-4, 2) == -2\n</pre>\n\n### 생성 테스트 실행 상태\n[{&#x27;target&#x27;: &#x27;safe_divide&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;safe_divide&#x27;, &#x27;status&#x27;: &#x27;failed&#x27;}, {&#x27;target&#x27;: &#x27;safe_divide&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;safe_divide&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;safe_divide&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}]\n통과는 실행 가능 여부만 의미하며 품질·버그 검출을 보증하지 않습니다.\ndiff 일부 생략: False; 제외 파일: 0\nDiscord: passed",
+  "run_to_comment_seconds": 131.0
+}

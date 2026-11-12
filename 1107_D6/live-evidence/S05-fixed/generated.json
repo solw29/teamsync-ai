@@ -1,0 +1,22 @@
+[
+  {
+    "target": "get_page",
+    "status": "passed"
+  },
+  {
+    "target": "get_page",
+    "status": "passed"
+  },
+  {
+    "target": "get_page",
+    "status": "passed"
+  },
+  {
+    "target": "get_page",
+    "status": "passed"
+  },
+  {
+    "target": "get_page",
+    "status": "passed"
+  }
+]

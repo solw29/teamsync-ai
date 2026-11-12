@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "review": {
+    "summary": "제공된 코드에는 `normalize_name` 함수가 정의되어 있으며, 해당 함수는 입력 문자열에서 공백을 제거한 결과가 없으면 `None`을 반환합니다. 테스트 파일 또한 이 기능을 테스트하고 있으며, `pytest`를 통해 모든 테스트가 통과했습니다. 그러나 `ruff` 검사에서 임포트 형식이 문제로 지적되었습니다.",
+    "findings": [
+      {
+        "file": "test_seed_case.py",
+        "line": 1,
+        "evidence": "from seed_case import normalize_name",
+        "suggestion": "임포트를 정렬하여 형식에 맞게 조정하세요."
+      }
+    ],
+    "tests": [
+      {
+        "target": "normalize_name",
+        "code": "from seed_case import normalize_name\ndef test_contract():\n    assert normalize_name(' ') is None",
+        "purpose": "normalize_name 함수가 공백 문자열을 처리하는지를 검증하기 위함이다."
+      }
+    ]
+  }
+}

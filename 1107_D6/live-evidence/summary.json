@@ -1,0 +1,40 @@
+{
+  "sample": "6 synthetic PR pairs, one frozen live round; not general accuracy",
+  "bug_review_cases": 6,
+  "cases": 6,
+  "fixed_false_positives_code_inspected": 2,
+  "valid_locations": 15,
+  "published_locations": 15,
+  "same_draft_test_outcomes": {
+    "missed": 16,
+    "detected": 6,
+    "unstable_or_environment": 7,
+    "manual_review": 1
+  },
+  "fixed_execution_without_environment_error": 30,
+  "fixed_passed_tests": 22,
+  "total_same_draft_tests": 30,
+  "cases_with_detecting_test": 3,
+  "discord_http_accepted": 12,
+  "discord_channel_ui_observed": false,
+  "duplicate_bot_comments": 0,
+  "run_created_to_final_comment_seconds": {
+    "median": 131.5,
+    "max": 137.0,
+    "values": [
+      131.0,
+      114.0,
+      132.0,
+      136.0,
+      122.0,
+      115.0,
+      132.0,
+      124.0,
+      133.0,
+      137.0,
+      133.0,
+      116.0
+    ]
+  },
+  "limitation": "11 fixture test files contain real Ruff I001 formatting issues. Fixed here means seeded functional bug fixed, not lint-clean. Review false positives exclude actual lint warnings. Run-created time approximates event receipt; includes queueing. Code inspection is by assistant, not independent human adjudication."
+}

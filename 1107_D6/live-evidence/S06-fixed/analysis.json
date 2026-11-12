@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "review": {
+    "summary": "제공된 코드에서 함수 `parse_score`와 관련된 테스트가 적절히 작성되어 있으며, 해당 함수에 대한 간단한 검증이 이루어지고 있습니다. 그러나 불필요한 코드 스타일 오류가 발견되었습니다.",
+    "findings": [
+      {
+        "file": "test_seed_case.py",
+        "line": 1,
+        "evidence": "from seed_case import parse_score",
+        "suggestion": "Import block을 정리하여 코드 스타일을 개선하십시오."
+      }
+    ],
+    "tests": [
+      {
+        "target": "parse_score",
+        "code": "from seed_case import parse_score\n\ndef test_parse_score_zero():\n    assert parse_score(0) == 0",
+        "purpose": "Test parse_score function with input 0."
+      },
+      {
+        "target": "parse_score",
+        "code": "from seed_case import parse_score\n\ndef test_parse_score_none():\n    assert parse_score(None) is None",
+        "purpose": "Test parse_score function with input None."
+      },
+      {
+        "target": "parse_score",
+        "code": "from seed_case import parse_score\n\ndef test_parse_score_positive():\n    assert parse_score(10) == 10.0",
+        "purpose": "Test parse_score function with positive input."
+      },
+      {
+        "target": "parse_score",
+        "code": "from seed_case import parse_score\n\ndef test_parse_score_negative():\n    assert parse_score(-10) == -10.0",
+        "purpose": "Test parse_score function with negative input."
+      },
+      {
+        "target": "parse_score",
+        "code": "from seed_case import parse_score\n\ndef test_parse_score_float():\n    assert parse_score(5.5) == 5.5",
+        "purpose": "Test parse_score function with float input."
+      }
+    ]
+  }
+}

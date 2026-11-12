@@ -1,0 +1,14 @@
+{
+  "pr": 12,
+  "run_id": 43148886174,
+  "run_url": "https://github.com/solw29/teamsync-ai/actions/runs/43148886174",
+  "head_sha": "4c2debe66616896489db93af01f4fb09e84a2700",
+  "run_created_at": "2026-11-12T03:32:26Z",
+  "conclusion": "success",
+  "comment_id": 6813586314,
+  "comment_url": "https://github.com/solw29/teamsync-ai/pull/12#issuecomment-6813586314",
+  "comment_updated_at": "2026-11-12T03:34:22Z",
+  "comment_count": 1,
+  "body": "<!-- teamsync-ai -->\n## TeamSync AI\n### 검사 결과\n- ruff: failed\n- pytest: passed\n\nAI 분석: passed\n제공된 코드에서 함수 ˋparse_scoreˋ와 관련된 테스트가 적절히 작성되어 있으며, 해당 함수에 대한 간단한 검증이 이루어지고 있습니다. 그러나 불필요한 코드 스타일 오류가 발견되었습니다.\n근거 확인 실패로 0건 제외\n- test_seed_case.py:1 — from seed_case import parse_score / Import block을 정리하여 코드 스타일을 개선하십시오.\n\n테스트 초안: parse_score — Test parse_score function with input 0.\n<pre>from seed_case import parse_score\n\ndef test_parse_score_zero():\n    assert parse_score(0) == 0</pre>\n\n테스트 초안: parse_score — Test parse_score function with input None.\n<pre>from seed_case import parse_score\n\ndef test_parse_score_none():\n    assert parse_score(None) is None</pre>\n\n테스트 초안: parse_score — Test parse_score function with positive input.\n<pre>from seed_case import parse_score\n\ndef test_parse_score_positive():\n    assert parse_score(10) == 10.0</pre>\n\n테스트 초안: parse_score — Test parse_score function with negative input.\n<pre>from seed_case import parse_score\n\ndef test_parse_score_negative():\n    assert parse_score(-10) == -10.0</pre>\n\n테스트 초안: parse_score — Test parse_score function with float input.\n<pre>from seed_case import parse_score\n\ndef test_parse_score_float():\n    assert parse_score(5.5) == 5.5</pre>\n\n### 생성 테스트 실행 상태\n[{&#x27;target&#x27;: &#x27;parse_score&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;parse_score&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;parse_score&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;parse_score&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;parse_score&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}]\n통과는 실행 가능 여부만 의미하며 품질·버그 검출을 보증하지 않습니다.\ndiff 일부 생략: False; 제외 파일: 0\nDiscord: passed",
+  "run_to_comment_seconds": 116.0
+}

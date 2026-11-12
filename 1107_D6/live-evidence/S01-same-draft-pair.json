@@ -1,0 +1,44 @@
+{
+  "case_id": "S01",
+  "analysis_sha256": "e154134e4e1c8c099d73cabee627ab154eff772dff1e40cfdab48f5510d10d7b",
+  "buggy_sha": "ddbc56416803ee5d9bf820eee7ff24f0854b97aa",
+  "fixed_sha": "fcb573d63fec1edccb892251ca7165797345f87e",
+  "source": "same_llm_drafts_disposable_ci",
+  "tests": [
+    {
+      "index": 0,
+      "target": "safe_divide",
+      "buggy": "passed",
+      "fixed": "passed",
+      "classification": "missed"
+    },
+    {
+      "index": 1,
+      "target": "safe_divide",
+      "buggy": "failed",
+      "fixed": "passed",
+      "classification": "detected"
+    },
+    {
+      "index": 2,
+      "target": "safe_divide",
+      "buggy": "passed",
+      "fixed": "passed",
+      "classification": "missed"
+    },
+    {
+      "index": 3,
+      "target": "safe_divide",
+      "buggy": "passed",
+      "fixed": "passed",
+      "classification": "missed"
+    },
+    {
+      "index": 4,
+      "target": "safe_divide",
+      "buggy": "passed",
+      "fixed": "passed",
+      "classification": "missed"
+    }
+  ]
+}

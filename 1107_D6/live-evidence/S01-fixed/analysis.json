@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "review": {
+    "summary": "제공된 코드의 리뷰 결과, `safe_divide` 함수는 제로로 나누기를 처리하고 None을 반환합니다. 추가된 테스트 케이스는 올바르게 `safe_divide` 함수의 동작을 검증합니다. 그러나 `test_demo_s01.py`에서 import 문에 대한 정렬 오류가 발생하였습니다.",
+    "findings": [
+      {
+        "file": "test_demo_s01.py",
+        "line": 1,
+        "evidence": "from demo_s01 import safe_divide",
+        "suggestion": "Import 문을 정렬하세요."
+      }
+    ],
+    "tests": [
+      {
+        "target": "safe_divide",
+        "code": "from demo_s01 import safe_divide\n\ndef test_zero_division():\n    assert safe_divide(1, 0) is None",
+        "purpose": "제로로 나누기를 처리하는지 검증"
+      }
+    ]
+  }
+}

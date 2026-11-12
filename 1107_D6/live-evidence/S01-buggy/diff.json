@@ -1,0 +1,108 @@
+{
+  "lines": [
+    {
+      "file": "demo_s01.py",
+      "line": 1,
+      "code": "\"\"\"S01 demonstration contract: a zero divisor must return None, not raise.\"\"\""
+    },
+    {
+      "file": "demo_s01.py",
+      "line": 2,
+      "code": ""
+    },
+    {
+      "file": "demo_s01.py",
+      "line": 3,
+      "code": ""
+    },
+    {
+      "file": "demo_s01.py",
+      "line": 4,
+      "code": "def safe_divide(a: float, b: float) -> float | None:"
+    },
+    {
+      "file": "demo_s01.py",
+      "line": 5,
+      "code": "    \"\"\"Return None for b == 0, otherwise return a / b.\"\"\""
+    },
+    {
+      "file": "demo_s01.py",
+      "line": 6,
+      "code": "    return a / b"
+    },
+    {
+      "file": "test_demo_s01.py",
+      "line": 1,
+      "code": "\"\"\"Intentional red test for the S01 bug PR; not a regression on main.\"\"\""
+    },
+    {
+      "file": "test_demo_s01.py",
+      "line": 2,
+      "code": ""
+    },
+    {
+      "file": "test_demo_s01.py",
+      "line": 3,
+      "code": "import pytest"
+    },
+    {
+      "file": "test_demo_s01.py",
+      "line": 4,
+      "code": ""
+    },
+    {
+      "file": "test_demo_s01.py",
+      "line": 5,
+      "code": "from demo_s01 import safe_divide"
+    },
+    {
+      "file": "test_demo_s01.py",
+      "line": 6,
+      "code": ""
+    },
+    {
+      "file": "test_demo_s01.py",
+      "line": 7,
+      "code": ""
+    },
+    {
+      "file": "test_demo_s01.py",
+      "line": 8,
+      "code": "@pytest.mark.parametrize(\"a,b,expected\", [(6, 2, 3), (1, 0, None)])"
+    },
+    {
+      "file": "test_demo_s01.py",
+      "line": 9,
+      "code": "def test_safe_divide_contract(a, b, expected):"
+    },
+    {
+      "file": "test_demo_s01.py",
+      "line": 10,
+      "code": "    assert safe_divide(a, b) == expected"
+    }
+  ],
+  "positions": {
+    "demo_s01.py": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "test_demo_s01.py": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  "excluded": [],
+  "truncated": false
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 7,
+  "run_id": 43148854288,
+  "run_url": "https://github.com/solw29/teamsync-ai/actions/runs/43148854288",
+  "head_sha": "99093bdbb96caf9bc48565ba3bfd6dfc96d84a0e",
+  "run_created_at": "2026-11-12T03:32:09Z",
+  "conclusion": "success",
+  "comment_id": 6813585030,
+  "comment_url": "https://github.com/solw29/teamsync-ai/pull/7#issuecomment-6813585030",
+  "comment_updated_at": "2026-11-12T03:34:21Z",
+  "comment_count": 1,
+  "body": "<!-- teamsync-ai -->\n## TeamSync AI\n### 검사 결과\n- ruff: failed\n- pytest: failed\n\nAI 분석: passed\n주어진 코드에서 ˋdiscountˋ 함수는 기본적으로 할인 가격을 계산하는 함수입니다. 이 함수는 두 개의 인자(가격과 비율)를 받아야 하며, 비율이 1보다 크거나 같은 경우 잘못된 계산을 제공합니다. 이로 인해 테스트 ˋtest_contractˋ가 실패합니다. 예상 결과는 None이어야 하지만 -10이 반환됩니다.\n근거 확인 실패로 0건 제외\n- seed_case.py:3 — def discount(p,r): return p*(1-r) / 비율 입력값의 유효성을 확인하여 0에서 1 사이의 값으로 제한해야 합니다.\n\n테스트 초안: discount — 할인 비율이 0.2일 때 결과가 정확한지 확인하기 위함.\n<pre>from seed_case import discount\n\ndef test_discount_valid():\n    assert discount(10, 0.2) == 8.0</pre>\n\n테스트 초안: discount — 비율이 0일 때 결과가 가격과 같은지 확인.\n<pre>from seed_case import discount\n\ndef test_discount_zero_rate():\n    assert discount(10, 0.0) == 10.0</pre>\n\n테스트 초안: discount — 비율이 1일 때 결과가 0이 되는지 확인.\n<pre>from seed_case import discount\n\ndef test_discount_full_rate():\n    assert discount(10, 1.0) == 0.0</pre>\n\n테스트 초안: discount — 가격이 음수일 때 계산 결과가 올바른지 확인.\n<pre>from seed_case import discount\n\ndef test_discount_negative_price():\n    assert discount(-10, 0.2) == -8.0</pre>\n\n테스트 초안: discount — 비율이 1보다 클 때 결과가 예상대로 되는지 확인.\n<pre>from seed_case import discount\n\ndef test_discount_rate_greater_than_one():\n    assert discount(10, 1.5) == -5.0</pre>\n\n### 생성 테스트 실행 상태\n[{&#x27;target&#x27;: &#x27;discount&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;discount&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;discount&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;discount&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;discount&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}]\n통과는 실행 가능 여부만 의미하며 품질·버그 검출을 보증하지 않습니다.\ndiff 일부 생략: False; 제외 파일: 0\nDiscord: passed",
+  "run_to_comment_seconds": 132.0
+}

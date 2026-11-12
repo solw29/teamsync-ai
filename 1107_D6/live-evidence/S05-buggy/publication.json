@@ -1,0 +1,14 @@
+{
+  "pr": 9,
+  "run_id": 43148867275,
+  "run_url": "https://github.com/solw29/teamsync-ai/actions/runs/43148867275",
+  "head_sha": "52d890b4818b028cec2f50f9aace4044a35f3b03",
+  "run_created_at": "2026-11-12T03:32:16Z",
+  "conclusion": "success",
+  "comment_id": 6813589805,
+  "comment_url": "https://github.com/solw29/teamsync-ai/pull/9#issuecomment-6813589805",
+  "comment_updated_at": "2026-11-12T03:34:29Z",
+  "comment_count": 1,
+  "body": "<!-- teamsync-ai -->\n## TeamSync AI\n### 검사 결과\n- ruff: failed\n- pytest: failed\n\nAI 분석: passed\n함수의 동작이 예상과 다르게 결과를 반환하여 AssertionError가 발생했습니다. 또한, 테스트의 import 부분이 정렬되지 않았습니다.\n근거 확인 실패로 0건 제외\n- test_seed_case.py:4 — assert get_page([1],0) is None / get_page([1], 0) 가 1을 반환하기 때문에 조건을 확인하여 None이 반환되는지 검증해야 합니다.\n\n테스트 초안: get_page — 빈 리스트에서 페이지를 요청할 때 None을 반환하는지 확인한다.\n<pre>from seed_case import get_page\n\ndef test_get_page():\n    assert get_page([], 1) is None</pre>\n\n테스트 초안: get_page — 유효한 인덱스에서 요소를 올바르게 반환하는지 확인한다.\n<pre>from seed_case import get_page\n\ndef test_get_page_valid_index():\n    assert get_page([1], 1) == 1</pre>\n\n테스트 초안: get_page — 존재하지 않는 인덱스를 요청할 때 None을 반환하는지 확인한다.\n<pre>from seed_case import get_page\n\ndef test_get_page_out_of_bounds():\n    assert get_page([1], 2) is None</pre>\n\n테스트 초안: get_page — 유효하지 않은 음수 인덱스 요청 시 None을 반환하는지 확인한다.\n<pre>from seed_case import get_page\n\ndef test_get_page_negative_index():\n    assert get_page([1], -1) is None</pre>\n\n테스트 초안: get_page — 빈 리스트와 0 인덱스 요청 시 None을 반환하는지 확인한다.\n<pre>from seed_case import get_page\n\ndef test_get_page_empty_input():\n    assert get_page([], 0) is None</pre>\n\n### 생성 테스트 실행 상태\n[{&#x27;target&#x27;: &#x27;get_page&#x27;, &#x27;status&#x27;: &#x27;failed&#x27;}, {&#x27;target&#x27;: &#x27;get_page&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;get_page&#x27;, &#x27;status&#x27;: &#x27;failed&#x27;}, {&#x27;target&#x27;: &#x27;get_page&#x27;, &#x27;status&#x27;: &#x27;failed&#x27;}, {&#x27;target&#x27;: &#x27;get_page&#x27;, &#x27;status&#x27;: &#x27;failed&#x27;}]\n통과는 실행 가능 여부만 의미하며 품질·버그 검출을 보증하지 않습니다.\ndiff 일부 생략: False; 제외 파일: 0\nDiscord: passed",
+  "run_to_comment_seconds": 133.0
+}

@@ -1,0 +1,14 @@
+{
+  "pr": 4,
+  "run_id": 43148836075,
+  "run_url": "https://github.com/solw29/teamsync-ai/actions/runs/43148836075",
+  "head_sha": "b37ea0417f4c030e280f041ce3d6100d2f477473",
+  "run_created_at": "2026-11-12T03:31:59Z",
+  "conclusion": "success",
+  "comment_id": 6813579623,
+  "comment_url": "https://github.com/solw29/teamsync-ai/pull/4#issuecomment-6813579623",
+  "comment_updated_at": "2026-11-12T03:34:15Z",
+  "comment_count": 1,
+  "body": "<!-- teamsync-ai -->\n## TeamSync AI\n### 검사 결과\n- ruff: failed\n- pytest: passed\n\nAI 분석: passed\n제공된 코드는 입력값이 -1인 경우 parse_age 함수가 None을 반환해야 한다는 계약을 테스트하고 있습니다. ruff 검사에서 import문 정렬 문제가 발견되었습니다.\n근거 확인 실패로 0건 제외\n- seed_case.py:3 — def parse_age(v): return int(v) if str(v).isdigit() else None / 주석에서 -1 입력이 None으로 예상되는 계약을 구현해야 합니다.\n- test_seed_case.py:1 — from seed_case import parse_age / import 문이 정렬되지 않았습니다.\n\n테스트 초안: parse_age — -1 입력이 None으로 올바르게 반환되는지 확인하기 위한 테스트.\n<pre>from seed_case import parse_age\ndef test_parse_age_negative():\n    assert parse_age(-1) is None</pre>\n\n테스트 초안: parse_age — 문자열 &#x27;5&#x27;를 올바르게 정수 5로 변환하는지 확인하기 위한 테스트.\n<pre>from seed_case import parse_age\ndef test_parse_age_string_number():\n    assert parse_age(&#x27;5&#x27;) == 5</pre>\n\n테스트 초안: parse_age — 문자열 &#x27;abc&#x27;가 None으로 반환되는지 확인하기 위한 테스트.\n<pre>from seed_case import parse_age\ndef test_parse_age_non_digit():\n    assert parse_age(&#x27;abc&#x27;) is None</pre>\n\n테스트 초안: parse_age — 입력값 0이 올바르게 반환되는지 확인하기 위한 테스트.\n<pre>from seed_case import parse_age\ndef test_parse_age_zero():\n    assert parse_age(0) == 0</pre>\n\n테스트 초안: parse_age — 양의 정수 10이 올바르게 반환되는지 확인하기 위한 테스트.\n<pre>from seed_case import parse_age\ndef test_parse_age_positive():\n    assert parse_age(10) == 10</pre>\n\n### 생성 테스트 실행 상태\n[{&#x27;target&#x27;: &#x27;parse_age&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;parse_age&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;parse_age&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;parse_age&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}, {&#x27;target&#x27;: &#x27;parse_age&#x27;, &#x27;status&#x27;: &#x27;passed&#x27;}]\n통과는 실행 가능 여부만 의미하며 품질·버그 검출을 보증하지 않습니다.\ndiff 일부 생략: False; 제외 파일: 0\nDiscord: passed",
+  "run_to_comment_seconds": 136.0
+}

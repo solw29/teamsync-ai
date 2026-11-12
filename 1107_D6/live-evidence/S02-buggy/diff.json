@@ -1,0 +1,54 @@
+{
+  "lines": [
+    {
+      "file": "seed_case.py",
+      "line": 1,
+      "code": "\"\"\"S02 contract: assert parse_age(-1) is None.\"\"\""
+    },
+    {
+      "file": "seed_case.py",
+      "line": 2,
+      "code": ""
+    },
+    {
+      "file": "seed_case.py",
+      "line": 3,
+      "code": "def parse_age(v): return int(v)"
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 1,
+      "code": "from seed_case import parse_age"
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 2,
+      "code": ""
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 3,
+      "code": "def test_contract():"
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 4,
+      "code": "    assert parse_age(-1) is None"
+    }
+  ],
+  "positions": {
+    "seed_case.py": [
+      1,
+      2,
+      3
+    ],
+    "test_seed_case.py": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "excluded": [],
+  "truncated": false
+}

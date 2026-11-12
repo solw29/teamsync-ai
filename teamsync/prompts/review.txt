@@ -13,3 +13,8 @@ inside EVERY code string. Derive module_name from the supplied Python file path
 (e.g. demo_s01.py -> from demo_s01 import safe_divide). A function mentioned in
 target is NOT automatically imported. Never assume other drafts share imports.
 If you cannot derive a valid import, return no test drafts.
+When writing assertions, derive expected values from the explicitly stated
+function contract and the intended test expectations, never from the current
+buggy implementation or its observed output. If a log contradicts the stated
+contract, treat it as evidence of a bug, not as a replacement contract. Include
+a regression test for the reported defect before unrelated happy-path tests.

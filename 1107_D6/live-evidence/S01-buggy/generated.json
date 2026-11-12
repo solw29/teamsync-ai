@@ -1,0 +1,22 @@
+[
+  {
+    "target": "safe_divide",
+    "status": "passed"
+  },
+  {
+    "target": "safe_divide",
+    "status": "failed"
+  },
+  {
+    "target": "safe_divide",
+    "status": "passed"
+  },
+  {
+    "target": "safe_divide",
+    "status": "passed"
+  },
+  {
+    "target": "safe_divide",
+    "status": "passed"
+  }
+]

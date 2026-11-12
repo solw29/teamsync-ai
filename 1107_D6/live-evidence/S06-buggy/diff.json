@@ -1,0 +1,54 @@
+{
+  "lines": [
+    {
+      "file": "seed_case.py",
+      "line": 1,
+      "code": "\"\"\"S06 contract: assert parse_score(0) == 0.\"\"\""
+    },
+    {
+      "file": "seed_case.py",
+      "line": 2,
+      "code": ""
+    },
+    {
+      "file": "seed_case.py",
+      "line": 3,
+      "code": "def parse_score(v): return float(v) if v else None"
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 1,
+      "code": "from seed_case import parse_score"
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 2,
+      "code": ""
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 3,
+      "code": "def test_contract():"
+    },
+    {
+      "file": "test_seed_case.py",
+      "line": 4,
+      "code": "    assert parse_score(0) == 0"
+    }
+  ],
+  "positions": {
+    "seed_case.py": [
+      1,
+      2,
+      3
+    ],
+    "test_seed_case.py": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "excluded": [],
+  "truncated": false
+}

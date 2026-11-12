@@ -1,0 +1,47 @@
+{
+  "status": "passed",
+  "review": {
+    "summary": "제공된 코드는 `parse_age` 함수에 대한 테스트 케이스를 포함하고 있지만, 함수 구현과 기대 결과 간에 불일치가 있습니다. `parse_age` 함수는 입력값을 정수로 변환하지만, -1일 경우 `None`을 반환하지 않습니다. 따라서 테스트가 실패했습니다. 또한, 코드에 대한 코드 스타일 경고가 발생했습니다.",
+    "findings": [
+      {
+        "file": "seed_case.py",
+        "line": 3,
+        "evidence": "def parse_age(v): return int(v)",
+        "suggestion": "입력값이 -1일 때 None을 반환하도록 parse_age 함수를 수정하십시오."
+      },
+      {
+        "file": "test_seed_case.py",
+        "line": 4,
+        "evidence": "assert parse_age(-1) is None",
+        "suggestion": "-1을 입력할 때 None을 반환하는 테스트를 수정하십시오."
+      }
+    ],
+    "tests": [
+      {
+        "target": "parse_age",
+        "code": "from seed_case import parse_age\n\ndef test_parse_age_negative():\n    assert parse_age(-1) == -1",
+        "purpose": "-1을 입력했을 때 -1이 반환되는지 확인합니다."
+      },
+      {
+        "target": "parse_age",
+        "code": "from seed_case import parse_age\n\ndef test_parse_age_zero():\n    assert parse_age(0) == 0",
+        "purpose": "0을 입력했을 때 0이 반환되는지 확인합니다."
+      },
+      {
+        "target": "parse_age",
+        "code": "from seed_case import parse_age\n\ndef test_parse_age_positive():\n    assert parse_age(1) == 1",
+        "purpose": "1을 입력했을 때 1이 반환되는지 확인합니다."
+      },
+      {
+        "target": "parse_age",
+        "code": "from seed_case import parse_age\n\ndef test_parse_age_string():\n    assert parse_age('5') == 5",
+        "purpose": "문자열 '5'를 입력했을 때 5가 반환되는지 확인합니다."
+      },
+      {
+        "target": "parse_age",
+        "code": "from seed_case import parse_age\n\ndef test_parse_age_string_negative():\n    assert parse_age('-3') == -3",
+        "purpose": "문자열 '-3'을 입력했을 때 -3이 반환되는지 확인합니다."
+      }
+    ]
+  }
+}

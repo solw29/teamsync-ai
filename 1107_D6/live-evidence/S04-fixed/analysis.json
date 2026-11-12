@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "review": {
+    "summary": "제공된 정보에서 discount 함수의 동작에 대한 테스트 케이스가 올바르게 구현되었습니다. 그러나, 테스트가 요구하는 사항을 충족하는지 여부는 함수 구현에 따라 달라질 수 있습니다.",
+    "findings": [
+      {
+        "file": "seed_case.py",
+        "line": 3,
+        "evidence": "def discount(p,r): return p*(1-r) if p >= 0 and 0 <= r <= 1 else None",
+        "suggestion": "함수의 반환값이 None이 되는 조건을 검토하여, 테스트에서 기대하는 값이 실제로 반환되는지 확인해야 합니다."
+      }
+    ],
+    "tests": [
+      {
+        "target": "discount",
+        "code": "from seed_case import discount\n\ndef test_contract():\n    assert discount(10, 2) is None",
+        "purpose": "discount 함수의 특정 입력에 대해 None을 반환하는지 점검하기 위한 테스트"
+      }
+    ]
+  }
+}

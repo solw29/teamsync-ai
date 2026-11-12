@@ -1,0 +1,14 @@
+[
+  {
+    "name": "ruff",
+    "status": "passed",
+    "exit_code": 0,
+    "summary": "All checks passed!\n"
+  },
+  {
+    "name": "pytest",
+    "status": "failed",
+    "exit_code": 1,
+    "summary": "......F....................                                              [100%]\n=================================== FAILURES ===================================\n_____________________ test_safe_divide_contract[1-0-None] ______________________\n\na = 1, b = 0, expected = None\n\n    @pytest.mark.parametrize(\"a,b,expected\", [(6, 2, 3), (1, 0, None)])\n    def test_safe_divide_contract(a, b, expected):\n>       assert safe_divide(a, b) == expected\n               ^^^^^^^^^^^^^^^^^\n\ntest_demo_s01.py:10: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\na = 1, b = 0\n\n    def safe_divide(a: float, b: float) -> float | None:\n        \"\"\"Return None for b == 0, otherwise return a / b.\"\"\"\n>       return a / b\n               ^^^^^\nE       ZeroDivisionError: division by zero\n\ndemo_s01.py:6: ZeroDivisionError\n=========================== short test summary info ============================\nFAILED test_demo_s01.py::test_safe_divide_contract[1-0-None] - ZeroDivisionError: division by zero\n1 failed, 26 passed in 4.15s\n"
+  }
+]

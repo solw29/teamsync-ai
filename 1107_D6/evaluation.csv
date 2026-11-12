@@ -1,7 +1,7 @@
 case_id,buggy_pr,fixed_pr,expected_bug_found,false_positives,valid_locations,published_locations,buggy_test,fixed_test,classification,latency_seconds,manual_notes
-S01,,,,,,,,,,,미측정
-S02,,,,,,,,,,,미측정
-S03,,,,,,,,,,,미측정
-S04,,,,,,,,,,,미측정
-S05,,,,,,,,,,,미측정
-S06,,,,,,,,,,,미측정
+S01,https://github.com/solw29/teamsync-ai/pull/1,https://github.com/solw29/teamsync-ai/pull/2,yes,0,2,2,"[""passed"", ""failed"", ""passed"", ""passed"", ""passed""]","[""passed"", ""passed"", ""passed"", ""passed"", ""passed""]",1/5 detected,131.0/114.0,고정 버전 lint 지적 1건은 실제 I001과 일치.
+S02,https://github.com/solw29/teamsync-ai/pull/3,https://github.com/solw29/teamsync-ai/pull/4,yes,1,4,4,"[""passed"", ""passed"", ""passed"", ""passed"", ""passed""]","[""failed"", ""passed"", ""passed"", ""passed"", ""failed""]",0/5 detected,132.0/136.0,고정 버전의 음수 처리 재지적 1건은 코드와 불일치(오탐); import 지적 1건은 실제 I001. 초안이 음수 반환을 기대해 계약 위반.
+S03,https://github.com/solw29/teamsync-ai/pull/5,https://github.com/solw29/teamsync-ai/pull/6,yes,0,2,2,"[""passed"", ""failed"", ""passed"", ""passed"", ""passed""]","[""failed"", ""failed"", ""passed"", ""passed"", ""failed""]",0/5 detected,122.0/115.0,고정 버전 import 지적은 실제 I001. 초안의 잘못된 기대값으로 양쪽 실패 및 수정 버전만 실패가 발생.
+S04,https://github.com/solw29/teamsync-ai/pull/7,https://github.com/solw29/teamsync-ai/pull/8,yes,1,2,2,"[""passed"", ""passed"", ""passed"", ""passed"", ""passed""]","[""passed"", ""passed"", ""passed"", ""failed"", ""failed""]",0/5 detected,132.0/124.0,고정 버전 None 처리 재검토 지적 1건은 이미 충족한 계약으로 오탐. 초안이 범위 밖 할인을 허용하는 버그 동작을 기대.
+S05,https://github.com/solw29/teamsync-ai/pull/9,https://github.com/solw29/teamsync-ai/pull/10,yes,0,2,2,"[""failed"", ""passed"", ""failed"", ""failed"", ""failed""]","[""passed"", ""passed"", ""passed"", ""passed"", ""passed""]",4/5 detected,133.0/137.0,고정 버전 import 지적은 실제 I001. 버그 지적은 테스트 줄에 있으나 페이지 범위 위반 내용을 설명함.
+S06,https://github.com/solw29/teamsync-ai/pull/11,https://github.com/solw29/teamsync-ai/pull/12,yes,0,3,3,"[""failed"", ""passed"", ""passed"", ""passed"", ""passed""]","[""passed"", ""failed"", ""passed"", ""passed"", ""passed""]",1/5 detected,133.0/116.0,고정 버전 import 지적은 실제 I001. 0 점수 검출 초안이 있으며 다른 초안에는 계약 밖 기대값이 있음.

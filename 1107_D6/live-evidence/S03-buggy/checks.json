@@ -1,0 +1,14 @@
+[
+  {
+    "name": "ruff",
+    "status": "failed",
+    "exit_code": 1,
+    "summary": "I001 [*] Import block is un-sorted or un-formatted\n --> test_seed_case.py:1:1\n  |\n1 | from seed_case import normalize_name\n  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n2 |\n3 | def test_contract():\n  |\nhelp: Organize imports\n  |\n2 |\n3 +\n4 | def test_contract():\n  |\n\nFound 1 error.\n[*] 1 fixable with `--fix`.\n"
+  },
+  {
+    "name": "pytest",
+    "status": "failed",
+    "exit_code": 1,
+    "summary": ".....F....................                                               [100%]\n=================================== FAILURES ===================================\n________________________________ test_contract _________________________________\n\n    def test_contract():\n>       assert normalize_name(' ') is None\nE       AssertionError: assert '' is None\nE        +  where '' = normalize_name(' ')\n\ntest_seed_case.py:4: AssertionError\n=========================== short test summary info ============================\nFAILED test_seed_case.py::test_contract - AssertionError: assert '' is None\n +  where '' = normalize_name(' ')\n1 failed, 25 passed in 3.24s\n"
+  }
+]

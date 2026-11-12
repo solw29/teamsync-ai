@@ -1,0 +1,14 @@
+[
+  {
+    "name": "ruff",
+    "status": "failed",
+    "exit_code": 1,
+    "summary": "I001 [*] Import block is un-sorted or un-formatted\n --> test_seed_case.py:1:1\n  |\n1 | from seed_case import parse_score\n  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n2 |\n3 | def test_contract():\n  |\nhelp: Organize imports\n  |\n2 |\n3 +\n4 | def test_contract():\n  |\n\nFound 1 error.\n[*] 1 fixable with `--fix`.\n"
+  },
+  {
+    "name": "pytest",
+    "status": "passed",
+    "exit_code": 0,
+    "summary": "..........................                                               [100%]\n26 passed in 3.43s\n"
+  }
+]

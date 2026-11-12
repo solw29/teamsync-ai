@@ -1,0 +1,54 @@
+{
+  "lines": [
+    {
+      "file": "demo_s01.py",
+      "line": 1,
+      "code": "\"\"\"S01 contract: assert safe_divide(1,0) is None.\"\"\""
+    },
+    {
+      "file": "demo_s01.py",
+      "line": 2,
+      "code": ""
+    },
+    {
+      "file": "demo_s01.py",
+      "line": 3,
+      "code": "def safe_divide(a,b): return None if b == 0 else a/b"
+    },
+    {
+      "file": "test_demo_s01.py",
+      "line": 1,
+      "code": "from demo_s01 import safe_divide"
+    },
+    {
+      "file": "test_demo_s01.py",
+      "line": 2,
+      "code": ""
+    },
+    {
+      "file": "test_demo_s01.py",
+      "line": 3,
+      "code": "def test_contract():"
+    },
+    {
+      "file": "test_demo_s01.py",
+      "line": 4,
+      "code": "    assert safe_divide(1,0) is None"
+    }
+  ],
+  "positions": {
+    "demo_s01.py": [
+      1,
+      2,
+      3
+    ],
+    "test_demo_s01.py": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "excluded": [],
+  "truncated": false
+}
