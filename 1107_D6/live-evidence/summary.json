@@ -36,5 +36,12 @@
       116.0
     ]
   },
-  "limitation": "11 fixture test files contain real Ruff I001 formatting issues. Fixed here means seeded functional bug fixed, not lint-clean. Review false positives exclude actual lint warnings. Run-created time approximates event receipt; includes queueing. Code inspection is by assistant, not independent human adjudication."
+  "limitation": "11 fixture test files contain real Ruff I001 formatting issues. Fixed here means seeded functional bug fixed, not lint-clean. Review false positives exclude actual lint warnings. Run-created time approximates event receipt; includes queueing. Code inspection is by assistant, not independent human adjudication.",
+  "discord_channel_receipt_user_confirmed": true,
+  "discord_channel_confirmation": {
+    "date_kst": "2026-11-12",
+    "source": "user reply",
+    "answer": "알림이 보입니다",
+    "scope": "receipt of PR #1–#12 notifications; no agent UI observation or link-click verification"
+  }
 }
