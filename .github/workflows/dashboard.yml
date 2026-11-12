@@ -1,0 +1,38 @@
+name: Dashboard build and report export
+on:
+  push:
+    branches: [main]
+    paths: ['web/**', 'teamsync/export_report.py', '.github/workflows/dashboard.yml']
+  pull_request:
+    paths: ['web/**', 'teamsync/export_report.py']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dashboard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install .
+      - run: python -m teamsync.export_report --evidence 1107_D6/live-evidence --output artifacts/report.json
+      - run: npm ci
+        working-directory: web
+      - run: npm test && npm run build
+        working-directory: web
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dashboard-import-report
+          path: artifacts/report.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dashboard-static-build
+          path: web/dist/

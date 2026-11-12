@@ -1,0 +1,862 @@
+{
+  "schemaVersion": "1.0",
+  "analyses": [
+    {
+      "id": "S01-buggy",
+      "repository": "demo/python-project",
+      "prNumber": 1,
+      "prTitle": "S01-buggy · 시드 계약 평가",
+      "headSha": "",
+      "runId": 43148811960,
+      "analyzedAt": "2026-11-12T03:33:57Z",
+      "githubUrl": null,
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "passed",
+        "pytestStatus": "failed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "익명화한 실제 시드 PR 분석 결과입니다. 원본 코드와 로그는 포함하지 않습니다.",
+        "findings": [
+          {
+            "file": "example.py",
+            "line": 6,
+            "evidence": "원본 근거는 공개 데모에서 제거했습니다.",
+            "suggestion": "실제 결과 파일을 가져오면 원본 제안을 확인할 수 있습니다.",
+            "locationVerified": false,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "failed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 131.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S01-fixed",
+      "repository": "demo/python-project",
+      "prNumber": 2,
+      "prTitle": "S01-fixed · 시드 계약 평가",
+      "headSha": "",
+      "runId": 43148823712,
+      "analyzedAt": "2026-11-12T03:33:46Z",
+      "githubUrl": null,
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "passed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "익명화한 실제 시드 PR 분석 결과입니다. 원본 코드와 로그는 포함하지 않습니다.",
+        "findings": [
+          {
+            "file": "example.py",
+            "line": 1,
+            "evidence": "원본 근거는 공개 데모에서 제거했습니다.",
+            "suggestion": "실제 결과 파일을 가져오면 원본 제안을 확인할 수 있습니다.",
+            "locationVerified": false,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 114.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S02-buggy",
+      "repository": "demo/python-project",
+      "prNumber": 3,
+      "prTitle": "S02-buggy · 시드 계약 평가",
+      "headSha": "",
+      "runId": 43148830181,
+      "analyzedAt": "2026-11-12T03:34:08Z",
+      "githubUrl": null,
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "failed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "익명화한 실제 시드 PR 분석 결과입니다. 원본 코드와 로그는 포함하지 않습니다.",
+        "findings": [
+          {
+            "file": "example.py",
+            "line": 3,
+            "evidence": "원본 근거는 공개 데모에서 제거했습니다.",
+            "suggestion": "실제 결과 파일을 가져오면 원본 제안을 확인할 수 있습니다.",
+            "locationVerified": false,
+            "adjudication": "unreviewed"
+          },
+          {
+            "file": "example.py",
+            "line": 4,
+            "evidence": "원본 근거는 공개 데모에서 제거했습니다.",
+            "suggestion": "실제 결과 파일을 가져오면 원본 제안을 확인할 수 있습니다.",
+            "locationVerified": false,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 132.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S02-fixed",
+      "repository": "demo/python-project",
+      "prNumber": 4,
+      "prTitle": "S02-fixed · 시드 계약 평가",
+      "headSha": "",
+      "runId": 43148836075,
+      "analyzedAt": "2026-11-12T03:34:15Z",
+      "githubUrl": null,
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "passed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "익명화한 실제 시드 PR 분석 결과입니다. 원본 코드와 로그는 포함하지 않습니다.",
+        "findings": [
+          {
+            "file": "example.py",
+            "line": 3,
+            "evidence": "원본 근거는 공개 데모에서 제거했습니다.",
+            "suggestion": "실제 결과 파일을 가져오면 원본 제안을 확인할 수 있습니다.",
+            "locationVerified": false,
+            "adjudication": "unreviewed"
+          },
+          {
+            "file": "example.py",
+            "line": 1,
+            "evidence": "원본 근거는 공개 데모에서 제거했습니다.",
+            "suggestion": "실제 결과 파일을 가져오면 원본 제안을 확인할 수 있습니다.",
+            "locationVerified": false,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 136.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S03-buggy",
+      "repository": "demo/python-project",
+      "prNumber": 5,
+      "prTitle": "S03-buggy · 시드 계약 평가",
+      "headSha": "",
+      "runId": 43148841999,
+      "analyzedAt": "2026-11-12T03:34:04Z",
+      "githubUrl": null,
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "failed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "익명화한 실제 시드 PR 분석 결과입니다. 원본 코드와 로그는 포함하지 않습니다.",
+        "findings": [
+          {
+            "file": "example.py",
+            "line": 3,
+            "evidence": "원본 근거는 공개 데모에서 제거했습니다.",
+            "suggestion": "실제 결과 파일을 가져오면 원본 제안을 확인할 수 있습니다.",
+            "locationVerified": false,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "failed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 122.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S03-fixed",
+      "repository": "demo/python-project",
+      "prNumber": 6,
+      "prTitle": "S03-fixed · 시드 계약 평가",
+      "headSha": "",
+      "runId": 43148848424,
+      "analyzedAt": "2026-11-12T03:34:00Z",
+      "githubUrl": null,
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "passed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "익명화한 실제 시드 PR 분석 결과입니다. 원본 코드와 로그는 포함하지 않습니다.",
+        "findings": [
+          {
+            "file": "example.py",
+            "line": 1,
+            "evidence": "원본 근거는 공개 데모에서 제거했습니다.",
+            "suggestion": "실제 결과 파일을 가져오면 원본 제안을 확인할 수 있습니다.",
+            "locationVerified": false,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 115.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S04-buggy",
+      "repository": "demo/python-project",
+      "prNumber": 7,
+      "prTitle": "S04-buggy · 시드 계약 평가",
+      "headSha": "",
+      "runId": 43148854288,
+      "analyzedAt": "2026-11-12T03:34:21Z",
+      "githubUrl": null,
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "failed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "익명화한 실제 시드 PR 분석 결과입니다. 원본 코드와 로그는 포함하지 않습니다.",
+        "findings": [
+          {
+            "file": "example.py",
+            "line": 3,
+            "evidence": "원본 근거는 공개 데모에서 제거했습니다.",
+            "suggestion": "실제 결과 파일을 가져오면 원본 제안을 확인할 수 있습니다.",
+            "locationVerified": false,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 132.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S04-fixed",
+      "repository": "demo/python-project",
+      "prNumber": 8,
+      "prTitle": "S04-fixed · 시드 계약 평가",
+      "headSha": "",
+      "runId": 43148859966,
+      "analyzedAt": "2026-11-12T03:34:16Z",
+      "githubUrl": null,
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "passed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "익명화한 실제 시드 PR 분석 결과입니다. 원본 코드와 로그는 포함하지 않습니다.",
+        "findings": [
+          {
+            "file": "example.py",
+            "line": 3,
+            "evidence": "원본 근거는 공개 데모에서 제거했습니다.",
+            "suggestion": "실제 결과 파일을 가져오면 원본 제안을 확인할 수 있습니다.",
+            "locationVerified": false,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 124.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S05-buggy",
+      "repository": "demo/python-project",
+      "prNumber": 9,
+      "prTitle": "S05-buggy · 시드 계약 평가",
+      "headSha": "",
+      "runId": 43148867275,
+      "analyzedAt": "2026-11-12T03:34:29Z",
+      "githubUrl": null,
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "failed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "익명화한 실제 시드 PR 분석 결과입니다. 원본 코드와 로그는 포함하지 않습니다.",
+        "findings": [
+          {
+            "file": "example.py",
+            "line": 4,
+            "evidence": "원본 근거는 공개 데모에서 제거했습니다.",
+            "suggestion": "실제 결과 파일을 가져오면 원본 제안을 확인할 수 있습니다.",
+            "locationVerified": false,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "failed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "failed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "failed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "failed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 133.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S05-fixed",
+      "repository": "demo/python-project",
+      "prNumber": 10,
+      "prTitle": "S05-fixed · 시드 계약 평가",
+      "headSha": "",
+      "runId": 43148874052,
+      "analyzedAt": "2026-11-12T03:34:37Z",
+      "githubUrl": null,
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "passed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "익명화한 실제 시드 PR 분석 결과입니다. 원본 코드와 로그는 포함하지 않습니다.",
+        "findings": [
+          {
+            "file": "example.py",
+            "line": 1,
+            "evidence": "원본 근거는 공개 데모에서 제거했습니다.",
+            "suggestion": "실제 결과 파일을 가져오면 원본 제안을 확인할 수 있습니다.",
+            "locationVerified": false,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 137.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S06-buggy",
+      "repository": "demo/python-project",
+      "prNumber": 11,
+      "prTitle": "S06-buggy · 시드 계약 평가",
+      "headSha": "",
+      "runId": 43148877856,
+      "analyzedAt": "2026-11-12T03:34:35Z",
+      "githubUrl": null,
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "failed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "익명화한 실제 시드 PR 분석 결과입니다. 원본 코드와 로그는 포함하지 않습니다.",
+        "findings": [
+          {
+            "file": "example.py",
+            "line": 3,
+            "evidence": "원본 근거는 공개 데모에서 제거했습니다.",
+            "suggestion": "실제 결과 파일을 가져오면 원본 제안을 확인할 수 있습니다.",
+            "locationVerified": false,
+            "adjudication": "unreviewed"
+          },
+          {
+            "file": "example.py",
+            "line": 1,
+            "evidence": "원본 근거는 공개 데모에서 제거했습니다.",
+            "suggestion": "실제 결과 파일을 가져오면 원본 제안을 확인할 수 있습니다.",
+            "locationVerified": false,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "failed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 133.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S06-fixed",
+      "repository": "demo/python-project",
+      "prNumber": 12,
+      "prTitle": "S06-fixed · 시드 계약 평가",
+      "headSha": "",
+      "runId": 43148886174,
+      "analyzedAt": "2026-11-12T03:34:22Z",
+      "githubUrl": null,
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "passed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "익명화한 실제 시드 PR 분석 결과입니다. 원본 코드와 로그는 포함하지 않습니다.",
+        "findings": [
+          {
+            "file": "example.py",
+            "line": 1,
+            "evidence": "원본 근거는 공개 데모에서 제거했습니다.",
+            "suggestion": "실제 결과 파일을 가져오면 원본 제안을 확인할 수 있습니다.",
+            "locationVerified": false,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "sample_function",
+          "code": "# 공개 데모에서 원본 테스트 코드를 제거했습니다.",
+          "purpose": "시드 계약 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 116.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    }
+  ],
+  "evaluation": {
+    "cases": 6,
+    "bug_review_cases": 6,
+    "fixed_false_positives_code_inspected": 2,
+    "valid_locations": 15,
+    "published_locations": 15,
+    "fixed_execution_without_environment_error": 30,
+    "fixed_passed_tests": 22,
+    "total_same_draft_tests": 30,
+    "cases_with_detecting_test": 3,
+    "same_draft_test_outcomes": {
+      "missed": 16,
+      "detected": 6,
+      "unstable_or_environment": 7,
+      "manual_review": 1
+    }
+  }
+}

@@ -44,3 +44,20 @@ PR의 추가 코드와 검사 로그 일부가 외부 LLM API로 전달됩니다
 - [D8 안정화](1109_D8/README.md)
 - [D9 발표·백업](1110_D9/README.md)
 - [D10 리허설](1111_D10/README.md)
+
+## React Review Dashboard (D11~D20 확장)
+
+별도 `web/` React·TypeScript·Vite SPA에서 D10 결과를 탐색합니다. 기존 PR 파이프라인과 별개이며 브라우저에는 시크릿이 없습니다.
+
+```bash
+python -m teamsync.export_report --evidence 1107_D6/live-evidence --output artifacts/report.json
+cd web
+npm ci
+npm run dev
+```
+
+Data import에서 결과 파일을 선택하면 Dashboard·상세·Evaluation 전체에 반영됩니다. 공개 기본 데모는 익명화되어 코드 링크와 원본 테스트를 제공하지 않습니다. 실제 결과를 가져오면 SHA 고정 코드 링크와 테스트 초안을 확인할 수 있습니다.
+
+[설계](docs/react-extension-design.md) · [결과 계약](docs/result-schema.md) · [웹 실행·배포 안내](web/README.md) · [통합 검증 기록](docs/react-test-report.md)
+
+`.github/workflows/dashboard.yml`은 별도 빌드·테스트 후 import JSON과 정적 빌드를 artifact로 저장합니다. 기존 PR workflow를 변경하지 않습니다. 정적 호스팅 설정은 준비했으나 외부 배포는 아직 수행하지 않았습니다.

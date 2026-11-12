@@ -1,0 +1,862 @@
+{
+  "schemaVersion": "1.0",
+  "analyses": [
+    {
+      "id": "S01-buggy",
+      "repository": "solw29/teamsync-ai",
+      "prNumber": 1,
+      "prTitle": "S01-buggy · 시드 계약 평가",
+      "headSha": "ddbc56416803ee5d9bf820eee7ff24f0854b97aa",
+      "runId": 43148811960,
+      "analyzedAt": "2026-11-12T03:33:57Z",
+      "githubUrl": "https://github.com/solw29/teamsync-ai/pull/1",
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "passed",
+        "pytestStatus": "failed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "제공된 코드에서 분모가 0일 경우 None을 반환해야 하는 `safe_divide` 함수가 ZeroDivisionError를 발생시키는 문제가 있습니다. 이로 인해 테스트가 실패합니다. 올바른 구현이 필요합니다.",
+        "findings": [
+          {
+            "file": "demo_s01.py",
+            "line": 6,
+            "evidence": "return a / b",
+            "suggestion": "분모가 0인 경우 None을 반환하도록 구현을 수정해야 합니다.",
+            "locationVerified": true,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "safe_divide",
+          "code": "from demo_s01 import safe_divide\n\ndef test_safe_divide_non_zero_divisor():\n    assert safe_divide(6, 2) == 3\n",
+          "purpose": "2로 나눌 때의 결과 확인.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "safe_divide",
+          "code": "from demo_s01 import safe_divide\n\ndef test_safe_divide_zero_divisor():\n    assert safe_divide(1, 0) is None\n",
+          "purpose": "0으로 나눌 때 None을 반환해야 하는지 확인.",
+          "executionStatus": "failed",
+          "failureReason": null
+        },
+        {
+          "target": "safe_divide",
+          "code": "from demo_s01 import safe_divide\n\ndef test_safe_divide_negative_divisor():\n    assert safe_divide(6, -3) == -2\n",
+          "purpose": "음수로 나눌 때의 결과 확인.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "safe_divide",
+          "code": "from demo_s01 import safe_divide\n\ndef test_safe_divide_floating_point():\n    assert safe_divide(5.0, 2.0) == 2.5\n",
+          "purpose": "소수점 숫자로 나눌 때의 결과 확인.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "safe_divide",
+          "code": "from demo_s01 import safe_divide\n\ndef test_safe_divide_positive_and_negative():\n    assert safe_divide(-4, 2) == -2\n",
+          "purpose": "양수와 음수를 나눌 때의 결과 확인.",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 131.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S01-fixed",
+      "repository": "solw29/teamsync-ai",
+      "prNumber": 2,
+      "prTitle": "S01-fixed · 시드 계약 평가",
+      "headSha": "fcb573d63fec1edccb892251ca7165797345f87e",
+      "runId": 43148823712,
+      "analyzedAt": "2026-11-12T03:33:46Z",
+      "githubUrl": "https://github.com/solw29/teamsync-ai/pull/2",
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "passed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "제공된 코드의 리뷰 결과, `safe_divide` 함수는 제로로 나누기를 처리하고 None을 반환합니다. 추가된 테스트 케이스는 올바르게 `safe_divide` 함수의 동작을 검증합니다. 그러나 `test_demo_s01.py`에서 import 문에 대한 정렬 오류가 발생하였습니다.",
+        "findings": [
+          {
+            "file": "test_demo_s01.py",
+            "line": 1,
+            "evidence": "from demo_s01 import safe_divide",
+            "suggestion": "Import 문을 정렬하세요.",
+            "locationVerified": true,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "safe_divide",
+          "code": "from demo_s01 import safe_divide\n\ndef test_zero_division():\n    assert safe_divide(1, 0) is None",
+          "purpose": "제로로 나누기를 처리하는지 검증",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 114.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S02-buggy",
+      "repository": "solw29/teamsync-ai",
+      "prNumber": 3,
+      "prTitle": "S02-buggy · 시드 계약 평가",
+      "headSha": "da7dea7d55d667bcd4b06c013a14bcb477d676f5",
+      "runId": 43148830181,
+      "analyzedAt": "2026-11-12T03:34:08Z",
+      "githubUrl": "https://github.com/solw29/teamsync-ai/pull/3",
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "failed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "제공된 코드는 `parse_age` 함수에 대한 테스트 케이스를 포함하고 있지만, 함수 구현과 기대 결과 간에 불일치가 있습니다. `parse_age` 함수는 입력값을 정수로 변환하지만, -1일 경우 `None`을 반환하지 않습니다. 따라서 테스트가 실패했습니다. 또한, 코드에 대한 코드 스타일 경고가 발생했습니다.",
+        "findings": [
+          {
+            "file": "seed_case.py",
+            "line": 3,
+            "evidence": "def parse_age(v): return int(v)",
+            "suggestion": "입력값이 -1일 때 None을 반환하도록 parse_age 함수를 수정하십시오.",
+            "locationVerified": true,
+            "adjudication": "unreviewed"
+          },
+          {
+            "file": "test_seed_case.py",
+            "line": 4,
+            "evidence": "assert parse_age(-1) is None",
+            "suggestion": "-1을 입력할 때 None을 반환하는 테스트를 수정하십시오.",
+            "locationVerified": true,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "parse_age",
+          "code": "from seed_case import parse_age\n\ndef test_parse_age_negative():\n    assert parse_age(-1) == -1",
+          "purpose": "-1을 입력했을 때 -1이 반환되는지 확인합니다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "parse_age",
+          "code": "from seed_case import parse_age\n\ndef test_parse_age_zero():\n    assert parse_age(0) == 0",
+          "purpose": "0을 입력했을 때 0이 반환되는지 확인합니다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "parse_age",
+          "code": "from seed_case import parse_age\n\ndef test_parse_age_positive():\n    assert parse_age(1) == 1",
+          "purpose": "1을 입력했을 때 1이 반환되는지 확인합니다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "parse_age",
+          "code": "from seed_case import parse_age\n\ndef test_parse_age_string():\n    assert parse_age('5') == 5",
+          "purpose": "문자열 '5'를 입력했을 때 5가 반환되는지 확인합니다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "parse_age",
+          "code": "from seed_case import parse_age\n\ndef test_parse_age_string_negative():\n    assert parse_age('-3') == -3",
+          "purpose": "문자열 '-3'을 입력했을 때 -3이 반환되는지 확인합니다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 132.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S02-fixed",
+      "repository": "solw29/teamsync-ai",
+      "prNumber": 4,
+      "prTitle": "S02-fixed · 시드 계약 평가",
+      "headSha": "b37ea0417f4c030e280f041ce3d6100d2f477473",
+      "runId": 43148836075,
+      "analyzedAt": "2026-11-12T03:34:15Z",
+      "githubUrl": "https://github.com/solw29/teamsync-ai/pull/4",
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "passed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "제공된 코드는 입력값이 -1인 경우 parse_age 함수가 None을 반환해야 한다는 계약을 테스트하고 있습니다. ruff 검사에서 import문 정렬 문제가 발견되었습니다.",
+        "findings": [
+          {
+            "file": "seed_case.py",
+            "line": 3,
+            "evidence": "def parse_age(v): return int(v) if str(v).isdigit() else None",
+            "suggestion": "주석에서 -1 입력이 None으로 예상되는 계약을 구현해야 합니다.",
+            "locationVerified": true,
+            "adjudication": "unreviewed"
+          },
+          {
+            "file": "test_seed_case.py",
+            "line": 1,
+            "evidence": "from seed_case import parse_age",
+            "suggestion": "import 문이 정렬되지 않았습니다.",
+            "locationVerified": true,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "parse_age",
+          "code": "from seed_case import parse_age\ndef test_parse_age_negative():\n    assert parse_age(-1) is None",
+          "purpose": "-1 입력이 None으로 올바르게 반환되는지 확인하기 위한 테스트.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "parse_age",
+          "code": "from seed_case import parse_age\ndef test_parse_age_string_number():\n    assert parse_age('5') == 5",
+          "purpose": "문자열 '5'를 올바르게 정수 5로 변환하는지 확인하기 위한 테스트.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "parse_age",
+          "code": "from seed_case import parse_age\ndef test_parse_age_non_digit():\n    assert parse_age('abc') is None",
+          "purpose": "문자열 'abc'가 None으로 반환되는지 확인하기 위한 테스트.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "parse_age",
+          "code": "from seed_case import parse_age\ndef test_parse_age_zero():\n    assert parse_age(0) == 0",
+          "purpose": "입력값 0이 올바르게 반환되는지 확인하기 위한 테스트.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "parse_age",
+          "code": "from seed_case import parse_age\ndef test_parse_age_positive():\n    assert parse_age(10) == 10",
+          "purpose": "양의 정수 10이 올바르게 반환되는지 확인하기 위한 테스트.",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 136.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S03-buggy",
+      "repository": "solw29/teamsync-ai",
+      "prNumber": 5,
+      "prTitle": "S03-buggy · 시드 계약 평가",
+      "headSha": "b060ef9b94a22e81d591522f931ef67204e04a1d",
+      "runId": 43148841999,
+      "analyzedAt": "2026-11-12T03:34:04Z",
+      "githubUrl": "https://github.com/solw29/teamsync-ai/pull/5",
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "failed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "제공된 코드에서 `normalize_name` 함수는 입력 값이 공백인 경우 `None`이 아닌 빈 문자열을 반환합니다. 이로 인해 테스트가 실패합니다. 또한, 테스트 파일의 임포트 부분에서 형식 문제가 발생했습니다.",
+        "findings": [
+          {
+            "file": "seed_case.py",
+            "line": 3,
+            "evidence": "def normalize_name(v): return v.strip()",
+            "suggestion": "normalize_name 함수가 공백 입력에 대해 None을 반환하도록 수정해야 합니다.",
+            "locationVerified": true,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "normalize_name",
+          "code": "from seed_case import normalize_name\n\ndef test_normalize_name_with_space():\n    assert normalize_name(' ') == ''",
+          "purpose": "공백 문자열에 대한 normalize_name 함수의 동작을 확인합니다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "normalize_name",
+          "code": "from seed_case import normalize_name\n\ndef test_normalize_name_with_none():\n    assert normalize_name(None) is None",
+          "purpose": "None 입력에 대한 normalize_name 함수의 동작을 확인합니다.",
+          "executionStatus": "failed",
+          "failureReason": null
+        },
+        {
+          "target": "normalize_name",
+          "code": "from seed_case import normalize_name\n\ndef test_normalize_name_with_normal_string():\n    assert normalize_name('John') == 'John'",
+          "purpose": "일반 문자열에 대한 normalize_name 함수의 동작을 확인합니다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "normalize_name",
+          "code": "from seed_case import normalize_name\n\ndef test_normalize_name_with_leading_trailing_spaces():\n    assert normalize_name('  John  ') == 'John'",
+          "purpose": "전후에 공백이 있는 문자열에 대한 normalize_name 함수의 동작을 확인합니다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "normalize_name",
+          "code": "from seed_case import normalize_name\n\ndef test_normalize_name_with_multiple_spaces():\n    assert normalize_name('   ') == ''",
+          "purpose": "여러 공백 문자열에 대한 normalize_name 함수의 동작을 확인합니다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 122.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S03-fixed",
+      "repository": "solw29/teamsync-ai",
+      "prNumber": 6,
+      "prTitle": "S03-fixed · 시드 계약 평가",
+      "headSha": "65695f5a36a1d77e77bcb837fe56f2d647aab027",
+      "runId": 43148848424,
+      "analyzedAt": "2026-11-12T03:34:00Z",
+      "githubUrl": "https://github.com/solw29/teamsync-ai/pull/6",
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "passed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "제공된 코드에는 `normalize_name` 함수가 정의되어 있으며, 해당 함수는 입력 문자열에서 공백을 제거한 결과가 없으면 `None`을 반환합니다. 테스트 파일 또한 이 기능을 테스트하고 있으며, `pytest`를 통해 모든 테스트가 통과했습니다. 그러나 `ruff` 검사에서 임포트 형식이 문제로 지적되었습니다.",
+        "findings": [
+          {
+            "file": "test_seed_case.py",
+            "line": 1,
+            "evidence": "from seed_case import normalize_name",
+            "suggestion": "임포트를 정렬하여 형식에 맞게 조정하세요.",
+            "locationVerified": true,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "normalize_name",
+          "code": "from seed_case import normalize_name\ndef test_contract():\n    assert normalize_name(' ') is None",
+          "purpose": "normalize_name 함수가 공백 문자열을 처리하는지를 검증하기 위함이다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 115.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S04-buggy",
+      "repository": "solw29/teamsync-ai",
+      "prNumber": 7,
+      "prTitle": "S04-buggy · 시드 계약 평가",
+      "headSha": "99093bdbb96caf9bc48565ba3bfd6dfc96d84a0e",
+      "runId": 43148854288,
+      "analyzedAt": "2026-11-12T03:34:21Z",
+      "githubUrl": "https://github.com/solw29/teamsync-ai/pull/7",
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "failed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "주어진 코드에서 `discount` 함수는 기본적으로 할인 가격을 계산하는 함수입니다. 이 함수는 두 개의 인자(가격과 비율)를 받아야 하며, 비율이 1보다 크거나 같은 경우 잘못된 계산을 제공합니다. 이로 인해 테스트 `test_contract`가 실패합니다. 예상 결과는 None이어야 하지만 -10이 반환됩니다.",
+        "findings": [
+          {
+            "file": "seed_case.py",
+            "line": 3,
+            "evidence": "def discount(p,r): return p*(1-r)",
+            "suggestion": "비율 입력값의 유효성을 확인하여 0에서 1 사이의 값으로 제한해야 합니다.",
+            "locationVerified": true,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "discount",
+          "code": "from seed_case import discount\n\ndef test_discount_valid():\n    assert discount(10, 0.2) == 8.0",
+          "purpose": "할인 비율이 0.2일 때 결과가 정확한지 확인하기 위함.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "discount",
+          "code": "from seed_case import discount\n\ndef test_discount_zero_rate():\n    assert discount(10, 0.0) == 10.0",
+          "purpose": "비율이 0일 때 결과가 가격과 같은지 확인.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "discount",
+          "code": "from seed_case import discount\n\ndef test_discount_full_rate():\n    assert discount(10, 1.0) == 0.0",
+          "purpose": "비율이 1일 때 결과가 0이 되는지 확인.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "discount",
+          "code": "from seed_case import discount\n\ndef test_discount_negative_price():\n    assert discount(-10, 0.2) == -8.0",
+          "purpose": "가격이 음수일 때 계산 결과가 올바른지 확인.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "discount",
+          "code": "from seed_case import discount\n\ndef test_discount_rate_greater_than_one():\n    assert discount(10, 1.5) == -5.0",
+          "purpose": "비율이 1보다 클 때 결과가 예상대로 되는지 확인.",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 132.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S04-fixed",
+      "repository": "solw29/teamsync-ai",
+      "prNumber": 8,
+      "prTitle": "S04-fixed · 시드 계약 평가",
+      "headSha": "dd2a2a51905e050e7d7054374ba73904489df617",
+      "runId": 43148859966,
+      "analyzedAt": "2026-11-12T03:34:16Z",
+      "githubUrl": "https://github.com/solw29/teamsync-ai/pull/8",
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "passed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "제공된 정보에서 discount 함수의 동작에 대한 테스트 케이스가 올바르게 구현되었습니다. 그러나, 테스트가 요구하는 사항을 충족하는지 여부는 함수 구현에 따라 달라질 수 있습니다.",
+        "findings": [
+          {
+            "file": "seed_case.py",
+            "line": 3,
+            "evidence": "def discount(p,r): return p*(1-r) if p >= 0 and 0 <= r <= 1 else None",
+            "suggestion": "함수의 반환값이 None이 되는 조건을 검토하여, 테스트에서 기대하는 값이 실제로 반환되는지 확인해야 합니다.",
+            "locationVerified": true,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "discount",
+          "code": "from seed_case import discount\n\ndef test_contract():\n    assert discount(10, 2) is None",
+          "purpose": "discount 함수의 특정 입력에 대해 None을 반환하는지 점검하기 위한 테스트",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 124.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S05-buggy",
+      "repository": "solw29/teamsync-ai",
+      "prNumber": 9,
+      "prTitle": "S05-buggy · 시드 계약 평가",
+      "headSha": "52d890b4818b028cec2f50f9aace4044a35f3b03",
+      "runId": 43148867275,
+      "analyzedAt": "2026-11-12T03:34:29Z",
+      "githubUrl": "https://github.com/solw29/teamsync-ai/pull/9",
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "failed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "함수의 동작이 예상과 다르게 결과를 반환하여 AssertionError가 발생했습니다. 또한, 테스트의 import 부분이 정렬되지 않았습니다.",
+        "findings": [
+          {
+            "file": "test_seed_case.py",
+            "line": 4,
+            "evidence": "assert get_page([1],0) is None",
+            "suggestion": "get_page([1], 0) 가 1을 반환하기 때문에 조건을 확인하여 None이 반환되는지 검증해야 합니다.",
+            "locationVerified": true,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "get_page",
+          "code": "from seed_case import get_page\n\ndef test_get_page():\n    assert get_page([], 1) is None",
+          "purpose": "빈 리스트에서 페이지를 요청할 때 None을 반환하는지 확인한다.",
+          "executionStatus": "failed",
+          "failureReason": null
+        },
+        {
+          "target": "get_page",
+          "code": "from seed_case import get_page\n\ndef test_get_page_valid_index():\n    assert get_page([1], 1) == 1",
+          "purpose": "유효한 인덱스에서 요소를 올바르게 반환하는지 확인한다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "get_page",
+          "code": "from seed_case import get_page\n\ndef test_get_page_out_of_bounds():\n    assert get_page([1], 2) is None",
+          "purpose": "존재하지 않는 인덱스를 요청할 때 None을 반환하는지 확인한다.",
+          "executionStatus": "failed",
+          "failureReason": null
+        },
+        {
+          "target": "get_page",
+          "code": "from seed_case import get_page\n\ndef test_get_page_negative_index():\n    assert get_page([1], -1) is None",
+          "purpose": "유효하지 않은 음수 인덱스 요청 시 None을 반환하는지 확인한다.",
+          "executionStatus": "failed",
+          "failureReason": null
+        },
+        {
+          "target": "get_page",
+          "code": "from seed_case import get_page\n\ndef test_get_page_empty_input():\n    assert get_page([], 0) is None",
+          "purpose": "빈 리스트와 0 인덱스 요청 시 None을 반환하는지 확인한다.",
+          "executionStatus": "failed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 133.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S05-fixed",
+      "repository": "solw29/teamsync-ai",
+      "prNumber": 10,
+      "prTitle": "S05-fixed · 시드 계약 평가",
+      "headSha": "8a32007c46f4cc2b5caa99394310d2970f1d5507",
+      "runId": 43148874052,
+      "analyzedAt": "2026-11-12T03:34:37Z",
+      "githubUrl": "https://github.com/solw29/teamsync-ai/pull/10",
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "passed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "제공된 코드에서 함수 get_page는 주어진 리스트와 인덱스를 기반으로 특정 페이지를 가져오는 역할을 하고 있습니다. 테스트 코드가 잘 작성되어 있지만, 임포트 부분에서 오류가 발생했습니다. 이로 인해 테스트 소비가 완벽하게 이행되지는 않았습니다.",
+        "findings": [
+          {
+            "file": "test_seed_case.py",
+            "line": 1,
+            "evidence": "from seed_case import get_page",
+            "suggestion": "임포트 구문을 정렬하고 형식을 맞추십시오.",
+            "locationVerified": true,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "get_page",
+          "code": "from seed_case import get_page\n\ndef test_get_page_valid_index():\n    assert get_page([1, 2, 3], 2) == 2\n",
+          "purpose": "유효한 인덱스에 대해 올바른 페이지를 반환하는지 확인하기 위함이다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "get_page",
+          "code": "from seed_case import get_page\n\ndef test_get_page_index_out_of_bounds():\n    assert get_page([1, 2, 3], 5) is None\n",
+          "purpose": "인덱스가 범위를 초과할 때 None을 반환하는지 테스트하기 위함이다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "get_page",
+          "code": "from seed_case import get_page\n\ndef test_get_page_negative_index():\n    assert get_page([1, 2, 3], -1) is None\n",
+          "purpose": "음수 인덱스에 대해 None을 반환하는지 테스트하기 위함이다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "get_page",
+          "code": "from seed_case import get_page\n\ndef test_get_page_empty_list():\n    assert get_page([], 1) is None\n",
+          "purpose": "빈 리스트에 대해 None을 반환하는지 테스트하기 위함이다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "get_page",
+          "code": "from seed_case import get_page\n\ndef test_get_page_first_element():\n    assert get_page([5, 10, 15], 1) == 5\n",
+          "purpose": "첫 번째 요소에 대해 적절한 페이지를 반환하는지 확인하기 위함이다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 137.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S06-buggy",
+      "repository": "solw29/teamsync-ai",
+      "prNumber": 11,
+      "prTitle": "S06-buggy · 시드 계약 평가",
+      "headSha": "cf1eb190e11f79fe48dfafa9af789c44a1896d0c",
+      "runId": 43148877856,
+      "analyzedAt": "2026-11-12T03:34:35Z",
+      "githubUrl": "https://github.com/solw29/teamsync-ai/pull/11",
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "failed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "제공된 코드에서 `parse_score` 함수가 0을 입력으로 받을 때 None을 반환하여 테스트가 실패했습니다. 이로 인해 `test_contract`의 테스트가 실패하였습니다. 또한, `ruff` 검사에서 임포트 정렬 관련 경고가 발생했습니다.",
+        "findings": [
+          {
+            "file": "seed_case.py",
+            "line": 3,
+            "evidence": "def parse_score(v): return float(v) if v else None",
+            "suggestion": "함수에서 0 값을 따로 처리하는 로직을 추가해야 합니다.",
+            "locationVerified": true,
+            "adjudication": "unreviewed"
+          },
+          {
+            "file": "test_seed_case.py",
+            "line": 1,
+            "evidence": "from seed_case import parse_score",
+            "suggestion": "임포트를 정렬하세요.",
+            "locationVerified": true,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "parse_score",
+          "code": "from seed_case import parse_score\n\ndef test_parse_score_zero():\n    assert parse_score(0) == 0.0",
+          "purpose": "parse_score 함수가 0을 인자로 받을 때 0.0을 반환하는지 테스트합니다.",
+          "executionStatus": "failed",
+          "failureReason": null
+        },
+        {
+          "target": "parse_score",
+          "code": "from seed_case import parse_score\n\ndef test_parse_score_none():\n    assert parse_score('') is None",
+          "purpose": "parse_score 함수가 빈 문자열 인자로 None을 반환하는지 테스트합니다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "parse_score",
+          "code": "from seed_case import parse_score\n\ndef test_parse_score_float():\n    assert parse_score(3.14) == 3.14",
+          "purpose": "parse_score 함수가 3.14를 인자로 받을 때 3.14를 반환하는지 테스트합니다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "parse_score",
+          "code": "from seed_case import parse_score\n\ndef test_parse_score_string():\n    assert parse_score('0') == 0.0",
+          "purpose": "parse_score 함수가 문자열 '0'을 인자로 받을 때 0.0을 반환하는지 테스트합니다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "parse_score",
+          "code": "from seed_case import parse_score\n\ndef test_parse_score_negative():\n    assert parse_score(-1) == -1.0",
+          "purpose": "parse_score 함수가 -1을 인자로 받을 때 -1.0을 반환하는지 테스트합니다.",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 133.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "S06-fixed",
+      "repository": "solw29/teamsync-ai",
+      "prNumber": 12,
+      "prTitle": "S06-fixed · 시드 계약 평가",
+      "headSha": "4c2debe66616896489db93af01f4fb09e84a2700",
+      "runId": 43148886174,
+      "analyzedAt": "2026-11-12T03:34:22Z",
+      "githubUrl": "https://github.com/solw29/teamsync-ai/pull/12",
+      "status": "failed",
+      "checks": {
+        "ruffStatus": "failed",
+        "pytestStatus": "passed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "passed",
+        "summary": "제공된 코드에서 함수 `parse_score`와 관련된 테스트가 적절히 작성되어 있으며, 해당 함수에 대한 간단한 검증이 이루어지고 있습니다. 그러나 불필요한 코드 스타일 오류가 발견되었습니다.",
+        "findings": [
+          {
+            "file": "test_seed_case.py",
+            "line": 1,
+            "evidence": "from seed_case import parse_score",
+            "suggestion": "Import block을 정리하여 코드 스타일을 개선하십시오.",
+            "locationVerified": true,
+            "adjudication": "unreviewed"
+          }
+        ]
+      },
+      "tests": [
+        {
+          "target": "parse_score",
+          "code": "from seed_case import parse_score\n\ndef test_parse_score_zero():\n    assert parse_score(0) == 0",
+          "purpose": "Test parse_score function with input 0.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "parse_score",
+          "code": "from seed_case import parse_score\n\ndef test_parse_score_none():\n    assert parse_score(None) is None",
+          "purpose": "Test parse_score function with input None.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "parse_score",
+          "code": "from seed_case import parse_score\n\ndef test_parse_score_positive():\n    assert parse_score(10) == 10.0",
+          "purpose": "Test parse_score function with positive input.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "parse_score",
+          "code": "from seed_case import parse_score\n\ndef test_parse_score_negative():\n    assert parse_score(-10) == -10.0",
+          "purpose": "Test parse_score function with negative input.",
+          "executionStatus": "passed",
+          "failureReason": null
+        },
+        {
+          "target": "parse_score",
+          "code": "from seed_case import parse_score\n\ndef test_parse_score_float():\n    assert parse_score(5.5) == 5.5",
+          "purpose": "Test parse_score function with float input.",
+          "executionStatus": "passed",
+          "failureReason": null
+        }
+      ],
+      "discordRequestStatus": "passed",
+      "duration": 116.0,
+      "execution": [
+        {
+          "name": "Pipeline",
+          "status": "success"
+        }
+      ]
+    }
+  ],
+  "evaluation": {
+    "cases": 6,
+    "bug_review_cases": 6,
+    "fixed_false_positives_code_inspected": 2,
+    "valid_locations": 15,
+    "published_locations": 15,
+    "fixed_execution_without_environment_error": 30,
+    "fixed_passed_tests": 22,
+    "total_same_draft_tests": 30,
+    "cases_with_detecting_test": 3,
+    "same_draft_test_outcomes": {
+      "missed": 16,
+      "detected": 6,
+      "unstable_or_environment": 7,
+      "manual_review": 1
+    }
+  }
+}
