@@ -1,23 +1,5 @@
-"""Shared result types for local and GitHub Actions checks."""
+"""Compatibility imports for the original D2 result model."""
 
-from enum import Enum
+from teamsync.checks import CheckResult, CheckStatus
 
-from pydantic import BaseModel, Field
-
-
-class CheckStatus(str, Enum):
-    """Outcome of a single automated check."""
-
-    PASSED = "passed"
-    FAILED = "failed"
-    ERROR = "error"
-    SKIPPED = "skipped"
-
-
-class CheckResult(BaseModel):
-    """Structured check outcome that can later be included in PR reports."""
-
-    name: str = Field(min_length=1)
-    status: CheckStatus
-    summary: str = ""
-    exit_code: int | None = None
+__all__ = ["CheckResult", "CheckStatus"]

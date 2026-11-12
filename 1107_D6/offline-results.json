@@ -1,0 +1,44 @@
+[
+  {
+    "case_id": "S01",
+    "buggy": "failed",
+    "fixed": "passed",
+    "classification": "detected",
+    "source": "handwritten_contract_not_llm"
+  },
+  {
+    "case_id": "S02",
+    "buggy": "failed",
+    "fixed": "passed",
+    "classification": "detected",
+    "source": "handwritten_contract_not_llm"
+  },
+  {
+    "case_id": "S03",
+    "buggy": "failed",
+    "fixed": "passed",
+    "classification": "detected",
+    "source": "handwritten_contract_not_llm"
+  },
+  {
+    "case_id": "S04",
+    "buggy": "failed",
+    "fixed": "passed",
+    "classification": "detected",
+    "source": "handwritten_contract_not_llm"
+  },
+  {
+    "case_id": "S05",
+    "buggy": "failed",
+    "fixed": "passed",
+    "classification": "detected",
+    "source": "handwritten_contract_not_llm"
+  },
+  {
+    "case_id": "S06",
+    "buggy": "failed",
+    "fixed": "passed",
+    "classification": "detected",
+    "source": "handwritten_contract_not_llm"
+  }
+]

@@ -1,0 +1,7 @@
+case_id,buggy_pr,fixed_pr,expected_bug_found,false_positives,valid_locations,published_locations,buggy_test,fixed_test,classification,latency_seconds,manual_notes
+S01,,,,,,,,,,,미측정
+S02,,,,,,,,,,,미측정
+S03,,,,,,,,,,,미측정
+S04,,,,,,,,,,,미측정
+S05,,,,,,,,,,,미측정
+S06,,,,,,,,,,,미측정
