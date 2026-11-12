@@ -1,0 +1,57 @@
+name: Evaluate same LLM drafts on seed pair
+on:
+  workflow_dispatch:
+    inputs:
+      case_id:
+        required: true
+        type: string
+      buggy_sha:
+        required: true
+        type: string
+      fixed_sha:
+        required: true
+        type: string
+      analysis_run:
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install '.[dev]'
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.buggy_sha }}
+          path: buggy
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.fixed_sha }}
+          path: fixed
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: analysis
+          run-id: ${{ inputs.analysis_run }}
+          github-token: ${{ github.token }}
+          path: artifacts
+      - run: python -m teamsync.pair_evaluate
+        env:
+          CASE_ID: ${{ inputs.case_id }}
+          BUGGY_SHA: ${{ inputs.buggy_sha }}
+          FIXED_SHA: ${{ inputs.fixed_sha }}
+          TEAMSYNC_DISPOSABLE_RUNNER: '1'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pair-result
+          path: artifacts/pair-result.json
