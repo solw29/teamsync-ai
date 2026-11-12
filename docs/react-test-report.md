@@ -35,3 +35,7 @@ D11~D19의 읽기 전용 로컬 구현·검증과 D20의 빌드·문서·녹화�
 원래 파이프라인의 분석/생성 테스트/댓글/Discord 실행 동작은 바꾸지 않았습니다. 별도 dashboard workflow가 보존된 D10 evidence를 변환해 import JSON과 빌드를 artifact로 남깁니다. 실시간 PR의 원시 잡 artifact를 자동 수집하는 서버/API 연동은 이번 버전에 없습니다.
 
 D10에 없는 원래 PR 제목·세부 단계 시간·실패 이유는 만들지 않습니다. UI의 제목은 사례 ID이고 duration은 실행 생성~댓글 시간입니다. 6쌍의 집계와 PR별 상세를 표시하지만 개별 초안의 버그/수정 쌍 판정 상세는 원본 D6 evidence 보고서를 함께 확인해야 합니다. 사용자가 지적 내용을 판정·편집해 저장하는 기능은 추가하지 않았습니다.
+
+## GitHub Actions 검증
+
+소스 커밋 `c0a49e9`에서 [Dashboard build and report export #43151017817](https://github.com/solw29/teamsync-ai/actions/runs/43151017817)와 [기존 TeamSync CI #43151017757](https://github.com/solw29/teamsync-ai/actions/runs/43151017757)가 성공했습니다. `npm ci`부터 테스트·타입 검사·빌드·Exporter·두 artifact 업로드까지 실제 runner에서 실행됐습니다. 생성된 `dashboard-import-report` artifact를 내려받아 Chromium에서 가져오고 12개 PR 표시를 확인했습니다. 정적 빌드 artifact 생성은 웹 호스팅 배포를 의미하지 않습니다.
