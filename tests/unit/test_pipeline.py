@@ -143,3 +143,11 @@ def test_discord_payload_mentions_disabled(monkeypatch):
     monkeypatch.setattr(httpx, "post", post)
     assert notify("https://discord.com/api/webhooks/test/test", "https://github.com/o/r/pull/1", "passed") == "passed"
     assert notify("https://evil.example/api/webhooks/test/test", "", "passed") == "error"
+
+
+def test_missing_import_is_environment_error(monkeypatch, tmp_path):
+    monkeypatch.setenv("TEAMSYNC_DISPOSABLE_RUNNER", "1")
+    draft = Review(summary="fixture", findings=[], tests=[{
+        "target": "missing", "code": "def test_missing(): assert missing_function(0) is None",
+        "purpose": "missing import classification"}])
+    assert execute(draft, str(tmp_path))[0]["status"] == "environment_error"

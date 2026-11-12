@@ -7,3 +7,9 @@ network, credential, filesystem cleanup or installation commands. Passing tests
 only demonstrate execution; do not claim general correctness. Summary and review
 text should be Korean. No automatic commits. If context is insufficient return
 empty findings/tests and explain that limitation in summary.
+Every tests[].code is an independent file executed in an empty module namespace.
+You MUST include its own explicit `from module_name import function_name` import
+inside EVERY code string. Derive module_name from the supplied Python file path
+(e.g. demo_s01.py -> from demo_s01 import safe_divide). A function mentioned in
+target is NOT automatically imported. Never assume other drafts share imports.
+If you cannot derive a valid import, return no test drafts.

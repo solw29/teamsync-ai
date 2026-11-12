@@ -8,6 +8,7 @@ import signal
 import subprocess
 import sys
 import tempfile
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from .schema import Review
@@ -25,8 +26,9 @@ def execute(review: Review, cwd: str) -> list[dict]:
                            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1", "HOME": directory}
             try:
                 with tempfile.TemporaryFile(mode="w+") as output:
+                    report = Path(directory) / f"report_{index}.xml"
                     process = subprocess.Popen(
-                        [sys.executable, "-m", "pytest", "-q", "-c", "/dev/null", str(path)],
+                        [sys.executable, "-m", "pytest", "-q", "-c", "/dev/null", f"--junitxml={report}", str(path)],
                         cwd=cwd, env=environment, stdout=output, stderr=output,
                         start_new_session=True,
                     )
@@ -40,6 +42,13 @@ def execute(review: Review, cwd: str) -> list[dict]:
                         except ProcessLookupError:
                             pass
                         process.wait()
+                if report.exists() and status == "failed":
+                    try:
+                        failures = ET.parse(report).getroot().iter("failure")
+                        if any("NameError" in (f.text or "") or "ModuleNotFoundError" in (f.text or "") for f in failures):
+                            status = "environment_error"
+                    except ET.ParseError:
+                        status = "environment_error"
                 results.append({"target": draft.target, "status": status})
             except (OSError, subprocess.TimeoutExpired):
                 results.append({"target": draft.target, "status": "environment_error"})

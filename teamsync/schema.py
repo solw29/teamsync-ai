@@ -14,7 +14,7 @@ class Finding(StrictModel):
 
 class TestDraft(StrictModel):
     target: str = Field(min_length=1, max_length=300)
-    code: str = Field(min_length=1, max_length=10000)
+    code: str = Field(min_length=1, max_length=10000, description="Complete standalone pytest file including explicit imports from the changed module; no shared namespace with other drafts")
     purpose: str = Field(min_length=1, max_length=1000)
 
 
