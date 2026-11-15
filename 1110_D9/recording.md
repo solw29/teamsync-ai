@@ -1,6 +1,10 @@
-# 백업 영상
+# 시연 영상
 
-[실제 PR 결과 화면 녹화(MP4)](teamsync-live-pr-demo.mp4)
+[최신 전체 시연 영상 — 1분 45초](../docs/react-demo.mp4)
+
+GitHub 프로젝트 → PR #1 Files changed → Actions → AI 댓글 → PR #2 수정 → React 대시보드 검색·상세 → Evaluation 순서입니다. 한국어 자막·무음의 연속 녹화이며 중간 컷과 배속이 없습니다. 아래 기록은 이전 짧은 백업 영상에 관한 것입니다.
+
+[이전 PR 화면 백업 영상](teamsync-live-pr-demo.mp4)
 
 2026-11-12 (KST)에 공개 GitHub의 PR #1(버그)과 #2(수정), 실제 봇 댓글·생성 초안·실행 상태를 Chromium으로 열어 녹화했습니다. 화면은 재구성한 모의 UI가 아닙니다. 완료된 결과를 탐색하는 무음 백업 영상으로, PR 생성 순간부터 이어지는 실시간 녹화나 Discord 채널 녹화는 아닙니다. 모델의 오탐과 한계도 그대로 포함됩니다.
 
