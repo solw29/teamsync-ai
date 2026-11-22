@@ -122,6 +122,29 @@
       ]
     }
   ],
+  "holdout": [
+    {
+      "case": "H01",
+      "judgement": "unverifiable",
+      "alwaysWouldCall": true,
+      "selectiveWouldCall": true,
+      "actualLLMCalls": 0
+    },
+    {
+      "case": "H02",
+      "judgement": "unverifiable",
+      "alwaysWouldCall": true,
+      "selectiveWouldCall": true,
+      "actualLLMCalls": 0
+    },
+    {
+      "case": "H03",
+      "judgement": "unverifiable",
+      "alwaysWouldCall": true,
+      "selectiveWouldCall": true,
+      "actualLLMCalls": 0
+    }
+  ],
   "environment": {
     "python": "3.12.14",
     "platform": "linux"

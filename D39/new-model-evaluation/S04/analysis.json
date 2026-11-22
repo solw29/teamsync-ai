@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "review": {
+    "summary": "제공된 코드는 `discount` 함수의 정의를 포함하고 있으며, `pytest` 테스트가 실패하는 이유가 있습니다. `test_contract` 테스트는 `discount(10, 2)`가 `None`을 반환한다고 주장하지만 현재 함수 구현은 -10을 반환합니다. 이는 함수 계약에 위배됩니다.",
+    "findings": [
+      {
+        "file": "sample.py",
+        "line": 2,
+        "evidence": "assert discount(10, 2) is None",
+        "suggestion": "함수의 반환 값을 None으로 수정하거나 테스트를 수정하여 올바른 값을 확인하는 방법을 고려하십시오."
+      }
+    ],
+    "tests": [
+      {
+        "target": "sample.discount",
+        "code": "from sample import discount\n\ndef test_discount_negative():\n    assert discount(10, 0.2) == 8.0\n",
+        "purpose": "할인율 20%로 10에 대한 할인 계산이 올바른지 확인합니다."
+      },
+      {
+        "target": "sample.discount",
+        "code": "from sample import discount\n\ndef test_discount_zero():\n    assert discount(10, 0) == 10.0\n",
+        "purpose": "할인율 0%인 경우 원래 가격이 유지되는지 확인합니다."
+      },
+      {
+        "target": "sample.discount",
+        "code": "from sample import discount\n\ndef test_discount_full():\n    assert discount(10, 1) == 0.0\n",
+        "purpose": "할인율 100%인 경우 가격이 0이 되는지 확인합니다."
+      },
+      {
+        "target": "sample.discount",
+        "code": "from sample import discount\n\ndef test_discount_invalid_rate():\n    assert discount(10, -0.1) == 11.0\n",
+        "purpose": "할인율이 음수인 경우 가격이 증가하는지 확인합니다."
+      },
+      {
+        "target": "sample.discount",
+        "code": "from sample import discount\n\ndef test_discount_large_rate():\n    assert discount(10, 1.5) == -5.0\n",
+        "purpose": "할인율이 150%인 경우 반환 값이 -5인지 확인합니다."
+      }
+    ]
+  },
+  "model": "gpt-4o-mini-2024-07-18",
+  "requestedModel": "gpt-4o-mini",
+  "usage": {
+    "calls": 1,
+    "inputTokens": 1042,
+    "outputTokens": 425,
+    "estimatedCost": null
+  }
+}

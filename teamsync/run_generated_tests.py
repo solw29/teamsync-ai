@@ -11,18 +11,18 @@ import tempfile
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from .draft_quality import check_draft
+from .draft_quality import check_draft, expectation_conflicts
 from .schema import Review
 
 
-def execute(review: Review, cwd: str, strict: bool = False) -> list[dict]:
+def execute(review: Review, cwd: str, strict: bool = False, contracts: list[dict] | None = None) -> list[dict]:
     if os.environ.get("TEAMSYNC_DISPOSABLE_RUNNER") != "1":
         return [{"status": "not_run", "reason": "Disposable secret-free runner required"}]
     results = []
     with tempfile.TemporaryDirectory(prefix="teamsync-tests-") as directory:
         for index, draft in enumerate(review.tests):
             if strict:
-                rejected = check_draft(draft.code, draft.target)
+                rejected = check_draft(draft.code, draft.target) + expectation_conflicts(draft.code, draft.target, contracts or [])
                 if rejected:
                     results.append({'target': draft.target, 'status': 'not_run', 'reason': ','.join(rejected)})
                     continue

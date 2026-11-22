@@ -193,3 +193,21 @@ def test_green_unconnected_test_is_unverifiable():
     graph = {'symbols':[{'name':'lib.helper','file':'lib.py','line':1}], 'warnings':[], 'calls':[]}
     result,_=judge([contract()],graph,[{'name':'pytest','passedTests':['test_contract::test_zero']}])
     assert result[0].status == 'unverifiable'
+
+
+def test_known_literal_contradiction_is_rejected_without_executing_contract():
+    from teamsync.draft_quality import expectation_conflicts
+
+    contracts=[{'symbol':'sample.parse_age','assertions':['assert parse_age(-1) is None']}]
+    assert expectation_conflicts('assert parse_age(-1) == -1','parse_age',contracts)
+    assert not expectation_conflicts('assert parse_age(-1) is None','parse_age',contracts)
+    # A different input is unknown, NOT automatically confirmed or rewritten.
+    assert not expectation_conflicts('assert parse_age(1) == 1','parse_age',contracts)
+
+
+def test_invalid_notebook_is_reported_not_executed(tmp_path):
+    path=tmp_path/'bad.ipynb'
+    path.write_text('not json')
+    assert inspect(path,True)['reason']=='invalid_notebook_json'
+    path.write_text('[]')
+    assert inspect(path,True)['reason']=='invalid_notebook_schema'

@@ -30,3 +30,58 @@ def check_draft(code: str, target: str):
     if not assertions:
         reasons.append('assertion_missing')
     return sorted(set(reasons))
+
+
+def expectation_conflicts(code: str, target: str, contracts: list[dict]):
+    """Reject a contradictory literal expectation for the EXACT same declared input.
+
+    Different inputs or nonliteral predicates remain unverified; never execute
+    a contract string, and never claim general semantic equivalence.
+    """
+    try:
+        tree = ast.parse(code)
+    except SyntaxError:
+        return []
+
+    def signature(node):
+        if not isinstance(node, ast.Compare) or len(node.ops) != 1 or len(node.comparators) != 1:
+            return None
+        if not isinstance(node.left, ast.Call):
+            return None
+        call = node.left
+        name = call.func.id if isinstance(call.func, ast.Name) else call.func.attr if isinstance(call.func, ast.Attribute) else ''
+        if name != target.split('.')[-1] or not isinstance(node.ops[0], (ast.Eq, ast.Is)):
+            return None
+        args = ast.dump(ast.Tuple(elts=call.args, ctx=ast.Load())) + repr([(k.arg, ast.dump(k.value)) for k in call.keywords])
+        try:
+            literal = ast.literal_eval(node.comparators[0])
+            for arg in call.args:
+                ast.literal_eval(arg)
+            for keyword in call.keywords:
+                ast.literal_eval(keyword.value)
+        except (ValueError, TypeError):
+            return None
+        if not isinstance(literal, (str, int, float, bool, type(None))):
+            return None
+        return args, (type(literal).__name__, repr(literal))
+
+    expected = {}
+    for contract in contracts:
+        if contract.get('symbol', '').split('.')[-1] != target.split('.')[-1]:
+            continue
+        for assertion in contract.get('assertions', []):
+            try:
+                statement = ast.parse(assertion).body
+            except (ValueError, SyntaxError):
+                continue
+            if len(statement) == 1 and isinstance(statement[0], ast.Assert):
+                pair = signature(statement[0].test)
+                if pair:
+                    expected[pair[0]] = pair[1]
+    conflicts = []
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Assert):
+            pair = signature(node.test)
+            if pair and pair[0] in expected and expected[pair[0]] != pair[1]:
+                conflicts.append('explicit_literal_expectation_conflict')
+    return sorted(set(conflicts))

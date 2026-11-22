@@ -38,8 +38,18 @@ def evaluate():
                                 'alwaysWouldCall': route(diff, checks, requirements, Policy(llmMode='always'))['call'],
                                 'selectiveWouldCall': route(diff, checks, requirements, Policy())['call']})
             rows.append({'case': case, 'source': 'handwritten_contract_not_model_output', 'results': results})
+    holdout_path = Path('tests/fixtures/phase2/holdout.json')
+    holdout = []
+    if holdout_path.exists():
+        for case in json.loads(holdout_path.read_text()):
+            requirements, _ = judge([Contract(**case)], {'symbols': [], 'warnings': [], 'calls': []}, [])
+            diff = {'lines': [{'file': 'unknown.py', 'line': 1, 'code': '# semantic review needed'}]}
+            holdout.append({'case': case['id'], 'judgement': requirements[0].status,
+                            'alwaysWouldCall': route(diff, [], requirements, Policy(llmMode='always'))['call'],
+                            'selectiveWouldCall': route(diff, [], requirements, Policy())['call'],
+                            'actualLLMCalls': 0})
     return {'scope': '6 cleaned synthetic contract pairs, deterministic checks only', 'cases': rows,
-            'environment': {'python': platform.python_version(), 'platform': sys.platform},
+            'holdout': holdout, 'environment': {'python': platform.python_version(), 'platform': sys.platform},
             'toolVersion': '0.2.0', 'configVersion': Policy().version, 'actualLLMCalls': 0, 'llmDetectionChange': None, 'tokenSavings': None,
             'limitation': 'Would-call decisions are not measured API savings or new model accuracy. Holdout not sent to a model.'}
 

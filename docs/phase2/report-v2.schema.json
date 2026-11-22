@@ -582,6 +582,18 @@
       "default": "unrecorded",
       "title": "Promptversion",
       "type": "string"
+    },
+    "contractVersion": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Contractversion"
     }
   },
   "required": [

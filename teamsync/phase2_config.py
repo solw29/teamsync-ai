@@ -2,13 +2,14 @@
 import hashlib
 import json
 from pathlib import Path
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
 
 class Policy(BaseModel):
     model_config = ConfigDict(extra='forbid')
-    schemaVersion: str = '1.0'
+    schemaVersion: Literal['1.0'] = '1.0'
     requiredChecks: list[str] = Field(default_factory=lambda: ['ruff', 'pytest'])
     pyright: bool = False
     coverageTarget: str | None = None

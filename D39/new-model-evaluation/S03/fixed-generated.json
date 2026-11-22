@@ -1,0 +1,22 @@
+[
+  {
+    "target": "sample.normalize_name",
+    "status": "failed"
+  },
+  {
+    "target": "sample.normalize_name",
+    "status": "passed"
+  },
+  {
+    "target": "sample.normalize_name",
+    "status": "passed"
+  },
+  {
+    "target": "sample.normalize_name",
+    "status": "failed"
+  },
+  {
+    "target": "sample.normalize_name",
+    "status": "passed"
+  }
+]

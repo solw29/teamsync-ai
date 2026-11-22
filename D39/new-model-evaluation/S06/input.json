@@ -1,0 +1,63 @@
+{
+  "case": "S06",
+  "diff": {
+    "lines": [
+      {
+        "file": "sample.py",
+        "line": 1,
+        "code": "def parse_score(v):"
+      },
+      {
+        "file": "sample.py",
+        "line": 2,
+        "code": "    return float(v) if v else None"
+      }
+    ],
+    "positions": {
+      "sample.py": [
+        1,
+        2
+      ]
+    }
+  },
+  "checks": [
+    {
+      "name": "ruff",
+      "status": "passed",
+      "reason": null,
+      "exit_code": 0,
+      "duration": 0.033,
+      "summary": "[]",
+      "diagnostics": [],
+      "outputTruncated": false,
+      "passedTests": [],
+      "failedTests": [],
+      "coveragePercent": null
+    },
+    {
+      "name": "pytest",
+      "status": "failed",
+      "reason": "assertion_failure",
+      "exit_code": 1,
+      "duration": 0.716,
+      "summary": "F                                                                        [100%]\n=================================== FAILURES ===================================\n________________________________ test_contract _________________________________\n\n    def test_contract():\n>       assert parse_score(0) == 0\nE       assert None == 0\nE        +  where None = parse_score(0)\n\ntest_contract.py:5: AssertionError\n=============================== warnings summary ===============================\n../../../../../../../../opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/_pytest/config/__init__.py:1810\n  /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/_pytest/config/__init__.py:1810: PytestConfigWarning: No files were found in testpaths; consider removing or adjusting your testpaths configuration. Searching recursively from the current directory instead.\n    self.args, self.args_source = self._decide_args(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_contract.py::test_contract - assert None == 0\n +  where None = parse_score(0)\n1 failed, 1 warning in 0.05s\n",
+      "diagnostics": [],
+      "outputTruncated": false,
+      "passedTests": [],
+      "failedTests": [
+        "test_contract::test_contract"
+      ],
+      "coveragePercent": null
+    }
+  ],
+  "contracts": [
+    {
+      "id": "REQ-S06",
+      "description": "assert parse_score(0) == 0",
+      "symbol": "sample.parse_score",
+      "testIds": [
+        "test_contract::test_contract"
+      ]
+    }
+  ]
+}

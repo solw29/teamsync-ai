@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "review": {
+    "summary": "주어진 코드에서, `parse_age` 함수는 인자를 정수로 변환하지만, -1을 입력했을 때 None을 반환해야 한다는 계약이 실패했습니다. 이로 인해 실패한 테스트가 발생했습니다.",
+    "findings": [
+      {
+        "file": "sample.py",
+        "line": 2,
+        "evidence": "E       assert -1 is None",
+        "suggestion": "`parse_age` 함수는 음수 입력에 대해 None을 반환하도록 수정해야 합니다."
+      }
+    ],
+    "tests": [
+      {
+        "target": "sample.parse_age",
+        "code": "from sample import parse_age\n\ndef test_regression_parse_age_negative():\n    assert parse_age(-1) is None",
+        "purpose": "Regression test to check if parse_age(-1) returns None as expected."
+      },
+      {
+        "target": "sample.parse_age",
+        "code": "from sample import parse_age\n\ndef test_parse_age_with_zero():\n    assert parse_age(0) == 0",
+        "purpose": "Testing parse_age function with zero input."
+      },
+      {
+        "target": "sample.parse_age",
+        "code": "from sample import parse_age\n\ndef test_parse_age_with_positive():\n    assert parse_age(25) == 25",
+        "purpose": "Testing parse_age function with a positive integer input."
+      },
+      {
+        "target": "sample.parse_age",
+        "code": "from sample import parse_age\n\ndef test_parse_age_with_string():\n    assert parse_age('30') == 30",
+        "purpose": "Testing parse_age function with a string input of a positive integer."
+      },
+      {
+        "target": "sample.parse_age",
+        "code": "from sample import parse_age\n\ndef test_parse_age_with_float():\n    assert parse_age('20.5') == 20",
+        "purpose": "Testing parse_age with a float string input, expecting integer conversion."
+      }
+    ]
+  },
+  "model": "gpt-4o-mini-2024-07-18",
+  "requestedModel": "gpt-4o-mini",
+  "usage": {
+    "calls": 1,
+    "inputTokens": 1032,
+    "outputTokens": 355,
+    "estimatedCost": null
+  }
+}

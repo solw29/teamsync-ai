@@ -1,0 +1,83 @@
+{
+  "dateKST": "2026-11-22",
+  "scope": "Six known synthetic cases, one new model call each; same drafts executed against both versions",
+  "model": "gpt-4o-mini-2024-07-18",
+  "actualCalls": 6,
+  "inputTokens": 6302,
+  "outputTokens": 2308,
+  "estimatedCost": null,
+  "caseCount": 6,
+  "casesWithDetectingDraft": [
+    "S01",
+    "S02",
+    "S05",
+    "S06"
+  ],
+  "draftOutcomes": {
+    "detected": 6,
+    "missed": 18,
+    "manual_review": 1,
+    "unstable_or_environment": 5
+  },
+  "totalDrafts": 30,
+  "fixedReviewFalsePositives": null,
+  "holdoutModelEvaluation": null,
+  "plannedRoutingNotActualSavings": true,
+  "cases": [
+    {
+      "case": "S01",
+      "runId": "45014470868",
+      "analysisStatus": "passed",
+      "detectedDrafts": 1,
+      "totalDrafts": 5,
+      "model": "gpt-4o-mini-2024-07-18",
+      "toolSHA": "05a202a9ea5edd1d5ba168597e4ad740c65931fc"
+    },
+    {
+      "case": "S02",
+      "runId": "45014473414",
+      "analysisStatus": "passed",
+      "detectedDrafts": 1,
+      "totalDrafts": 5,
+      "model": "gpt-4o-mini-2024-07-18",
+      "toolSHA": "05a202a9ea5edd1d5ba168597e4ad740c65931fc"
+    },
+    {
+      "case": "S03",
+      "runId": "45014475632",
+      "analysisStatus": "passed",
+      "detectedDrafts": 0,
+      "totalDrafts": 5,
+      "model": "gpt-4o-mini-2024-07-18",
+      "toolSHA": "05a202a9ea5edd1d5ba168597e4ad740c65931fc"
+    },
+    {
+      "case": "S04",
+      "runId": "45014477806",
+      "analysisStatus": "passed",
+      "detectedDrafts": 0,
+      "totalDrafts": 5,
+      "model": "gpt-4o-mini-2024-07-18",
+      "toolSHA": "05a202a9ea5edd1d5ba168597e4ad740c65931fc"
+    },
+    {
+      "case": "S05",
+      "runId": "45014480325",
+      "analysisStatus": "passed",
+      "detectedDrafts": 3,
+      "totalDrafts": 5,
+      "model": "gpt-4o-mini-2024-07-18",
+      "toolSHA": "05a202a9ea5edd1d5ba168597e4ad740c65931fc"
+    },
+    {
+      "case": "S06",
+      "runId": "45014482840",
+      "analysisStatus": "passed",
+      "detectedDrafts": 1,
+      "totalDrafts": 5,
+      "model": "gpt-4o-mini-2024-07-18",
+      "toolSHA": "05a202a9ea5edd1d5ba168597e4ad740c65931fc"
+    }
+  ],
+  "limitation": "Not a controlled before/after experiment or independent holdout. Do not reuse historical D6 metrics as new results. Post-evaluation literal-conflict gate was added after these frozen outputs."
+}

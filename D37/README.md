@@ -6,7 +6,7 @@
 
 실패·중단 후에도 보고서 job이 실행되며 필수 gate가 JSON 기록과 별개로 실패를 반환합니다. 프로덕션 경로는 병합 후 base 도구로 활성화됩니다.
 
-현재 상태: **구현·실제 draft PR CI 검증 대기**.
+현재 상태: **구현·실제 draft PR CI 및 run report 검증 완료**.
 
 관련 파일: `.github/workflows/teamsync.yml, .github/workflows/phase2-validation.yml`.
 

@@ -30,7 +30,7 @@ def prepare(case, root):
     checks = [run_tool(name, str(root/'buggy')) for name in ('ruff', 'pytest')]
     write(root/'input.json', {'case': case, 'diff': {'lines': lines, 'positions': {'sample.py': list(range(1,len(lines)+1))}},
           'checks': checks, 'contracts': [{'id': 'REQ-'+case, 'description': assertion, 'symbol': 'sample.'+function,
-                                         'testIds': ['test_contract::test_contract']}]})
+                                         'testIds': ['test_contract::test_contract'], 'assertions': [assertion]}]})
     write(root/'runner-policy.json', {'generatedTests': True})
 
 

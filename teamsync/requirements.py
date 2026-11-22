@@ -12,6 +12,7 @@ class Contract(BaseModel):
     id: str = Field(pattern=r'^[A-Z][A-Z0-9_-]{1,63}$')
     description: str = Field(min_length=1, max_length=4000)
     symbol: str = Field(min_length=1)
+    assertions: list[str] = Field(default_factory=list, max_length=20)
     testIds: list[str] = Field(default_factory=list, max_length=30)
 
 

@@ -65,6 +65,7 @@ class RunReport(Strict):
     testEvidence: list[dict] = Field(default_factory=list)
     model: str | None = None
     promptVersion: str = 'unrecorded'
+    contractVersion: str | None = None
 
     @model_validator(mode='after')
     def consistent(self):

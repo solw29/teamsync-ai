@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "review": {
+    "summary": "제공된 코드에서 `safe_divide` 함수는 0으로 나누는 경우에 대해 적절한 처리를 하지 않아 `ZeroDivisionError`를 발생시킵니다. 이는 명시된 계약과 일치하지 않습니다. 이를 기반으로 한 테스트와 수정 제안을 수립했습니다.",
+    "findings": [
+      {
+        "file": "sample.py",
+        "line": 2,
+        "evidence": "E       ZeroDivisionError: division by zero",
+        "suggestion": "Modify safe_divide to handle division by zero gracefully."
+      }
+    ],
+    "tests": [
+      {
+        "target": "safe_divide",
+        "code": "from sample import safe_divide\ndef test_zero_division():\n    result = safe_divide(1, 0)\n    assert result is None",
+        "purpose": "Regression test for division by zero that should return None."
+      },
+      {
+        "target": "safe_divide",
+        "code": "from sample import safe_divide\ndef test_positive_numbers():\n    result = safe_divide(10, 2)\n    assert result == 5",
+        "purpose": "Test safe division for positive numbers."
+      },
+      {
+        "target": "safe_divide",
+        "code": "from sample import safe_divide\ndef test_negative_division():\n    result = safe_divide(-10, 2)\n    assert result == -5",
+        "purpose": "Test safe division for negative numerator."
+      },
+      {
+        "target": "safe_divide",
+        "code": "from sample import safe_divide\ndef test_divide_by_negative():\n    result = safe_divide(10, -2)\n    assert result == -5",
+        "purpose": "Test safe division for negative denominator."
+      },
+      {
+        "target": "safe_divide",
+        "code": "from sample import safe_divide\ndef test_divide_by_one():\n    result = safe_divide(10, 1)\n    assert result == 10",
+        "purpose": "Test division by one should return the original number."
+      }
+    ]
+  },
+  "model": "gpt-4o-mini-2024-07-18",
+  "requestedModel": "gpt-4o-mini",
+  "usage": {
+    "calls": 1,
+    "inputTokens": 1113,
+    "outputTokens": 385,
+    "estimatedCost": null
+  }
+}

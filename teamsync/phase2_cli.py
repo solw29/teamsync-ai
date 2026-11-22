@@ -106,7 +106,9 @@ def report_stage(folder, output, policy, event):
         discordRequestStatus=load(folder, 'notifications', {}).get('discord', 'not_configured'), duration=None,
         execution=[{'name': c['name'], 'status': c['status']} for c in checks])
     usage = analysis.get('usage') or {'calls': int(load(folder, 'routing', {}).get('call', False))}
-    report = RunReport(model=analysis.get('model'), promptVersion=hashlib.sha256(Path(__file__).with_name('prompts').joinpath('review.txt').read_bytes()).hexdigest(), configVersion=policy.version, identity=identity, analysis=item, requirements=requirements,
+    contract_version = hashlib.sha256(json.dumps(load(folder, 'contracts', []), sort_keys=True).encode()).hexdigest()
+    config_version = hashlib.sha256((policy.version + contract_version).encode()).hexdigest()[:16]
+    report = RunReport(contractVersion=contract_version, model=analysis.get('model'), promptVersion=hashlib.sha256(Path(__file__).with_name('prompts').joinpath('review.txt').read_bytes()).hexdigest(), configVersion=config_version, identity=identity, analysis=item, requirements=requirements,
         evidence=[Evidence.model_validate(e) for e in load(folder, 'evidence', [])], checkDetails=checks,
         testEvidence=[{'index': i, 'requirementIds': [c['id'] for c in load(folder, 'contracts', [])
                          if c['symbol'].split('.')[-1] == t['target'].split('.')[-1]],
@@ -140,7 +142,7 @@ def main():
         elif os.environ.get('TEAMSYNC_ISOLATED_CONTAINER') != '1':
             generated = [{'target': t['target'], 'status': 'not_run', 'reason': 'restricted_container_required'} for t in (analysis.get('review') or {}).get('tests', [])]
         elif analysis.get('review'):
-            generated = execute(Review.model_validate(analysis['review']), str(args.target), strict=True)
+            generated = execute(Review.model_validate(analysis['review']), str(args.target), strict=True, contracts=load(args.artifacts, 'contracts', load(args.artifacts, 'input', {}).get('contracts', [])))
         else:
             generated = []
         write(args.output / 'generated.json', generated)
