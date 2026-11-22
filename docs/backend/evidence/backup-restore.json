@@ -1,0 +1,22 @@
+{
+  "format": "pg_dump custom",
+  "privateDumpCommitted": false,
+  "counts": {
+    "teamsync": {
+      "repositories": 1,
+      "runs": 13,
+      "findings": 15,
+      "users": 1,
+      "jobs": 5
+    },
+    "teamsync_restore": {
+      "repositories": 1,
+      "runs": 13,
+      "findings": 15,
+      "users": 1,
+      "jobs": 5
+    }
+  },
+  "match": true,
+  "warning": "Validation restore only. Invalidate restored sessions before real use."
+}

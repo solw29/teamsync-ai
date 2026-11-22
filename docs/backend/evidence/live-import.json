@@ -1,0 +1,10 @@
+{
+  "legacyCreated": 12,
+  "repositoryId": "696a149c-2dfd-4150-b420-e98f0a6dfb7a",
+  "jobId": "594b4389-4428-4eae-9e22-defcbe577b36",
+  "jobStatus": "succeeded",
+  "reason": null,
+  "sourceRunId": 45015243674,
+  "sourceAttempt": 1,
+  "source": "actual GitHub API artifact; no LLM or workflow re-execution"
+}

@@ -1,0 +1,30 @@
+{
+  "fault": "SIGKILL isolated solo Celery validation worker after production claim, before fetch/save",
+  "leaseSeconds": 3,
+  "productionRecovery": "reconcile -> outbox -> normal teamsync.collect worker -> GitHub artifact",
+  "status": "succeeded",
+  "attempts": 2,
+  "events": [
+    {
+      "status": "queued",
+      "reason": null
+    },
+    {
+      "status": "running",
+      "reason": null
+    },
+    {
+      "status": "retrying",
+      "reason": "worker_lease_expired"
+    },
+    {
+      "status": "running",
+      "reason": null
+    },
+    {
+      "status": "succeeded",
+      "reason": null
+    }
+  ],
+  "scope": "Not a hard-time-limit or prefork child-kill test; no exactly-once claim"
+}

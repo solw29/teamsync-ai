@@ -1,0 +1,44 @@
+{
+  "cacheFailure": {
+    "http": 200,
+    "source": "database_fallback",
+    "broker": "ready"
+  },
+  "brokerFailure": {
+    "acceptedHTTP": 202,
+    "durableOutbox": true,
+    "publishAttempts": 1
+  },
+  "brokerRecovery": {
+    "status": "succeeded",
+    "events": [
+      "queued",
+      "running",
+      "succeeded"
+    ]
+  },
+  "databaseFailure": {
+    "readinessHTTP": 503
+  },
+  "databaseRecovery": {
+    "runCount": 13
+  },
+  "statsMeasurement": {
+    "database": {
+      "samples": 100,
+      "p50Ms": 1.566,
+      "p95Ms": 2.086,
+      "sqlStatements": 200,
+      "lastSource": "miss"
+    },
+    "warm_cache": {
+      "samples": 100,
+      "p50Ms": 1.233,
+      "p95Ms": 2.834,
+      "sqlStatements": 100,
+      "lastSource": "hit"
+    },
+    "rows": 13,
+    "environment": "local PostgreSQL17.5 / Redis7.4.4 / Python3.12, same process and repository"
+  }
+}

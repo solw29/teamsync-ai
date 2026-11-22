@@ -82,3 +82,7 @@ Data import에서 결과 파일을 선택하면 Dashboard·상세·Evaluation �
 각 D README에 작업, 재현 가능한 완료 기준, 실제 달성/미완료, 구현 방법, 대안 대비 선택 이유, 개발 중 문제와 해결을 기록했습니다. 대안의 비교 실험이 없으면 설계 판단으로만 표시합니다. 현재 기준 실행 기록은 D40/README.md와 docs/phase2/validation.md이며, 과거 숫자는 해당 차수의 증거로 보존합니다.
 
 핵심 선택은 Actions에서만 코드 실행, 구조화된 version 계약, 명시 근거의 보수적 판정, secret-free 제한 runner, 브라우저의 읽기 전용 조회입니다. 서버가 PR 코드를 실행하거나 React가 LLM 키를 갖는 대안은 실행·credential 경계가 넓어 제외했습니다. 상세 이유와 실제 장애 기록은 [전체 README 검토 기록](docs/readme-review.md)과 각 단계 README에서 확인할 수 있습니다.
+
+## 3차 결과 서버 — D41~D50
+
+인증된 FastAPI·PostgreSQL·GitHub artifact pull·Celery/outbox·통계 cache와 React API 출처를 추가했습니다. [운영 가이드](docs/backend/README.md), [검수 결과와 한계](docs/backend-validation.md), [D41](D41/README.md)~[D50](D50/README.md)에서 작업·완료 기준·구현 판단·문제 해결을 확인할 수 있습니다.
