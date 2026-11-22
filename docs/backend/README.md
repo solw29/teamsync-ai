@@ -54,7 +54,7 @@ React에는 demo/import/api 출처를 표시한다. API 실패를 demo로 교체
 
 ## API와 오류
 
-현재 OpenAPI는 `/openapi.json`, 스냅샷은 [contract/openapi.json](contract/openapi.json). `runs/detail/stats.json`은 실제 FastAPI 응답으로 생성한 공개 fixture이며 React Zod 테스트가 읽는다. 내부 세션·키는 fixture에 없다.
+현재 OpenAPI는 `/openapi.json`, 스냅샷은 [contract/openapi.json](contract/openapi.json). `runs/detail/stats.json`은 소형 합성 보고서를 실제 FastAPI route에 넣어 생성한 공개 fixture이며 React Zod 테스트가 읽는다. 내부 세션·키는 fixture에 없다.
 
 목록 `/api/runs?repositoryId=...`는 q/status/start/end/sort/limit/cursor를 받는다. 상세 `/api/runs/{id}`, PR별 `/api/repositories/{id}/pulls/{number}/history`, 통계 `/api/repositories/{id}/stats`다. 쓰기에는 세션+X-CSRF-Token이 필요하다. sync/resync는 Idempotency-Key와202 job을 반환한다. `/api/jobs`는 최근100건, `/api/jobs/{id}`는 상태 전환100건과 최종 사유를 표시한다. 과거 전체 감사 검색·장기 job 아카이브는 이번 범위 밖이다.
 

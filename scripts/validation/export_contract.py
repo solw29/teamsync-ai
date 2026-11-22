@@ -27,7 +27,7 @@ settings = Settings(database_url="sqlite:///:memory:")
 app = create_app(settings, cache=StatsCache(settings, NoCache()))
 Base.metadata.create_all(app.state.engine)
 report = RunReport.model_validate_json(
-    (root / "D36/github-run-45015243674/report.json").read_bytes()
+    (root / "docs/phase2/example-v2/report.json").read_bytes()
 )
 with app.state.factory.begin() as db:
     user = User(
@@ -40,7 +40,7 @@ with app.state.factory.begin() as db:
         owner_id=user.id,
         external_id=report.identity.repositoryId,
         full_name=report.identity.fullName,
-        workflow_ids=[int(report.identity.workflowId)],
+        workflow_ids=[1],
     )
     db.add(repo)
     db.flush()
