@@ -11,7 +11,7 @@ export const verificationSchema=z.object({
  warnings:z.array(text),impact:z.object({changedSymbols:z.array(text).optional(),affectedSymbols:z.array(text).optional()}).passthrough()
 });
 export const reportSchema=z.object({schemaVersion:z.literal('1.0'),analyses:z.array(z.object({
- verification:verificationSchema.optional(),id:z.string().min(1),repository:text,prNumber:z.number().int().positive(),prTitle:text,headSha:text,runId:z.number().int().nonnegative(),
+ verification:verificationSchema.nullish(),id:z.string().min(1),repository:text,prNumber:z.number().int().positive(),prTitle:text,headSha:text,runId:z.number().int().nonnegative(),
  analyzedAt:z.string().datetime(),githubUrl:z.string().url().refine(s=>/^https:\/\/github\.com\/[^/]+\/[^/]+\/pull\/\d+$/.test(s),'GitHub PR URL required').nullable(),
  status:z.enum(['passed','failed','running','partial']),checks:z.object({ruffStatus:status,pytestStatus:status,errorSummary:text.nullable()}),
  review:z.object({status,summary:text,findings:z.array(z.object({file:text,line:z.number().int().positive(),evidence:text,suggestion:text,locationVerified:z.boolean(),adjudication:z.enum(['unreviewed','confirmed','false_positive'])}))}),

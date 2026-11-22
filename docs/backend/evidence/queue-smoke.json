@@ -1,0 +1,30 @@
+{
+  "path": "HTTP202 -> DB job/outbox -> actual Redis/Celery worker -> GitHub pull -> PostgreSQL -> API",
+  "jobId": "d3ec3ab9-5d47-4143-99f9-0e2b6ec6f773",
+  "observedStates": [
+    "queued",
+    "running",
+    "running",
+    "running",
+    "succeeded"
+  ],
+  "events": [
+    {
+      "status": "queued",
+      "reason": null,
+      "at": "2026-11-22T16:40:11.083091Z"
+    },
+    {
+      "status": "running",
+      "reason": null,
+      "at": "2026-11-22T16:40:11.239583Z"
+    },
+    {
+      "status": "succeeded",
+      "reason": null,
+      "at": "2026-11-22T16:40:13.124861Z"
+    }
+  ],
+  "sourceRunId": 45015243674,
+  "idempotentExistingRun": true
+}

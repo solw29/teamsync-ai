@@ -1,0 +1,11 @@
+{
+  "ttlSeconds": 1,
+  "productionDefaultSeconds": 30,
+  "sources": [
+    "miss",
+    "hit",
+    "miss"
+  ],
+  "waitSeconds": 1.2,
+  "cache": "actual Redis7.4.4, isolated deployment namespace"
+}

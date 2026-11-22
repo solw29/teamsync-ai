@@ -1,0 +1,218 @@
+{
+  "items": [
+    {
+      "id": "d72faaaf-e91a-45bb-879d-2c9bbec8a411",
+      "repository": "example/phase2",
+      "prNumber": 1,
+      "prTitle": "Local fixture — not a GitHub execution",
+      "headSha": "2a88e3190ea86ff79ba5f6c01096a80c0536b7b9",
+      "runId": 1,
+      "analyzedAt": "2026-11-22T10:50:36.340256Z",
+      "githubUrl": "https://github.com/example/phase2/pull/1",
+      "status": "passed",
+      "checks": {
+        "ruffStatus": "passed",
+        "pytestStatus": "passed",
+        "errorSummary": null
+      },
+      "review": {
+        "status": "skipped",
+        "summary": "local_fixture_no_llm",
+        "findings": []
+      },
+      "tests": [],
+      "discordRequestStatus": "not_configured",
+      "duration": null,
+      "execution": [
+        {
+          "name": "ruff",
+          "status": "passed"
+        },
+        {
+          "name": "pytest",
+          "status": "passed"
+        },
+        {
+          "name": "pyright",
+          "status": "skipped"
+        }
+      ],
+      "verification": {
+        "requirements": [
+          {
+            "id": "REQ-ZERO",
+            "description": "A zero divisor returns None",
+            "status": "satisfied",
+            "evidenceIds": [
+              "REQ-ZERO:contract",
+              "REQ-ZERO:symbol",
+              "REQ-ZERO:test:test_contract::test_zero",
+              "REQ-ZERO:call:test_contract::test_zero"
+            ],
+            "reason": "Symbol, static call paths and all explicit mapped contract tests passed; limited to this contract"
+          }
+        ],
+        "evidence": [
+          {
+            "id": "REQ-ZERO:contract",
+            "kind": "contract",
+            "file": "teamsync-requirements.json",
+            "line": 0,
+            "detail": "A zero divisor returns None"
+          },
+          {
+            "id": "REQ-ZERO:symbol",
+            "kind": "symbol",
+            "file": "sample.py",
+            "line": 1,
+            "detail": "sample.safe_divide"
+          },
+          {
+            "id": "REQ-ZERO:test:test_contract::test_zero",
+            "kind": "test",
+            "file": "test_contract",
+            "line": 0,
+            "detail": "test_contract::test_zero: passed"
+          },
+          {
+            "id": "REQ-ZERO:call:test_contract::test_zero",
+            "kind": "call",
+            "file": "test_contract",
+            "line": 0,
+            "detail": "test_contract.test_zero -> sample.safe_divide (static call path)"
+          }
+        ],
+        "checkDetails": [
+          {
+            "name": "ruff",
+            "status": "passed",
+            "reason": null,
+            "exit_code": 0,
+            "duration": 0.064,
+            "summary": "[]",
+            "diagnostics": [],
+            "outputTruncated": false,
+            "passedTests": [],
+            "failedTests": [],
+            "coveragePercent": null
+          },
+          {
+            "name": "pytest",
+            "status": "passed",
+            "reason": null,
+            "exit_code": 0,
+            "duration": 0.418,
+            "summary": ".                                                                        [100%]\n1 passed in 0.01s\n",
+            "diagnostics": [],
+            "outputTruncated": false,
+            "passedTests": [
+              "test_contract::test_zero"
+            ],
+            "failedTests": [],
+            "coveragePercent": null
+          },
+          {
+            "name": "pyright",
+            "status": "skipped",
+            "reason": "disabled",
+            "diagnostics": []
+          }
+        ],
+        "usage": {
+          "calls": 0,
+          "inputTokens": null,
+          "outputTokens": null,
+          "estimatedCost": null
+        },
+        "routing": {
+          "call": false,
+          "reason": "mapped_contracts_passed_only",
+          "semanticCoverage": "not_assessed"
+        },
+        "warnings": [
+          "LLM skipped does not establish semantic correctness"
+        ],
+        "impact": {
+          "changes": [
+            {
+              "status": "M",
+              "old": "sample.py",
+              "new": "sample.py"
+            },
+            {
+              "status": "A",
+              "old": "test_contract.py",
+              "new": "test_contract.py"
+            }
+          ],
+          "changedSymbols": [
+            "sample.safe_divide",
+            "test_contract.test_zero"
+          ],
+          "affectedSymbols": [
+            "sample.safe_divide",
+            "test_contract.test_zero"
+          ],
+          "base": {
+            "revision": "463b46f1b12d2ae4957c6c1e54e6a5efc5d50f18",
+            "files": [
+              "sample.py"
+            ],
+            "symbols": [
+              {
+                "name": "sample.safe_divide",
+                "file": "sample.py",
+                "line": 1,
+                "kind": "FunctionDef"
+              }
+            ],
+            "calls": [],
+            "unresolved": [],
+            "warnings": [],
+            "bytes": 40
+          },
+          "head": {
+            "revision": "2a88e3190ea86ff79ba5f6c01096a80c0536b7b9",
+            "files": [
+              "sample.py",
+              "test_contract.py"
+            ],
+            "symbols": [
+              {
+                "name": "sample.safe_divide",
+                "file": "sample.py",
+                "line": 1,
+                "kind": "FunctionDef"
+              },
+              {
+                "name": "test_contract.test_zero",
+                "file": "test_contract.py",
+                "line": 4,
+                "kind": "FunctionDef"
+              }
+            ],
+            "calls": [
+              {
+                "caller": "test_contract.test_zero",
+                "target": "sample.safe_divide",
+                "expression": "safe_divide",
+                "file": "test_contract.py",
+                "line": 5
+              }
+            ],
+            "unresolved": [],
+            "warnings": [],
+            "bytes": 147
+          },
+          "warnings": [],
+          "note": "Static approximation; dynamic calls and truncated files remain unresolved.",
+          "notebooks": []
+        }
+      }
+    }
+  ],
+  "nextCursor": null,
+  "source": "api",
+  "lastSyncedAt": null,
+  "syncError": null
+}

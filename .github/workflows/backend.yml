@@ -1,0 +1,41 @@
+name: Backend persistence and API
+on:
+  pull_request:
+    paths: ['server/**', 'scripts/**', 'web/**', 'pyproject.toml', 'compose*.yaml', '.github/workflows/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:17.5
+        env:
+          POSTGRES_USER: teamsync
+          POSTGRES_PASSWORD: ephemeral-ci-only
+          POSTGRES_DB: teamsync_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U teamsync -d teamsync_test"
+          --health-interval 3s --health-timeout 3s --health-retries 20
+    env:
+      TEAMSYNC_DATABASE_URL: postgresql+psycopg://teamsync:ephemeral-ci-only@localhost:5432/teamsync_test
+      TEST_DATABASE_URL: postgresql+psycopg://teamsync:ephemeral-ci-only@localhost:5432/teamsync_test
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: python -m pip install -e '.[dev,phase2,server]'
+      - run: ruff check . && pytest -q && pytest server/tests -q
+      - run: python -m alembic -c server/alembic.ini upgrade head && python -m alembic -c server/alembic.ini check
+      - run: npm ci && npm test && npm run build
+        working-directory: web
+      - run: docker build -f server/Dockerfile -t teamsync-backend:ci .

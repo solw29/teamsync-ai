@@ -22,3 +22,7 @@ React Hooks와 Router로 작은 읽기 전용 SPA를 구성하고 Zod adapter가
 ## 개발 중 문제와 해결
 
 npm 캐시 권한 오류는 workspace cache로 해결했다. Evidence 탭 추가 시 모바일 overflow는 flex-wrap/overflow-wrap으로 수정하고 390px에서 검증했다. 원본에 PR 제목·세부 시간이 없던 항목은 발명하지 않고 미측정/사례 ID로 표시했다. 구체적인 오류와 증거는 `../docs/react-test-report.md`, `../docs/phase2/validation.md`, D11~D20/D38 README에 있다. 공개 데모와 imported 결과를 구분하며, 이 UI 검증은 전체 접근성 인증이나 외부 배포 검증을 대신하지 않는다.
+
+## API 출처 구현과 선택 근거
+
+서버 이력은 명시적인 API 모드로 조회하며 쿠키·CSRF 인증과 Zod 검증을 사용합니다. 실행 중인 visible 화면만10초 polling하고 API 실패를 demo로 교체하지 않습니다. 데이터·키를 localStorage에 저장하지 않습니다. 작업과 완료 기준, legacy null/새로고침 문제 해결은 [D48](../D48/README.md), 실제 검증은 [백엔드 검수](../docs/backend-validation.md)에 있습니다.

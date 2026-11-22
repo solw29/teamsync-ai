@@ -1,0 +1,193 @@
+{
+  "without_composite_index": {
+    "samples": 30,
+    "p50Ms": 5.249,
+    "p95Ms": 11.804,
+    "plan": [
+      {
+        "Plan": {
+          "Node Type": "Limit",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 1914.41,
+          "Total Cost": 1914.46,
+          "Plan Rows": 20,
+          "Plan Width": 16,
+          "Actual Startup Time": 4.161,
+          "Actual Total Time": 4.164,
+          "Actual Rows": 20,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 637,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0,
+          "Plans": [
+            {
+              "Node Type": "Sort",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 1914.41,
+              "Total Cost": 1916.98,
+              "Plan Rows": 1030,
+              "Plan Width": 16,
+              "Actual Startup Time": 4.16,
+              "Actual Total Time": 4.161,
+              "Actual Rows": 20,
+              "Actual Loops": 1,
+              "Sort Key": [
+                "created_at DESC",
+                "id DESC"
+              ],
+              "Sort Method": "top-N heapsort",
+              "Sort Space Used": 25,
+              "Sort Space Type": "Memory",
+              "Shared Hit Blocks": 637,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Seq Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Relation Name": "phase3_index_measure",
+                  "Alias": "phase3_index_measure",
+                  "Startup Cost": 0.0,
+                  "Total Cost": 1887.0,
+                  "Plan Rows": 1030,
+                  "Plan Width": 16,
+                  "Actual Startup Time": 0.007,
+                  "Actual Total Time": 4.062,
+                  "Actual Rows": 1000,
+                  "Actual Loops": 1,
+                  "Filter": "(repository_id = 42)",
+                  "Rows Removed by Filter": 99000,
+                  "Shared Hit Blocks": 637,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            }
+          ]
+        },
+        "Planning": {
+          "Shared Hit Blocks": 0,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        "Planning Time": 0.041,
+        "Triggers": [],
+        "Execution Time": 4.174
+      }
+    ]
+  },
+  "with_composite_index": {
+    "samples": 30,
+    "p50Ms": 0.259,
+    "p95Ms": 0.507,
+    "plan": [
+      {
+        "Plan": {
+          "Node Type": "Limit",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 0.42,
+          "Total Cost": 45.5,
+          "Plan Rows": 20,
+          "Plan Width": 16,
+          "Actual Startup Time": 0.006,
+          "Actual Total Time": 0.012,
+          "Actual Rows": 20,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 16,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0,
+          "Plans": [
+            {
+              "Node Type": "Index Only Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Scan Direction": "Forward",
+              "Index Name": "phase3_index_measure_repository_id_created_at_id_idx",
+              "Relation Name": "phase3_index_measure",
+              "Alias": "phase3_index_measure",
+              "Startup Cost": 0.42,
+              "Total Cost": 2322.11,
+              "Plan Rows": 1030,
+              "Plan Width": 16,
+              "Actual Startup Time": 0.005,
+              "Actual Total Time": 0.01,
+              "Actual Rows": 20,
+              "Actual Loops": 1,
+              "Index Cond": "(repository_id = 42)",
+              "Rows Removed by Index Recheck": 0,
+              "Heap Fetches": 20,
+              "Shared Hit Blocks": 16,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            }
+          ]
+        },
+        "Planning": {
+          "Shared Hit Blocks": 0,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        "Planning Time": 0.11,
+        "Triggers": [],
+        "Execution Time": 0.018
+      }
+    ]
+  },
+  "environment": "local PostgreSQL17.5, isolated teamsync_test table, 100000 generated rows / 100 repositories; warm reads; not actual traffic"
+}

@@ -1,6 +1,6 @@
 # README 전체 검토 — 2026-11-23 (KST)
 
-대상: 루트·web·phase2 및 D1~D40의 README 총 43개. node_modules의 제3자 문서는 제외합니다.
+대상: 루트·web·phase2·backend 및 D1~D50의 README 총 54개. node_modules의 제3자 문서는 제외합니다.
 
 각 문서에 작업·완료 기준·구현·선택 근거·문제·해결을 확인했습니다. 실제 달성과 미검증을 구분하고 단계별 대안을 검토했습니다. 당시 수행하지 않은 대안 비교를 benchmark처럼 작성하지 않았고, 기록 없는 장애를 운영 실적으로 만들지 않았습니다.
 
@@ -9,6 +9,7 @@ D1/D2의 깨진 docs 상대 링크를 고쳤으며, 로컬 Markdown 링크 존�
 - [README.md](../README.md) — 검토 완료
 - [web/README.md](../web/README.md) — 검토 완료
 - [docs/phase2/README.md](../docs/phase2/README.md) — 검토 완료
+- [docs/backend/README.md](../docs/backend/README.md) — 검토 완료
 - [1102_D1/README.md](../1102_D1/README.md) — 검토 완료
 - [1103_D2/README.md](../1103_D2/README.md) — 검토 완료
 - [1104_D3/README.md](../1104_D3/README.md) — 검토 완료
@@ -49,3 +50,13 @@ D1/D2의 깨진 docs 상대 링크를 고쳤으며, 로컬 Markdown 링크 존�
 - [D38/README.md](../D38/README.md) — 검토 완료
 - [D39/README.md](../D39/README.md) — 검토 완료
 - [D40/README.md](../D40/README.md) — 검토 완료
+- [D41/README.md](../D41/README.md) — 검토 완료
+- [D42/README.md](../D42/README.md) — 검토 완료
+- [D43/README.md](../D43/README.md) — 검토 완료
+- [D44/README.md](../D44/README.md) — 검토 완료
+- [D45/README.md](../D45/README.md) — 검토 완료
+- [D46/README.md](../D46/README.md) — 검토 완료
+- [D47/README.md](../D47/README.md) — 검토 완료
+- [D48/README.md](../D48/README.md) — 검토 완료
+- [D49/README.md](../D49/README.md) — 검토 완료
+- [D50/README.md](../D50/README.md) — 검토 완료
