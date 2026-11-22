@@ -3,7 +3,7 @@
 | 검증 항목 | 실제 결과 | 범위/한계 |
 |---|---|---|
 | 기준선 | Python 27/27, frontend 6/6 | 880f277, D1~D20 및 D6 raw evidence 보존 |
-| 확장 회귀 | 59/59 로컬 (최초 PR CI 57/57); 최종 PR CI는 아래 추가 기록 | pytest testpaths로 artifacts의 우연한 테스트 수집 배제 |
+| 확장 회귀 | 59/59 로컬 및 최종 PR CI 통과 (최초 PR CI 57/57) | pytest testpaths로 artifacts의 우연한 테스트 수집 배제 |
 | Web | 9/9 및 build 통과 | v1 12개, v2, identity 불일치·dangling evidence·알 수 없는 버전 |
 | 브라우저 | v1/v2 import, Evidence, null usage, mobile, v1 복귀 통과 | desktop 1440×960, mobile 390×844, pageerror 없음 |
 | 구조화 검사 | no-tests·collection error·실패·timeout·tool missing 구분 | 실제 pytest와 임시 fixture |
@@ -51,3 +51,9 @@ D28 Notebook 자동 실행은 선택 항목으로 제외했습니다. 독립된 
 새 6회 모델 평가 뒤, `assertions`에 명시한 동일한 구체 입력에 대해 리터럴 기대값이 모순되는 초안은 실행 전에 not_run으로 차단하도록 추가했습니다. 단위 테스트와 실제 제한 컨테이너에서 `explicit_literal_expectation_conflict`를 확인했고 D35/known-expectation-conflict.json에 보존했습니다. 다른 입력·복잡한 기대식은 이 규칙만으로 검증됐다고 표시하지 않습니다. 모델의 틀린 초안을 자동 수정하거나 성공 수치로 바꾸지 않았습니다.
 
 실제 GitHub 보고서도 브라우저에서 import해 Evidence의 ‘명시 계약 없음/미검증’ 표시를 확인했습니다. 정책과 명시 계약의 해시를 합쳐 configVersion을 만들고, 별도 contractVersion을 보존합니다. 과거 보고서에는 이 필드가 없을 수 있으며 checksum 원문은 바꾸지 않습니다.
+
+## 최종 소스 검수
+
+소스 5a66c4e에서 [최종 Phase 2 CI 45015243674](https://github.com/solw29/teamsync-ai/actions/runs/45015243674)와 [Dashboard CI 45015243686](https://github.com/solw29/teamsync-ai/actions/runs/45015243686)가 성공했습니다. Python 59개, frontend 9개, 타입 검사·빌드·report/manifest Artifact·표준 Docker 빌드를 확인했습니다. 최종 report도 내려받아 GitHub API의 run/attempt/workflow/head SHA, checksum, contractVersion을 검증하고 D36/github-run-45015243674에 보존했습니다. draft에서 프로덕션 리뷰 및 기존 일반 CI는 정책에 따라 skipped이며, 이를 passed로 집계하지 않습니다.
+
+D21~D40의 이번 구현·검수 묶음은 PR #13에서 검토할 수 있습니다. D28 선택 자동 실행, 독립 holdout 모델 평가, 수정 코드의 새 LLM 오탐 측정, 사람 판정은 완료로 표시하지 않습니다. 핵심 계약·실행별 보고서·기존 12개 호환·실패 원인·필수 gate를 준비했지만, 프로덕션 활성화와 3차 착수는 유지보수자의 PR 검토·병합 후 별도 요청으로 진행합니다.
