@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "review": {
+    "summary": "주어진 코드는 `parse_score` 함수가 입력 값이 0일 때 None을 반환하여 테스트가 실패하고 있음을 보여줍니다.",
+    "findings": [
+      {
+        "file": "sample.py",
+        "line": 2,
+        "evidence": "return float(v) if v else None",
+        "suggestion": "Input이 0일 경우 None이 아닌 0.0을 반환하도록 수정할 것."
+      }
+    ],
+    "tests": [
+      {
+        "target": "parse_score",
+        "code": "from sample import parse_score\n\ndef test_regression_parse_score_zero():\n    assert parse_score(0) == 0.0\n",
+        "purpose": "Regression test for the reported defect."
+      },
+      {
+        "target": "parse_score",
+        "code": "from sample import parse_score\n\ndef test_parse_score_none():\n    assert parse_score('') is None\n",
+        "purpose": "Test to assert that passing an empty string returns None."
+      },
+      {
+        "target": "parse_score",
+        "code": "from sample import parse_score\n\ndef test_parse_score_float_conversion():\n    assert parse_score('3.14') == 3.14\n",
+        "purpose": "Test to assert that passing a string representing a float returns the float."
+      },
+      {
+        "target": "parse_score",
+        "code": "from sample import parse_score\n\ndef test_parse_score_integer_conversion():\n    assert parse_score('42') == 42.0\n",
+        "purpose": "Test to assert that passing a string representing an int returns the float equivalent."
+      },
+      {
+        "target": "parse_score",
+        "code": "from sample import parse_score\n\ndef test_parse_score_negative():\n    assert parse_score('-1') == -1.0\n",
+        "purpose": "Test to assert that passing a string representing a negative float returns the correct float."
+      }
+    ]
+  },
+  "model": "gpt-4o-mini-2024-07-18",
+  "requestedModel": "gpt-4o-mini",
+  "usage": {
+    "calls": 1,
+    "inputTokens": 1036,
+    "outputTokens": 349,
+    "estimatedCost": null
+  }
+}

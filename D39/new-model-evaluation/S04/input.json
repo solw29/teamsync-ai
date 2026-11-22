@@ -1,0 +1,63 @@
+{
+  "case": "S04",
+  "diff": {
+    "lines": [
+      {
+        "file": "sample.py",
+        "line": 1,
+        "code": "def discount(p, r):"
+      },
+      {
+        "file": "sample.py",
+        "line": 2,
+        "code": "    return p * (1 - r)"
+      }
+    ],
+    "positions": {
+      "sample.py": [
+        1,
+        2
+      ]
+    }
+  },
+  "checks": [
+    {
+      "name": "ruff",
+      "status": "passed",
+      "reason": null,
+      "exit_code": 0,
+      "duration": 0.032,
+      "summary": "[]",
+      "diagnostics": [],
+      "outputTruncated": false,
+      "passedTests": [],
+      "failedTests": [],
+      "coveragePercent": null
+    },
+    {
+      "name": "pytest",
+      "status": "failed",
+      "reason": "assertion_failure",
+      "exit_code": 1,
+      "duration": 0.916,
+      "summary": "F                                                                        [100%]\n=================================== FAILURES ===================================\n________________________________ test_contract _________________________________\n\n    def test_contract():\n>       assert discount(10,2) is None\nE       assert -10 is None\nE        +  where -10 = discount(10, 2)\n\ntest_contract.py:5: AssertionError\n=============================== warnings summary ===============================\n../../../../../../../../opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/_pytest/config/__init__.py:1810\n  /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/_pytest/config/__init__.py:1810: PytestConfigWarning: No files were found in testpaths; consider removing or adjusting your testpaths configuration. Searching recursively from the current directory instead.\n    self.args, self.args_source = self._decide_args(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_contract.py::test_contract - assert -10 is None\n +  where -10 = discount(10, 2)\n1 failed, 1 warning in 0.05s\n",
+      "diagnostics": [],
+      "outputTruncated": false,
+      "passedTests": [],
+      "failedTests": [
+        "test_contract::test_contract"
+      ],
+      "coveragePercent": null
+    }
+  ],
+  "contracts": [
+    {
+      "id": "REQ-S04",
+      "description": "assert discount(10,2) is None",
+      "symbol": "sample.discount",
+      "testIds": [
+        "test_contract::test_contract"
+      ]
+    }
+  ]
+}

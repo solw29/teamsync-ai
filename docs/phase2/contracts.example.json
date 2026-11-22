@@ -1,0 +1,13 @@
+[
+  {
+    "id": "REQ-DIVIDE-ZERO",
+    "description": "safe_divide(a, 0) must return None rather than raising ZeroDivisionError",
+    "symbol": "demo_s01.safe_divide",
+    "testIds": [
+      "test_demo_s01::test_safe_divide_contract[1-0-None]"
+    ],
+    "assertions": [
+      "assert safe_divide(1, 0) is None"
+    ]
+  }
+]

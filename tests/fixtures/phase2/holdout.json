@@ -1,0 +1,5 @@
+[
+  {"id":"H01","description":"Clamp a value to a closed interval","symbol":"clamp.value"},
+  {"id":"H02","description":"Reject ambiguous boolean text","symbol":"flags.parse"},
+  {"id":"H03","description":"Return None for an empty sequence","symbol":"sequence.first"}
+]

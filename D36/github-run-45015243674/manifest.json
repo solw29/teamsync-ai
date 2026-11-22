@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "2.0",
+  "toolVersion": "0.2.0",
+  "configVersion": "d0d9f41b618f7a2d",
+  "identity": {
+    "repositoryId": 1442922359,
+    "fullName": "solw29/teamsync-ai",
+    "prNumber": 13,
+    "baseSha": "880f277e038aac0716428be8eb292484cb89c7b1",
+    "headSha": "5a66c4e0a4ef74616ed7e9b2d93f870c216e2185",
+    "workflowId": "426731056",
+    "runId": 45015243674,
+    "runAttempt": 1,
+    "observedAt": "2026-11-22T11:02:02.899040Z"
+  },
+  "files": {
+    "report.json": "f5cfd02eba351654124d5aff5a0beebd832dae7276d3a2a2d925efdad05cdcef"
+  }
+}

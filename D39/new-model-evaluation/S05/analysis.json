@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "review": {
+    "summary": "함수 `get_page`의 동작이 계약을 위반하고 있습니다. 주어진 테스트는 0을 인덱싱할 때 `None`을 반환해야 하지만 실제로는 리스트의 첫 번째 요소인 1을 반환합니다. 이는 위반된 계약을 나타냅니다.",
+    "findings": [
+      {
+        "file": "sample.py",
+        "line": 2,
+        "evidence": "assert get_page([1],0) is None => 1",
+        "suggestion": "함수에서 유효하지 않은 인덱스에 대해 None을 반환하도록 수정해야 합니다."
+      }
+    ],
+    "tests": [
+      {
+        "target": "get_page",
+        "code": "from sample import get_page\n\ndef test_contract():\n    assert get_page([1], 0) is None",
+        "purpose": "계약 위반을 확인하는 테스트입니다."
+      },
+      {
+        "target": "get_page",
+        "code": "from sample import get_page\n\ndef test_get_page_with_valid_index():\n    assert get_page([1, 2, 3], 1) == 1",
+        "purpose": "정상적인 인덱스를 제공했을 때의 동작을 확인합니다."
+      },
+      {
+        "target": "get_page",
+        "code": "from sample import get_page\n\ndef test_get_page_with_another_valid_index():\n    assert get_page([1, 2, 3], 2) == 2",
+        "purpose": "정상적인 인덱스를 제공했을 때의 동작을 확인합니다."
+      },
+      {
+        "target": "get_page",
+        "code": "from sample import get_page\n\ndef test_get_page_with_high_index():\n    assert get_page([1, 2], 3) is None",
+        "purpose": "계속 유효하지 않은 인덱스에 대한 동작을 확인합니다."
+      },
+      {
+        "target": "get_page",
+        "code": "from sample import get_page\n\ndef test_get_page_with_empty_list():\n    assert get_page([], 1) is None",
+        "purpose": "빈 리스트에 대한 동작을 확인합니다."
+      }
+    ]
+  },
+  "model": "gpt-4o-mini-2024-07-18",
+  "requestedModel": "gpt-4o-mini",
+  "usage": {
+    "calls": 1,
+    "inputTokens": 1047,
+    "outputTokens": 412,
+    "estimatedCost": null
+  }
+}

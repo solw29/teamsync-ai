@@ -1,0 +1,63 @@
+{
+  "case": "S03",
+  "diff": {
+    "lines": [
+      {
+        "file": "sample.py",
+        "line": 1,
+        "code": "def normalize_name(v):"
+      },
+      {
+        "file": "sample.py",
+        "line": 2,
+        "code": "    return v.strip()"
+      }
+    ],
+    "positions": {
+      "sample.py": [
+        1,
+        2
+      ]
+    }
+  },
+  "checks": [
+    {
+      "name": "ruff",
+      "status": "passed",
+      "reason": null,
+      "exit_code": 0,
+      "duration": 0.032,
+      "summary": "[]",
+      "diagnostics": [],
+      "outputTruncated": false,
+      "passedTests": [],
+      "failedTests": [],
+      "coveragePercent": null
+    },
+    {
+      "name": "pytest",
+      "status": "failed",
+      "reason": "assertion_failure",
+      "exit_code": 1,
+      "duration": 0.966,
+      "summary": "F                                                                        [100%]\n=================================== FAILURES ===================================\n________________________________ test_contract _________________________________\n\n    def test_contract():\n>       assert normalize_name(' ') is None\nE       AssertionError: assert '' is None\nE        +  where '' = normalize_name(' ')\n\ntest_contract.py:5: AssertionError\n=============================== warnings summary ===============================\n../../../../../../../../opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/_pytest/config/__init__.py:1810\n  /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/_pytest/config/__init__.py:1810: PytestConfigWarning: No files were found in testpaths; consider removing or adjusting your testpaths configuration. Searching recursively from the current directory instead.\n    self.args, self.args_source = self._decide_args(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_contract.py::test_contract - AssertionError: assert '' is None\n +  where '' = normalize_name(' ')\n1 failed, 1 warning in 0.03s\n",
+      "diagnostics": [],
+      "outputTruncated": false,
+      "passedTests": [],
+      "failedTests": [
+        "test_contract::test_contract"
+      ],
+      "coveragePercent": null
+    }
+  ],
+  "contracts": [
+    {
+      "id": "REQ-S03",
+      "description": "assert normalize_name(' ') is None",
+      "symbol": "sample.normalize_name",
+      "testIds": [
+        "test_contract::test_contract"
+      ]
+    }
+  ]
+}

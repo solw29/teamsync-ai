@@ -1,0 +1,20 @@
+{
+  "dateKST": "2026-11-22",
+  "dockerServer": "29.9.2",
+  "imageId": "sha256:5918ba989534f2785fb2b32281919d9844da08cd99e495c6f24bed255a6af991",
+  "policy": {
+    "network": "none",
+    "user": "65534:65534",
+    "readOnlyRoot": true,
+    "targetReadOnly": true,
+    "capDrop": [
+      "ALL"
+    ],
+    "noNewPrivileges": true,
+    "pidsLimit": 64,
+    "memoryBytes": 805306368,
+    "cpus": 1,
+    "tmpfsBytes": 33554432
+  },
+  "sourceNote": "Built from phase-two working tree with temporary BuildKit CA secret; no claim of published image."
+}

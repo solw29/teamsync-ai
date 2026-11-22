@@ -1,0 +1,55 @@
+{
+  "case": "S01",
+  "source": "new_model_drafts_same_code_on_both_versions",
+  "runId": "45014470868",
+  "toolSHA": "05a202a9ea5edd1d5ba168597e4ad740c65931fc",
+  "model": "gpt-4o-mini-2024-07-18",
+  "requestedModel": "gpt-4o-mini",
+  "promptSHA256": "566fa406656fb3b089574fda6342bd524474f399b162ac162f3e0fc4d0b8b2e7",
+  "configVersion": "082fc5aa8961f8fc",
+  "analysisStatus": "passed",
+  "usage": {
+    "calls": 1,
+    "inputTokens": 1113,
+    "outputTokens": 385,
+    "estimatedCost": null
+  },
+  "tests": [
+    {
+      "index": 0,
+      "target": "safe_divide",
+      "buggy": "failed",
+      "fixed": "passed",
+      "classification": "detected"
+    },
+    {
+      "index": 1,
+      "target": "safe_divide",
+      "buggy": "passed",
+      "fixed": "passed",
+      "classification": "missed"
+    },
+    {
+      "index": 2,
+      "target": "safe_divide",
+      "buggy": "passed",
+      "fixed": "passed",
+      "classification": "missed"
+    },
+    {
+      "index": 3,
+      "target": "safe_divide",
+      "buggy": "passed",
+      "fixed": "passed",
+      "classification": "missed"
+    },
+    {
+      "index": 4,
+      "target": "safe_divide",
+      "buggy": "passed",
+      "fixed": "passed",
+      "classification": "missed"
+    }
+  ],
+  "limitation": "Synthetic known contract, not independent holdout or general accuracy. No estimated costs without prices."
+}

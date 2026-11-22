@@ -11,15 +11,21 @@ import tempfile
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+from .draft_quality import check_draft, expectation_conflicts
 from .schema import Review
 
 
-def execute(review: Review, cwd: str) -> list[dict]:
+def execute(review: Review, cwd: str, strict: bool = False, contracts: list[dict] | None = None) -> list[dict]:
     if os.environ.get("TEAMSYNC_DISPOSABLE_RUNNER") != "1":
         return [{"status": "not_run", "reason": "Disposable secret-free runner required"}]
     results = []
     with tempfile.TemporaryDirectory(prefix="teamsync-tests-") as directory:
         for index, draft in enumerate(review.tests):
+            if strict:
+                rejected = check_draft(draft.code, draft.target) + expectation_conflicts(draft.code, draft.target, contracts or [])
+                if rejected:
+                    results.append({'target': draft.target, 'status': 'not_run', 'reason': ','.join(rejected)})
+                    continue
             path = Path(directory) / f"test_draft_{index}.py"
             path.write_text(draft.code, encoding="utf-8")
             environment = {"PATH": os.environ.get("PATH", ""), "PYTHONPATH": str(Path(cwd).resolve()),
@@ -28,7 +34,7 @@ def execute(review: Review, cwd: str) -> list[dict]:
                 with tempfile.TemporaryFile(mode="w+") as output:
                     report = Path(directory) / f"report_{index}.xml"
                     process = subprocess.Popen(
-                        [sys.executable, "-m", "pytest", "-q", "-c", "/dev/null", f"--junitxml={report}", str(path)],
+                        [sys.executable, str(Path(__file__).with_name("runner_limits.py")), "-q", "-c", "/dev/null", f"--junitxml={report}", str(path)],
                         cwd=cwd, env=environment, stdout=output, stderr=output,
                         start_new_session=True,
                     )

@@ -52,6 +52,7 @@ def main():
         if os.environ.get("DISCORD_WEBHOOK_URL"):
             status = notify(os.environ["DISCORD_WEBHOOK_URL"],
                             f"https://github.com/{repository}/pull/{int(pr['number'])}", analysis["status"])
+        write("artifacts/notifications.json", {"discord": status})
         body = render(checks, analysis, diff, generated) + f"\nDiscord: {status}"
         with httpx.Client(headers={"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}"}, timeout=20) as client:
             upsert(client, repository, int(pr["number"]), body)
