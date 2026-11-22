@@ -51,3 +51,15 @@ Notebook 정적 분석은 opt-in, 셀 출력은 보존하지 않고 magic은 unr
 ## 평가 원칙
 
 D6 과거 12 PR·6쌍·30초안의 원본은 그대로 보존합니다. D39의 새 결과는 수기 계약 테스트와 deterministic router의 offline 비교입니다. 모델 호출을 수행하지 않았으므로 새 LLM 정확도·실측 비용 감소라고 주장하지 않습니다. 독립 holdout 3개는 요구사항 정보가 부족하면 unverifiable로 유지되는 회귀 검증에만 쓰며 모델에 전송하지 않았습니다. 별도 수동 workflow로 합성 6사례에 새로운 모델 호출 6회를 수행하고 동일 초안 30개를 양쪽 코드에서 실행했습니다. D39/new-model-evaluation에 source SHA·prompt hash·실측 token과 원본을 보존합니다. 수정 코드 리뷰 오탐·독립 holdout의 새 모델 평가와 독립 사람 판정은 수행하지 않았습니다. 새 모델 수치는 validation.md에서 과거 D6 수치와 분리합니다.
+
+## 작업과 완료 기준
+
+작업 범위는 D21~D40의 계약·검사·정적 근거·선택 LLM·제한 runner·실행별 보고서·UI·평가다. 완료 기준은 기존12개 v1 호환, v2/manifest 무결성, 필수 실패와 optional skip 분리, 실제 run identity 대조, 컨테이너 제한, 새 평가 provenance다. 실제 검증은 validation.md 및 D36/D39에 있고, D28 자동 실행·독립 holdout 모델 평가·사람 판정은 완료로 세지 않는다.
+
+## 대안과 선택 판단
+
+심볼 존재만 보는 판정보다 명시 계약+정적 호출+실행 테스트를 결합해 증거 부족을 드러냈다. 전체 저장소 무제한 분석보다 제한 AST 인덱스를 택했고, 항상 LLM을 부르는 대신 unknown만 선택하도록 했다. subprocess만 쓰는 방식의 한계 때문에 생성 코드는 opt-in 제한 컨테이너로 이동했다. v1 교체보다 version adapter를 둬 이미 보존한 결과가 계속 읽히게 했다. 이 선택들은 범위·재현성·권한 경계에 근거하며, 모든 대안에 대한 비교 benchmark 결과는 아니다.
+
+## 개발 중 문제와 해결
+
+JUnit rootdir 차이로 계약 test ID가 달라져 `--rootdir=.`로 고정했다. 우연히 artifacts의 테스트까지 집계된 문제는 testpaths로 해결했다. Docker CA 오류는 검증을 끄는 대신 임시 BuildKit secret CA로, non-root COPY 접근 오류는 읽기 권한/소유자로 해결했다. 모델의 잘못된 기대값은 숨기지 않고 양쪽 실행에 보존하고, 같은 명시 입력의 literal 모순만 후속 규칙으로 거부한다. 전체 의미 정확성이 해결됐다고 표시하지 않는다. 단계별 문제와 근거는 D21~D40의 추가 검토 절을 참조한다.
