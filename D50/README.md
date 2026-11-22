@@ -25,3 +25,5 @@ Actions artifact→queue→PG→API→React 통합, 장애 복구·cache/index �
 작은 데이터 cache p95 개선이 없고 Starlette TestClient의 httpx deprecation 경고가 남아 있다. 경고를 숨기지 않고 현재 통과 상태와 함께 기록한다. 4·5차 설치 wizard/역할 고도화는 이번 구현으로 표시하지 않는다.
 
 [3차 운영 가이드](../docs/backend/README.md) · [통합 검수 결과](../docs/backend-validation.md)
+
+최종 로컬 검증: Python 기존59+서버26(실제 PG 포함), React15 통과. 새 PR14 artifact는 DB14행·API·React 상세에서 확인했습니다. 원격 CI와 정확한 실행 SHA는 통합 검수에 기록했습니다.

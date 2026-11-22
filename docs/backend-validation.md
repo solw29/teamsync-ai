@@ -5,8 +5,8 @@
 D41~D50은 DOCX3-01~3-10에 대응한다. 작업은 영속 API·안전한 GitHub pull·내구성 큐·React 연결과 복구 검증이며, 각 단계의 판단 근거와 문제 해결은 해당 README에 기록했다. 환경은 Python3.12, PostgreSQL17.5, 별도 Redis7.4.4 broker/cache, Node24, Chromium이다. 표준 Compose는 DB/Redis를 호스트에 노출하지 않는다. 검증 프로젝트만 loopback55432/56379/56380 override를 사용했다.
 
 - 기존 Python 테스트 **59/59** 통과.
-- 서버 테스트 **24/24** 통과. 실제 PostgreSQL `_test` DB의 동시 attempt/중복 저장 검사 포함. TEST_DATABASE_URL 없이 실행하면23통과/1skip이며 이를24통과로 세지 않는다.
-- React **13/13** 통과, TypeScript·Vite build 통과. Python 응답 모델에서 생성한 fixture를 React Zod로 검증한다.
+- 서버 테스트 **26/26** 통과. 실제 PostgreSQL `_test` DB의 동시 attempt/중복 저장 검사 포함. TEST_DATABASE_URL 없이 실행하면25통과/1skip이며 이를26통과로 세지 않는다.
+- React **15/15** 통과, TypeScript·Vite build 통과. Python 응답 모델에서 생성한 fixture를 React Zod로 검증한다.
 - Ruff 전체 검사 통과. Starlette TestClient의 httpx deprecation 경고1개는 남아 있다.
 - 실제12개 보존 결과+GitHub v2 run **45015243674 attempt1**을 PG에 저장해 **13행** 조회. 이는 신규 run 증거와 구분한다.
 - 실제 HTTP202→DB outbox→Redis→Celery→GitHub artifact→PG→API 경로 성공. 브라우저10가지 흐름 통과, page error0.
@@ -50,3 +50,11 @@ warm cache 측정은100회 모두 hit였다. 매 요청 DB version 확인1회가
 세부 실행·백업·credential 주입 방법과 재현 조건은 [운영 가이드](backend/README.md). 확인 중 발생한 UID/CA/checksum/null/경쟁 조건 문제와 해결은 D41~D50 README에 각각 연결했다.
 
 컨테이너 빌드 성공, migration one-shot 종료0, API readiness200와 `/proc/1/status` UID65534를 확인했다. 해당 컨테이너가 제공하는 production React에서 브라우저 smoke도 다시 통과했다. `docker exec`의 새 관리 프로세스 기본 UID와 API PID1의 UID는 구분해서 확인했다.
+
+## 새 PR 실행과 원격 CI
+
+새 초안 [PR #14](https://github.com/solw29/teamsync-ai/pull/14)의 실제 Phase2 실행 [45046726968](https://github.com/solw29/teamsync-ai/actions/runs/45046726968), attempt1, head `669c176fa8e94bc71c1b55e6c157af434d0285ec`에서 생성된 artifact를 HTTP202→outbox→Redis→실제 Celery worker로 수집했다. PR14/head SHA/attempt가 일치했고 DB14행과 API 상세·React Evidence·상세 직접 경로 새로고침까지 확인했다. [새 실행 증거](backend/evidence/new-pr-run.json). 이 수집이 workflow rerun이나 LLM 호출을 추가하지 않았다.
+
+원격 `e0ba2b3`의 [Backend persistence and API](https://github.com/solw29/teamsync-ai/actions/runs/45046828277), [Phase2 run report](https://github.com/solw29/teamsync-ai/actions/runs/45046828268), [Dashboard](https://github.com/solw29/teamsync-ai/actions/runs/45046828280) 모두 success였다. 이후 추가된 scan/권한 변경/error 경로 테스트 수치는 위의 로컬 최종 수치다. 최종 원격 상태는 PR checks에서 확인한다.
+
+실제 Redis에 검증용 TTL1초를 적용해 miss→hit→1.2초 대기→miss를 확인했다. 기본 TTL은30초다. [TTL 증거](backend/evidence/cache-ttl.json). 저장소 비활성화 후 warmed cache 접근 차단과 overlap scan 중복/실패 cursor 보존도 자동 테스트에 추가했다.

@@ -10,7 +10,7 @@ DOCX 3-07 대응 · 기록일 2026-11-23 (KST). D번호는 기록 순서이며 �
 
 권한 확인 후 통계 조회, commit 버전 변경 후 이전 키 미사용, cache 장애 시 DB fallback과 실제 시간/쿼리 수를 기록한다.
 
-[측정·cache 중단](../docs/backend/evidence/faults-performance.json). TTL은 외부에서 DB를 직접 수정하는 상황까지 즉시 반영하지 않으며 운영 변경은 저장 API를 사용해야 한다. 단위 테스트의 메모리 cache는 TTL 시간을 모사하지 않는다.
+[측정·cache 중단](../docs/backend/evidence/faults-performance.json). TTL은 외부에서 DB를 직접 수정하는 상황까지 즉시 반영하지 않으며 운영 변경은 저장 API를 사용해야 한다. 단위 테스트의 메모리 cache는 TTL 시간을 모사하지 않아 실제 Redis의 검증 TTL1초 miss→hit→만료→miss도 확인했다. [TTL 증거](../docs/backend/evidence/cache-ttl.json).
 
 ## 어떤 기능을 어떻게 구현했는가
 

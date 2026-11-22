@@ -218,3 +218,14 @@ def test_missing_config_is_explicit(monkeypatch, tmp_path):
     monkeypatch.setenv("TEAMSYNC_DB_PASSWORD_FILE", str(tmp_path / "missing"))
     with pytest.raises(ValueError, match="configuration missing"):
         Settings.from_env()
+
+
+def test_disabled_repository_cannot_use_warmed_cache(signed, repository, legacy, app):
+    client, headers = signed
+    client.post(f"/api/repositories/{repository}/import", headers=headers, json=legacy)
+    url = f"/api/repositories/{repository}/stats"
+    assert client.get(url).status_code == 200
+    assert client.get(url).json()["cacheSource"] == "hit"
+    with app.state.factory.begin() as db:
+        db.get(Repository, repository).enabled = False
+    assert client.get(url).status_code == 404

@@ -1,0 +1,30 @@
+{
+  "runId": 45046726968,
+  "runAttempt": 1,
+  "prNumber": 14,
+  "headSha": "669c176fa8e94bc71c1b55e6c157af434d0285ec",
+  "jobId": "fa54652f-3add-4775-acd7-effab5b90f1e",
+  "jobStatus": "succeeded",
+  "jobEvents": [
+    "queued",
+    "running",
+    "succeeded"
+  ],
+  "databaseRows": 14,
+  "detailId": "cd381b54-8c87-4ba4-bb9b-63e8c61b4199",
+  "githubStatus": "completed",
+  "githubConclusion": "success",
+  "collectionStatus": "available",
+  "llmCallsTriggeredBySync": 0,
+  "workflowRerunsTriggeredBySync": 0,
+  "browser": {
+    "result": "passed",
+    "paths": [
+      "API history14 rows",
+      "new PR14 run detail",
+      "Evidence",
+      "direct path refresh"
+    ],
+    "pageErrors": []
+  }
+}

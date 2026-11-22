@@ -25,3 +25,5 @@ Webhook은 로컬 서버의 수신 주소·서명 검증·인터넷 노출을 �
 리다이렉트 다운로드에 API Authorization을 전달할 위험을 별도 client로 없앴다. 만료/잘못된 크기 metadata는 다운로드 전에 실패 처리한다. 수집 실패를 검사 passed로 바꾸지 않는다.
 
 [3차 운영 가이드](../docs/backend/README.md) · [통합 검수 결과](../docs/backend-validation.md)
+
+새 실제 실행: PR14/run45046726968 attempt1을 큐로 수집해 DB에 저장했습니다. [새 실행과 React 확인](../docs/backend/evidence/new-pr-run.json).

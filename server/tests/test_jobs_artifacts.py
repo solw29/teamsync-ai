@@ -339,3 +339,61 @@ def test_artifact_not_yet_available_is_bounded_retry(
         client.sync(db.get(Repository, repository), actual["id"], 1)
     assert error.value.retryable
     client.close()
+
+
+def test_periodic_scan_overlap_deduplicates_and_preserves_cursor_on_failure(
+    app, repository
+):
+    from server.app.jobs import discover
+    from server.app.models import SyncCursor
+
+    class Feed:
+        def __init__(self):
+            self.params = []
+            self.failed = False
+
+        def repository(self, repo):
+            return {"full_name": repo.full_name}
+
+        def get(self, path, params):
+            self.params.append(params)
+            if self.failed:
+                raise SyncError("github_unavailable", True)
+            run = {
+                "id": 91,
+                "run_attempt": 1,
+                "event": "pull_request",
+                "status": "completed",
+                "updated_at": "2026-11-23T00:00:00Z",
+            }
+            return {
+                "workflow_runs": [
+                    run,
+                    run,
+                    {**run, "id": 92, "event": "push"},
+                    {**run, "id": 93, "status": "in_progress"},
+                ]
+            }
+
+    feed = Feed()
+    settings = app.state.settings
+    discover(app.state.factory, feed, settings)
+    with app.state.factory() as db:
+        assert db.scalar(select(func.count()).select_from(Job)) == 1
+        scanned = db.get(SyncCursor, repository).last_scan_at
+    discover(app.state.factory, feed, settings)
+    with app.state.factory() as db:
+        assert db.scalar(select(func.count()).select_from(Job)) == 1
+        previous = db.get(SyncCursor, repository).last_scan_at
+    assert (
+        feed.params[-1]["created"]
+        == ">=" + (scanned - timedelta(minutes=10)).isoformat()
+    )
+    feed.failed = True
+    discover(app.state.factory, feed, settings)
+    with app.state.factory() as db:
+        cursor = db.get(SyncCursor, repository)
+        assert (
+            cursor.last_scan_at == previous
+            and cursor.last_error == "github_unavailable"
+        )
