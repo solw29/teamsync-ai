@@ -1,0 +1,5 @@
+*
+!teamsync/
+!teamsync/**
+teamsync/**/__pycache__
+teamsync/**/*.pyc

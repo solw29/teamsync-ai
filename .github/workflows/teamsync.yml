@@ -23,14 +23,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install '.[dev]'
+      - run: python -m pip install '.[dev,phase2]'
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           path: target
           fetch-depth: 0
           persist-credentials: false
-      - run: python -m teamsync.cli collect
+      - run: python -m teamsync.phase2_cli collect
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
@@ -78,7 +78,7 @@ jobs:
         with:
           name: checks
           path: artifacts
-      - run: python -m teamsync.cli analyze
+      - run: python -m teamsync.phase2_cli analyze
         env:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           LLM_MODEL: ${{ vars.LLM_MODEL || 'gpt-4o-mini' }}
@@ -100,7 +100,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install '.[dev]'
+      - run: python -m pip install '.[dev,phase2]'
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
@@ -110,9 +110,30 @@ jobs:
         with:
           name: analysis
           path: artifacts
-      - run: python -m teamsync.cli execute
-        env:
-          TEAMSYNC_DISPOSABLE_RUNNER: '1'
+      - name: Read trusted opt-in policy
+        id: policy
+        run: python -c "from teamsync.phase2_config import load_policy; from pathlib import Path; import os; open(os.environ['GITHUB_OUTPUT'],'a').write('enabled='+str(load_policy(Path('teamsync-policy.json')).generatedTests).lower()+'\n')"
+      - name: Record disabled execution
+        if: steps.policy.outputs.enabled != 'true'
+        run: |
+          python -m teamsync.phase2_cli execute --output artifacts
+      - name: Build isolated runner (trusted tool only)
+        if: steps.policy.outputs.enabled == 'true'
+        run: docker build -f Dockerfile.runner -t teamsync-runner .
+      - name: Execute opt-in drafts with restricted resources
+        if: steps.policy.outputs.enabled == 'true'
+        run: |
+          mkdir -p runner-output
+          chmod 777 runner-output
+          docker run --rm --network none --read-only --cap-drop ALL \
+            --security-opt no-new-privileges --pids-limit 64 --memory 768m --cpus 1 \
+            --tmpfs /tmp:rw,noexec,nosuid,size=32m \
+            -v "$PWD/target:/target:ro" -v "$PWD/artifacts:/input:ro" \
+            -v "$PWD/teamsync-policy.json:/opt/teamsync/teamsync-policy.json:ro" \
+            -v "$PWD/runner-output:/output:rw" \
+            -e TEAMSYNC_DISPOSABLE_RUNNER=1 -e TEAMSYNC_ISOLATED_CONTAINER=1 \
+            teamsync-runner execute --target /target --artifacts /input --output /output
+          cp runner-output/generated.json artifacts/generated.json
       - uses: actions/upload-artifact@v4
         with:
           name: generated
@@ -143,3 +164,68 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: notifications
+          path: artifacts/notifications.json
+
+  report:
+    needs: [checks, analyze, generated, publish]
+    if: always() && !github.event.pull_request.draft && github.event.pull_request.head.repo.full_name == github.repository
+    permissions:
+      contents: read
+      actions: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install .
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          pattern: '*'
+          merge-multiple: true
+          path: artifacts
+      - name: Resolve workflow ID from actual run metadata
+        run: gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" --jq '"GITHUB_WORKFLOW_ID="+(.workflow_id|tostring)' >> "$GITHUB_ENV"
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Generate immutable run-attempt report even when checks were unavailable
+        if: always()
+        run: python -m teamsync.phase2_cli report
+      - uses: actions/upload-artifact@v4
+        with:
+          name: teamsync-report-${{ github.run_id }}-${{ github.run_attempt }}
+          path: report-output/
+
+  required-verification:
+    needs: [checks, analyze, generated, publish, report]
+    if: always() && !github.event.pull_request.draft && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install .
+      - uses: actions/download-artifact@v4
+        with:
+          name: checks
+          path: artifacts
+      - name: Required checks determine conclusion (optional LLM skip is neutral)
+        run: |
+          test "$REPORT_JOB_RESULT" = success
+          python -m teamsync.phase2_cli gate
+        env:
+          REPORT_JOB_RESULT: ${{ needs.report.result }}

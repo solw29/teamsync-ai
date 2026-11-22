@@ -1,0 +1,601 @@
+{
+  "$defs": {
+    "Checks": {
+      "properties": {
+        "ruffStatus": {
+          "enum": [
+            "passed",
+            "failed",
+            "running",
+            "error",
+            "skipped",
+            "not_run",
+            "environment_error",
+            "missing_input"
+          ],
+          "title": "Ruffstatus",
+          "type": "string"
+        },
+        "pytestStatus": {
+          "enum": [
+            "passed",
+            "failed",
+            "running",
+            "error",
+            "skipped",
+            "not_run",
+            "environment_error",
+            "missing_input"
+          ],
+          "title": "Pyteststatus",
+          "type": "string"
+        },
+        "errorSummary": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Errorsummary"
+        }
+      },
+      "required": [
+        "ruffStatus",
+        "pytestStatus",
+        "errorSummary"
+      ],
+      "title": "Checks",
+      "type": "object"
+    },
+    "Draft": {
+      "properties": {
+        "target": {
+          "title": "Target",
+          "type": "string"
+        },
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "purpose": {
+          "title": "Purpose",
+          "type": "string"
+        },
+        "executionStatus": {
+          "enum": [
+            "passed",
+            "failed",
+            "running",
+            "error",
+            "skipped",
+            "not_run",
+            "environment_error",
+            "missing_input"
+          ],
+          "title": "Executionstatus",
+          "type": "string"
+        },
+        "failureReason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Failurereason"
+        }
+      },
+      "required": [
+        "target",
+        "code",
+        "purpose",
+        "executionStatus",
+        "failureReason"
+      ],
+      "title": "Draft",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "contract",
+            "symbol",
+            "call",
+            "check",
+            "test",
+            "unresolved"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "file": {
+          "title": "File",
+          "type": "string"
+        },
+        "line": {
+          "minimum": 0,
+          "title": "Line",
+          "type": "integer"
+        },
+        "detail": {
+          "title": "Detail",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "file",
+        "line",
+        "detail"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "Finding": {
+      "properties": {
+        "file": {
+          "title": "File",
+          "type": "string"
+        },
+        "line": {
+          "exclusiveMinimum": 0,
+          "title": "Line",
+          "type": "integer"
+        },
+        "evidence": {
+          "title": "Evidence",
+          "type": "string"
+        },
+        "suggestion": {
+          "title": "Suggestion",
+          "type": "string"
+        },
+        "locationVerified": {
+          "title": "Locationverified",
+          "type": "boolean"
+        },
+        "adjudication": {
+          "enum": [
+            "unreviewed",
+            "confirmed",
+            "false_positive"
+          ],
+          "title": "Adjudication",
+          "type": "string"
+        }
+      },
+      "required": [
+        "file",
+        "line",
+        "evidence",
+        "suggestion",
+        "locationVerified",
+        "adjudication"
+      ],
+      "title": "Finding",
+      "type": "object"
+    },
+    "Item": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "repository": {
+          "title": "Repository",
+          "type": "string"
+        },
+        "prNumber": {
+          "exclusiveMinimum": 0,
+          "title": "Prnumber",
+          "type": "integer"
+        },
+        "prTitle": {
+          "title": "Prtitle",
+          "type": "string"
+        },
+        "headSha": {
+          "title": "Headsha",
+          "type": "string"
+        },
+        "runId": {
+          "title": "Runid",
+          "type": "integer"
+        },
+        "analyzedAt": {
+          "title": "Analyzedat",
+          "type": "string"
+        },
+        "githubUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Githuburl"
+        },
+        "status": {
+          "enum": [
+            "passed",
+            "failed",
+            "running",
+            "partial"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "checks": {
+          "$ref": "#/$defs/Checks"
+        },
+        "review": {
+          "$ref": "#/$defs/ReviewData"
+        },
+        "tests": {
+          "items": {
+            "$ref": "#/$defs/Draft"
+          },
+          "title": "Tests",
+          "type": "array"
+        },
+        "discordRequestStatus": {
+          "title": "Discordrequeststatus",
+          "type": "string"
+        },
+        "duration": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Duration"
+        },
+        "execution": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Execution",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "repository",
+        "prNumber",
+        "prTitle",
+        "headSha",
+        "runId",
+        "analyzedAt",
+        "githubUrl",
+        "status",
+        "checks",
+        "review",
+        "tests",
+        "discordRequestStatus",
+        "duration",
+        "execution"
+      ],
+      "title": "Item",
+      "type": "object"
+    },
+    "Requirement": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "satisfied",
+            "violated",
+            "unverifiable"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "evidenceIds": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidenceids",
+          "type": "array"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "description",
+        "status",
+        "evidenceIds",
+        "reason"
+      ],
+      "title": "Requirement",
+      "type": "object"
+    },
+    "ReviewData": {
+      "properties": {
+        "status": {
+          "enum": [
+            "passed",
+            "failed",
+            "running",
+            "error",
+            "skipped",
+            "not_run",
+            "environment_error",
+            "missing_input"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "summary": {
+          "title": "Summary",
+          "type": "string"
+        },
+        "findings": {
+          "items": {
+            "$ref": "#/$defs/Finding"
+          },
+          "title": "Findings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "status",
+        "summary",
+        "findings"
+      ],
+      "title": "ReviewData",
+      "type": "object"
+    },
+    "RunIdentity": {
+      "additionalProperties": false,
+      "properties": {
+        "repositoryId": {
+          "exclusiveMinimum": 0,
+          "title": "Repositoryid",
+          "type": "integer"
+        },
+        "fullName": {
+          "pattern": "^[\\w.-]+/[\\w.-]+$",
+          "title": "Fullname",
+          "type": "string"
+        },
+        "prNumber": {
+          "exclusiveMinimum": 0,
+          "title": "Prnumber",
+          "type": "integer"
+        },
+        "baseSha": {
+          "pattern": "^[0-9a-f]{40}$",
+          "title": "Basesha",
+          "type": "string"
+        },
+        "headSha": {
+          "pattern": "^[0-9a-f]{40}$",
+          "title": "Headsha",
+          "type": "string"
+        },
+        "workflowId": {
+          "minLength": 1,
+          "title": "Workflowid",
+          "type": "string"
+        },
+        "runId": {
+          "exclusiveMinimum": 0,
+          "title": "Runid",
+          "type": "integer"
+        },
+        "runAttempt": {
+          "exclusiveMinimum": 0,
+          "title": "Runattempt",
+          "type": "integer"
+        },
+        "observedAt": {
+          "format": "date-time",
+          "title": "Observedat",
+          "type": "string"
+        }
+      },
+      "required": [
+        "repositoryId",
+        "fullName",
+        "prNumber",
+        "baseSha",
+        "headSha",
+        "workflowId",
+        "runId",
+        "runAttempt",
+        "observedAt"
+      ],
+      "title": "RunIdentity",
+      "type": "object"
+    },
+    "Usage": {
+      "additionalProperties": false,
+      "properties": {
+        "calls": {
+          "minimum": 0,
+          "title": "Calls",
+          "type": "integer"
+        },
+        "inputTokens": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Inputtokens"
+        },
+        "outputTokens": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Outputtokens"
+        },
+        "estimatedCost": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Estimatedcost"
+        }
+      },
+      "required": [
+        "calls"
+      ],
+      "title": "Usage",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "2.0",
+      "default": "2.0",
+      "title": "Schemaversion",
+      "type": "string"
+    },
+    "toolVersion": {
+      "default": "0.2.0",
+      "title": "Toolversion",
+      "type": "string"
+    },
+    "configVersion": {
+      "title": "Configversion",
+      "type": "string"
+    },
+    "identity": {
+      "$ref": "#/$defs/RunIdentity"
+    },
+    "analysis": {
+      "$ref": "#/$defs/Item"
+    },
+    "requirements": {
+      "items": {
+        "$ref": "#/$defs/Requirement"
+      },
+      "title": "Requirements",
+      "type": "array"
+    },
+    "evidence": {
+      "items": {
+        "$ref": "#/$defs/Evidence"
+      },
+      "title": "Evidence",
+      "type": "array"
+    },
+    "checkDetails": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Checkdetails",
+      "type": "array"
+    },
+    "impact": {
+      "additionalProperties": true,
+      "title": "Impact",
+      "type": "object"
+    },
+    "routing": {
+      "additionalProperties": true,
+      "title": "Routing",
+      "type": "object"
+    },
+    "usage": {
+      "$ref": "#/$defs/Usage"
+    },
+    "warnings": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Warnings",
+      "type": "array"
+    },
+    "testEvidence": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Testevidence",
+      "type": "array"
+    },
+    "model": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Model"
+    },
+    "promptVersion": {
+      "default": "unrecorded",
+      "title": "Promptversion",
+      "type": "string"
+    }
+  },
+  "required": [
+    "configVersion",
+    "identity",
+    "analysis",
+    "requirements",
+    "evidence",
+    "checkDetails",
+    "impact",
+    "routing",
+    "usage",
+    "warnings"
+  ],
+  "title": "RunReport",
+  "type": "object"
+}

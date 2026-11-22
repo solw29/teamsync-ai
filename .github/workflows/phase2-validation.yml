@@ -1,0 +1,47 @@
+name: Phase 2 verification and run report
+on:
+  pull_request:
+    paths: ['teamsync/**', 'tests/**', 'web/**', 'Dockerfile.runner', '.github/workflows/**', 'teamsync-*.json', 'pyproject.toml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  validate:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: python -m pip install -e '.[dev,phase2]'
+      - run: ruff check . && pytest -q
+      - run: npm ci && npm test && npm run build
+        working-directory: web
+      - name: Resolve workflow ID from actual run metadata
+        run: gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" --jq '"GITHUB_WORKFLOW_ID="+(.workflow_id|tostring)' >> "$GITHUB_ENV"
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Collect current PR run (no secrets or LLM)
+        run: |
+          python -m teamsync.phase2_cli collect --target .
+          printf '{"status":"skipped","review":null,"reason":"secret_free_validation","usage":{"calls":0}}' > artifacts/analysis.json
+          python -m teamsync.phase2_cli report
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase2-run-${{ github.run_id }}-${{ github.run_attempt }}
+          path: report-output/
+      - name: Build restricted generated-code runner
+        run: docker build -f Dockerfile.runner -t teamsync-runner .

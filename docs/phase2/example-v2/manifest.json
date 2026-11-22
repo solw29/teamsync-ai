@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "2.0",
+  "toolVersion": "0.2.0",
+  "configVersion": "fc7a50998342863d",
+  "identity": {
+    "repositoryId": 1,
+    "fullName": "example/phase2",
+    "prNumber": 1,
+    "baseSha": "463b46f1b12d2ae4957c6c1e54e6a5efc5d50f18",
+    "headSha": "2a88e3190ea86ff79ba5f6c01096a80c0536b7b9",
+    "workflowId": "unavailable:local-fixture",
+    "runId": 1,
+    "runAttempt": 1,
+    "observedAt": "2026-11-22T10:50:36.340256Z"
+  },
+  "files": {
+    "report.json": "1cf9790cb99b600510ef9f507f76ff7052f69a15d8b5600abe33f2d2f5cf487d"
+  }
+}

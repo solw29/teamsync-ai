@@ -68,3 +68,11 @@ Data import에서 결과 파일을 선택하면 Dashboard·상세·Evaluation �
 [설계](docs/react-extension-design.md) · [결과 계약](docs/result-schema.md) · [웹 실행·배포 안내](web/README.md) · [통합 검증 기록](docs/react-test-report.md)
 
 `.github/workflows/dashboard.yml`은 별도 빌드·테스트 후 import JSON과 정적 빌드를 artifact로 저장합니다. 기존 PR workflow를 변경하지 않습니다. 정적 호스팅 설정은 준비했으나 외부 배포는 아직 수행하지 않았습니다.
+
+## 2차 검증 엔진 (D21~D40)
+
+실행 상태·요구사항 판정·근거를 분리한 v2 run 보고서, 제한 AST 영향 분석, 명시 계약 검사, 선택적 LLM, opt-in 제한 컨테이너와 React Evidence 탭을 추가하는 검토 브랜치입니다. 기존 v1 Import와 과거 실측은 유지합니다.
+
+[2차 설계·사용법](docs/phase2/README.md) · [실제 검증 기록](docs/phase2/validation.md) · [D21 기준선](D21/README.md) · [D40 검수](D40/README.md)
+
+새 기록 폴더는 날짜 없이 `D21`~`D40`입니다. Notebook 자동 실행은 선택 기능으로 제외했습니다. 3차 이후 서버·DB·큐·설치판은 추가하지 않았습니다. 검토 브랜치 내용이 main에서 활성화됐다고 해석하지 마세요.

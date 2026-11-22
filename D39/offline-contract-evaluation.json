@@ -1,0 +1,135 @@
+{
+  "scope": "6 cleaned synthetic contract pairs, deterministic checks only",
+  "cases": [
+    {
+      "case": "S01",
+      "source": "handwritten_contract_not_model_output",
+      "results": [
+        {
+          "version": "buggy",
+          "execution": "failed",
+          "judgement": "violated",
+          "alwaysWouldCall": true,
+          "selectiveWouldCall": false
+        },
+        {
+          "version": "fixed",
+          "execution": "passed",
+          "judgement": "satisfied",
+          "alwaysWouldCall": true,
+          "selectiveWouldCall": false
+        }
+      ]
+    },
+    {
+      "case": "S02",
+      "source": "handwritten_contract_not_model_output",
+      "results": [
+        {
+          "version": "buggy",
+          "execution": "failed",
+          "judgement": "violated",
+          "alwaysWouldCall": true,
+          "selectiveWouldCall": false
+        },
+        {
+          "version": "fixed",
+          "execution": "passed",
+          "judgement": "satisfied",
+          "alwaysWouldCall": true,
+          "selectiveWouldCall": false
+        }
+      ]
+    },
+    {
+      "case": "S03",
+      "source": "handwritten_contract_not_model_output",
+      "results": [
+        {
+          "version": "buggy",
+          "execution": "failed",
+          "judgement": "violated",
+          "alwaysWouldCall": true,
+          "selectiveWouldCall": false
+        },
+        {
+          "version": "fixed",
+          "execution": "passed",
+          "judgement": "satisfied",
+          "alwaysWouldCall": true,
+          "selectiveWouldCall": false
+        }
+      ]
+    },
+    {
+      "case": "S04",
+      "source": "handwritten_contract_not_model_output",
+      "results": [
+        {
+          "version": "buggy",
+          "execution": "failed",
+          "judgement": "violated",
+          "alwaysWouldCall": true,
+          "selectiveWouldCall": false
+        },
+        {
+          "version": "fixed",
+          "execution": "passed",
+          "judgement": "satisfied",
+          "alwaysWouldCall": true,
+          "selectiveWouldCall": false
+        }
+      ]
+    },
+    {
+      "case": "S05",
+      "source": "handwritten_contract_not_model_output",
+      "results": [
+        {
+          "version": "buggy",
+          "execution": "failed",
+          "judgement": "violated",
+          "alwaysWouldCall": true,
+          "selectiveWouldCall": false
+        },
+        {
+          "version": "fixed",
+          "execution": "passed",
+          "judgement": "satisfied",
+          "alwaysWouldCall": true,
+          "selectiveWouldCall": false
+        }
+      ]
+    },
+    {
+      "case": "S06",
+      "source": "handwritten_contract_not_model_output",
+      "results": [
+        {
+          "version": "buggy",
+          "execution": "failed",
+          "judgement": "violated",
+          "alwaysWouldCall": true,
+          "selectiveWouldCall": false
+        },
+        {
+          "version": "fixed",
+          "execution": "passed",
+          "judgement": "satisfied",
+          "alwaysWouldCall": true,
+          "selectiveWouldCall": false
+        }
+      ]
+    }
+  ],
+  "environment": {
+    "python": "3.12.14",
+    "platform": "linux"
+  },
+  "toolVersion": "0.2.0",
+  "configVersion": "fc7a50998342863d",
+  "actualLLMCalls": 0,
+  "llmDetectionChange": null,
+  "tokenSavings": null,
+  "limitation": "Would-call decisions are not measured API savings or new model accuracy. Holdout not sent to a model."
+}
